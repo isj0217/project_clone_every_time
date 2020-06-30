@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_login_logo"
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:src="@drawable/logo_everytime" />
+
+    <TextView
+        android:id="@+id/tv_login_logoDescription"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="대학 생활을 더 편하고 즐겁게"
+        android:textColor="@color/colorGrey"
+        app:layout_constraintTop_toBottomOf="@+id/iv_login_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_login_appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_logoDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="에브리타임"
+        android:textStyle="bold"
+        android:textColor="@color/colorEveryTimeRed"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_login_inputBoxes"
+        android:orientation="vertical"
+        android:layout_margin="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_appName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:padding="9dp"
+            android:id="@+id/et_login_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="  아이디"
+            android:textSize="14sp"
+            android:textColorHint="@color/colorDarkGrey"
+            android:textColor="@color/colorDarkGrey"
+            android:background="@drawable/btn_lightgrey" />
+
+        <EditText
+            android:layout_marginTop="5dp"
+            android:padding="9dp"
+            android:id="@+id/et_login_pw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="  비밀번호"
+            android:textSize="14sp"
+            android:textColorHint="@color/colorDarkGrey"
+            android:textColor="@color/colorDarkGrey"
+            android:background="@drawable/btn_lightgrey" />
+
+        <Button
+            android:id="@+id/btn_login_Login"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:text="에브리타임 로그인"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/btn_login" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_login_findIDPW"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_login_inputBoxes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아이디/비밀번호 찾기"
+        android:textColor="@color/colorGrey"
+        android:background="@android:color/transparent" />
+
+    <Button
+        android:id="@+id/btn_signUp"
+        app:layout_constraintTop_toBottomOf="@id/btn_login_findIDPW"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="회원가입"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/colorBlack"
+        android:background="@android:color/transparent" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
