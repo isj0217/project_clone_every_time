@@ -79,6 +79,7 @@
                 android:orientation="horizontal">
 
                 <CheckBox
+                    android:id="@+id/chk_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorEveryTimeRed" />
@@ -107,6 +108,7 @@
                     android:orientation="horizontal">
 
                     <CheckBox
+                        android:id="@+id/chk_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorEveryTimeRed" />
@@ -156,6 +158,7 @@
                     android:orientation="horizontal">
 
                     <CheckBox
+                        android:id="@+id/chk_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorEveryTimeRed" />
@@ -205,6 +208,7 @@
                     android:orientation="horizontal">
 
                     <CheckBox
+                        android:id="@+id/chk_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorEveryTimeRed" />
@@ -254,6 +258,7 @@
                     android:orientation="horizontal">
 
                     <CheckBox
+                        android:id="@+id/chk_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorEveryTimeRed" />
@@ -303,6 +308,7 @@
                     android:orientation="horizontal">
 
                     <CheckBox
+                        android:id="@+id/chk_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorEveryTimeRed" />
@@ -353,6 +359,7 @@
                     android:orientation="horizontal">
 
                     <CheckBox
+                        android:id="@+id/chk_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorEveryTimeRed" />
@@ -389,6 +396,7 @@
 
 
             <Button
+                android:id="@+id/btn_signUp_1_phoneCertification"
                 android:layout_marginTop="35dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
@@ -399,12 +407,13 @@
                 android:textColor="@color/colorWhite" />
 
             <Button
+                android:id="@+id/btn_signUp_1_gotoSignUp_2"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="아이핀 인증"
+                android:text="아이핀 인증(일단 생략하고 정보입력창으로 이동)"
                 android:background="@drawable/btn_lightgrey"
                 android:textColor="@color/colorDarkGrey" />
 

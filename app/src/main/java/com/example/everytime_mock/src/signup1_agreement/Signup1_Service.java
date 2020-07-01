@@ -1,0 +1,40 @@
+package com.example.everytime_mock.src.signup1_agreement;
+
+import com.example.everytime_mock.src.main.interfaces.MainRetrofitInterface;
+import com.example.everytime_mock.src.main.models.DefaultResponse;
+import com.example.everytime_mock.src.signup1_agreement.interfaces.SignupActivity_1_View;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
+
+class Signup_1_Service {
+    private final SignupActivity_1_View mSignupActivity_1_View;
+
+    Signup_1_Service(final SignupActivity_1_View signupActivity_1_view) {
+        this.mSignupActivity_1_View = signupActivity_1_view;
+    }
+
+    void getTest() {
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.getTest().enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                final DefaultResponse defaultResponse = response.body();
+                if (defaultResponse == null) {
+                    mSignupActivity_1_View.validateFailure(null);
+                    return;
+                }
+
+                mSignupActivity_1_View.validateSuccess(defaultResponse.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                mSignupActivity_1_View.validateFailure(null);
+            }
+        });
+    }
+}

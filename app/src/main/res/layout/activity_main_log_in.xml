@@ -55,7 +55,8 @@
             android:id="@+id/et_login_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="  아이디"
+            android:hint="아이디"
+            android:paddingStart="15dp"
             android:textSize="14sp"
             android:textColorHint="@color/colorDarkGrey"
             android:textColor="@color/colorDarkGrey"
@@ -68,7 +69,8 @@
             android:id="@+id/et_login_pw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="  비밀번호"
+            android:hint="비밀번호"
+            android:paddingStart="15dp"
             android:textSize="14sp"
             android:textColorHint="@color/colorDarkGrey"
             android:textColor="@color/colorDarkGrey"
@@ -81,7 +83,7 @@
             android:layout_height="37dp"
             android:text="에브리타임 로그인"
             android:textColor="@color/colorWhite"
-            android:background="@drawable/btn_login" />
+            android:background="@drawable/btn_red" />
 
     </LinearLayout>
 
