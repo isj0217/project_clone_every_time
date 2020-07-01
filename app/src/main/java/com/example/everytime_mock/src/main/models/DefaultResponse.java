@@ -1,4 +1,4 @@
-package com.softsquared.template.src.main.models;
+package com.example.everytime_mock.src.main.models;
 
 import com.google.gson.annotations.SerializedName;
 

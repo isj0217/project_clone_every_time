@@ -1,14 +1,14 @@
-package com.softsquared.template.src.main;
+package com.example.everytime_mock.src.main;
 
-import com.softsquared.template.src.main.interfaces.MainRetrofitInterface;
-import com.softsquared.template.src.main.models.DefaultResponse;
-import com.softsquared.template.src.main.interfaces.MainActivityView;
+import com.example.everytime_mock.src.main.interfaces.MainActivityView;
+import com.example.everytime_mock.src.main.interfaces.MainRetrofitInterface;
+import com.example.everytime_mock.src.main.models.DefaultResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.softsquared.template.src.ApplicationClass.getRetrofit;
+import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
 
 class MainService {
     private final MainActivityView mMainActivityView;

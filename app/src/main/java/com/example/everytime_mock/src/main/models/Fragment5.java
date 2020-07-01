@@ -11,13 +11,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.everytime_mock.R;
 
-public class Fragment4 extends Fragment {
+public class Fragment5 extends Fragment {
     ViewGroup viewGroup;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_4_notification, container, false);
+        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_5_campuspick, container, false);
         return viewGroup;
     }
 }
