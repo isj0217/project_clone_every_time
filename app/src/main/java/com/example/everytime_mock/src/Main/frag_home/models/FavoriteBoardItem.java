@@ -1,6 +1,4 @@
-package com.example.everytime_mock.src.Home;
-
-import android.widget.ImageView;
+package com.example.everytime_mock.src.Main.frag_home;
 
 public class FavoriteBoardItem {
     private String tv_board_name;

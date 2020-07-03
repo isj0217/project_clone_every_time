@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Home;
+package com.example.everytime_mock.src.Main.frag_home;
 
 import android.view.LayoutInflater;
 import android.view.View;
