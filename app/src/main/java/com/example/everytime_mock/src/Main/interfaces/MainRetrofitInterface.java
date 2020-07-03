@@ -1,6 +1,6 @@
-package com.example.everytime_mock.src.main.interfaces;
+package com.example.everytime_mock.src.Home.interfaces;
 
-import com.example.everytime_mock.src.main.models.DefaultResponse;
+import com.example.everytime_mock.src.SignIn.models.DefaultResponse;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface MainRetrofitInterface {
+public interface HomeRetrofitInterface {
     //    @GET("/test")
     @GET("/jwt")
     Call<DefaultResponse> getTest();

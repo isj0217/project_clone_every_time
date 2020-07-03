@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.SignIn.models;
+package com.example.everytime_mock.src.Home.models;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,13 +11,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.everytime_mock.R;
 
-public class Fragment4 extends Fragment {
+public class FragmentHome extends Fragment {
     ViewGroup viewGroup;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_4_notification, container, false);
+        viewGroup = (ViewGroup) inflater.inflate(R.layout.frag_home, container, false);
         return viewGroup;
     }
 }
