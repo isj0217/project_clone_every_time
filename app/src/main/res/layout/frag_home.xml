@@ -523,59 +523,6 @@
                         <!--                        android:scrollbarSize="5dp"-->
 
                     </androidx.recyclerview.widget.RecyclerView>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <!--                    자유게시판-->
-                    <!--                    <LinearLayout-->
-                    <!--                        android:layout_marginTop="5dp"-->
-                    <!--                        android:layout_marginBottom="5dp"-->
-                    <!--                        android:gravity="center_vertical"-->
-                    <!--                        android:orientation="horizontal"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="wrap_content">-->
-                    <!--                        <TextView-->
-                    <!--                            android:layout_width="wrap_content"-->
-                    <!--                            android:layout_height="wrap_content"-->
-                    <!--                            android:text="자유게시판"-->
-                    <!--                            android:textColor="@color/colorBlack" />-->
-                    <!--                        <TextView-->
-                    <!--                            android:layout_weight="1"-->
-                    <!--                            android:layout_width="wrap_content"-->
-                    <!--                            android:layout_height="wrap_content"-->
-                    <!--                            android:layout_marginStart="10dp"-->
-                    <!--                            android:text="자유게시판 내용 1"-->
-                    <!--                            android:textSize="12sp"-->
-                    <!--                            android:textColor="@color/colorDarkerGrey" />-->
-                    <!--                        <ImageView-->
-                    <!--                            android:layout_marginEnd="10dp"-->
-                    <!--                            android:layout_width="12dp"-->
-                    <!--                            android:layout_height="12dp"-->
-                    <!--                            android:src="@drawable/new_red" />-->
-                    <!--                    </LinearLayout>-->
-
-
                 </LinearLayout>
 
 
@@ -595,9 +542,9 @@
 
                 <!--                헤드부분-->
                 <LinearLayout
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:paddingStart="7dp">
 
@@ -611,7 +558,7 @@
 
                 </LinearLayout>
 
-<!--                실시간 인기글 2개 레이아웃-->
+                <!--                실시간 인기글 2개 레이아웃-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -619,19 +566,19 @@
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp">
 
-<!--                    실시간 인기글 1-->
+                    <!--                    실시간 인기글 1-->
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
+                        android:layout_height="120dp"
                         android:layout_marginTop="10dp"
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="18dp"
@@ -640,13 +587,13 @@
 
                             <TextView
                                 android:id="@+id/tv_frag_home_realtime_hot_post_1_user_name"
-                                android:layout_marginStart="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
                                 android:text="익명"
+                                android:textColor="@color/colorBlack"
                                 android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/colorBlack" />
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="0dp"
@@ -658,51 +605,52 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="07/03"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorDarkGrey" />
+                                android:textColor="@color/colorDarkGrey"
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/tv_frag_home_realtime_hot_post_1_time"
-                                android:layout_marginStart="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
                                 android:text="22:20"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorDarkGrey" />
+                                android:textColor="@color/colorDarkGrey"
+                                android:textSize="12sp" />
 
                         </LinearLayout>
 
                         <TextView
                             android:id="@+id/tv_frag_home_realtime_hot_post_1_title"
-                            android:layout_marginTop="8dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="실시간 인기글 1의 제목"
+                            android:layout_marginTop="8dp"
                             android:ellipsize="end"
-                            android:textStyle="bold"
-                            android:textColor="@color/colorBlack" />
+                            android:text="실시간 인기글 1의 제목"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tv_frag_home_realtime_hot_post_1_content"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="실시간 인기글 1의 내용"
                             android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="실시간 인기글 1의 내용 실시간 인기글 1의 내용 실시간 인기글 1의 내용 실시간 인기글 1의 내용 실시간 인기글 1의 내용 실시간 인기글 1의 내용 실시간 인기글 1의 내용"
                             android:textColor="@color/colorBlack" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/tv_frag_home_realtime_hot_post_1_board_type"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="게시판 종류"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorDarkGrey"/>
+                                android:textColor="@color/colorDarkGrey"
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:layout_width="0dp"
@@ -715,27 +663,26 @@
                                 android:src="@drawable/red_thumb_up" />
 
                             <TextView
-                                android:layout_marginStart="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
                                 android:text="0"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorEveryTimeRed" />
+                                android:textColor="@color/colorEveryTimeRed"
+                                android:textSize="12sp" />
 
                             <ImageView
-                                android:layout_marginStart="5dp"
                                 android:layout_width="10dp"
                                 android:layout_height="10dp"
+                                android:layout_marginStart="5dp"
                                 android:src="@drawable/mint_comment" />
 
                             <TextView
-                                android:layout_marginStart="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
                                 android:text="0"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorMint" />
-
+                                android:textColor="@color/colorMint"
+                                android:textSize="12sp" />
 
 
                         </LinearLayout>
@@ -745,16 +692,16 @@
                     <!--                    실시간 인기글 2-->
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
+                        android:layout_height="120dp"
                         android:layout_marginTop="10dp"
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="18dp"
@@ -763,13 +710,13 @@
 
                             <TextView
                                 android:id="@+id/tv_frag_home_realtime_hot_post_2_user_name"
-                                android:layout_marginStart="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
                                 android:text="익명"
+                                android:textColor="@color/colorBlack"
                                 android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:textColor="@color/colorBlack" />
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="0dp"
@@ -781,51 +728,52 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="07/03"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorDarkGrey" />
+                                android:textColor="@color/colorDarkGrey"
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/tv_frag_home_realtime_hot_post_2_time"
-                                android:layout_marginStart="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
                                 android:text="22:20"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorDarkGrey" />
+                                android:textColor="@color/colorDarkGrey"
+                                android:textSize="12sp" />
 
                         </LinearLayout>
 
                         <TextView
                             android:id="@+id/tv_frag_home_realtime_hot_post_2_title"
-                            android:layout_marginTop="8dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="실시간 인기글 2의 제목"
+                            android:layout_marginTop="8dp"
                             android:ellipsize="end"
-                            android:textStyle="bold"
-                            android:textColor="@color/colorBlack" />
+                            android:text="실시간 인기글 2의 제목"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tv_frag_home_realtime_hot_post_2_content"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="실시간 인기글 2의 내용"
                             android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="실시간 인기글 2의 내용 실시간 인기글 2의 내용 실시간 인기글 2의 내용 실시간 인기글 2의 내용 실시간 인기글 2의 내용 실시간 인기글 2의 내용"
                             android:textColor="@color/colorBlack" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/tv_frag_home_realtime_hot_post_2_board_type"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="게시판 종류"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorDarkGrey"/>
+                                android:textColor="@color/colorDarkGrey"
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:layout_width="0dp"
@@ -838,27 +786,26 @@
                                 android:src="@drawable/red_thumb_up" />
 
                             <TextView
-                                android:layout_marginStart="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
                                 android:text="0"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorEveryTimeRed" />
+                                android:textColor="@color/colorEveryTimeRed"
+                                android:textSize="12sp" />
 
                             <ImageView
-                                android:layout_marginStart="5dp"
                                 android:layout_width="10dp"
                                 android:layout_height="10dp"
+                                android:layout_marginStart="5dp"
                                 android:src="@drawable/mint_comment" />
 
                             <TextView
-                                android:layout_marginStart="5dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
                                 android:text="0"
-                                android:textSize="12sp"
-                                android:textColor="@color/colorMint" />
-
+                                android:textColor="@color/colorMint"
+                                android:textSize="12sp" />
 
 
                         </LinearLayout>
@@ -870,18 +817,564 @@
 
             </LinearLayout>
 
+            <!--            HOT 게시물-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/unit_edges"
+                android:orientation="vertical"
+                android:paddingStart="8dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="15dp">
 
+                <!--                헤드부분-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="7dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HOT 게시물"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/btn_home_hot_more"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:background="@android:color/transparent"
+                        android:text="더 보기 >"
+                        android:textColor="@color/colorEveryTimeRed" />
+
+                </LinearLayout>
+
+                <!--                HOT 게시물 4개 레이아웃-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
+
+                    <!--                    HOT 게시물 1-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_frag_home_hot_post_1_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="HOT 게시물 1의 제목"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_frag_home_hot_post_1_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="18:21"
+                                android:textColor="@color/colorDarkGrey"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <ImageView
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:src="@drawable/red_thumb_up" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="0"
+                                android:textColor="@color/colorEveryTimeRed"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_marginStart="5dp"
+                                android:src="@drawable/mint_comment" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="0"
+                                android:textColor="@color/colorMint"
+                                android:textSize="12sp" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--                    HOT 게시물 2-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_frag_home_hot_post_2_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="HOT 게시물 2의 제목"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_frag_home_hot_post_2_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="18:21"
+                                android:textColor="@color/colorDarkGrey"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <ImageView
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:src="@drawable/red_thumb_up" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="0"
+                                android:textColor="@color/colorEveryTimeRed"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_marginStart="5dp"
+                                android:src="@drawable/mint_comment" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="0"
+                                android:textColor="@color/colorMint"
+                                android:textSize="12sp" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--                    HOT 게시물 3-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_frag_home_hot_post_3_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="HOT 게시물 3의 제목"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_frag_home_hot_post_3_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="18:21"
+                                android:textColor="@color/colorDarkGrey"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <ImageView
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:src="@drawable/red_thumb_up" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="0"
+                                android:textColor="@color/colorEveryTimeRed"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_marginStart="5dp"
+                                android:src="@drawable/mint_comment" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="0"
+                                android:textColor="@color/colorMint"
+                                android:textSize="12sp" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!--                    HOT 게시물 4-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_frag_home_hot_post_4_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="HOT 게시물 4의 제목"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_frag_home_hot_post_4_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="18:21"
+                                android:textColor="@color/colorDarkGrey"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <ImageView
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:src="@drawable/red_thumb_up" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="0"
+                                android:textColor="@color/colorEveryTimeRed"
+                                android:textSize="12sp" />
+
+                            <ImageView
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_marginStart="5dp"
+                                android:src="@drawable/mint_comment" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="0"
+                                android:textColor="@color/colorMint"
+                                android:textSize="12sp" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!--            최근강의평-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/unit_edges"
+                android:orientation="vertical"
+                android:paddingStart="8dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="15dp">
+
+                <!--                헤드부분-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="7dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="최근 강의평"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/btn_home_recent_lecture_review_more"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:background="@android:color/transparent"
+                        android:text="더 보기 >"
+                        android:textColor="@color/colorEveryTimeRed" />
+
+                </LinearLayout>
+
+                <!--                최근 강의평 4개 레이아웃-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
+
+                    <!--최근 강의평 1-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_frag_home_recent_lecture_review_1_rank"
+                            android:layout_width="60dp"
+                            android:layout_height="10dp"
+                            android:src="@drawable/star_rate_4_half" />
+
+
+                        <TextView
+                            android:id="@+id/tv_frag_home_recent_lecture_review_1_subject"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="서양철학사 : 송하석"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_frag_home_recent_lecture_review_1_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <!--최근 강의평 2-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_frag_home_recent_lecture_review_2_rank"
+                            android:layout_width="60dp"
+                            android:layout_height="10dp"
+                            android:src="@drawable/star_rate_2" />
+
+
+                        <TextView
+                            android:id="@+id/tv_frag_home_recent_lecture_review_2_subject"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="마케팅 애널리틱스 : 이홍재"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_frag_home_recent_lecture_review_2_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="두 번째 강의평 두 번째 강의평 두 번째 강의평 두 번째 강의평 두 번째 강의평 두 번째 강의평 두 번째 강의평"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <!--최근 강의평 3-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_frag_home_recent_lecture_review_3_rank"
+                            android:layout_width="60dp"
+                            android:layout_height="10dp"
+                            android:src="@drawable/star_rate_3_half" />
+
+
+                        <TextView
+                            android:id="@+id/tv_frag_home_recent_lecture_review_3_subject"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="전자기학 : 박익모"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_frag_home_recent_lecture_review_3_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="세 번째 강의평 세 번째 강의평 세 번째 강의평 세 번째 강의평 세 번째 강의평 세 번째 강의평 세 번째 강의평"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <!--최근 강의평 4-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="21dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_frag_home_recent_lecture_review_4_rank"
+                            android:layout_width="60dp"
+                            android:layout_height="10dp"
+                            android:src="@drawable/star_rate_1" />
+
+
+                        <TextView
+                            android:id="@+id/tv_frag_home_recent_lecture_review_4_subject"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="경제학이란 무엇인가 : 최희갑"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_frag_home_recent_lecture_review_4_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="네 번째 강의평 네 번째 강의평 네 번째 강의평 네 번째 강의평 네 번째 강의평 네 번째 강의평 네 번째 강의평"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
 
 
             <!--            홈 화면 설정 버튼-->
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/btn_lightgrey"
                 android:text="홈 화면 설정"
                 android:textColor="@color/colorGrey" />
-
 
 
         </LinearLayout>
