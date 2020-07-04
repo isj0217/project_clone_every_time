@@ -13,5 +13,8 @@
     <color name="colorLightGrey">#DDDDDD</color>
     <color name="colorEveryTimeRed">#c62918</color>
     <color name="colorDarkGrey">#AAAAAA</color>
+    <color name="colorDarkerGrey">#555555</color>
+    <color name="colorMint">#2B9AA5</color>
+    <color name="colorYellow">#F0C940</color>
 
 </resources>

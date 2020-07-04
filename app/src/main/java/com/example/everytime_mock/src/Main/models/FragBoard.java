@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.everytime_mock.R;
 
-public class FragmentBoard extends Fragment {
+public class FragBoard extends Fragment {
     ViewGroup viewGroup;
 
     @Nullable

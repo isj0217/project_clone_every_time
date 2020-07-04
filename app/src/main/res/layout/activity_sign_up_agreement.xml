@@ -79,7 +79,8 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/chk_all"
+                    android:id="@+id/chk_sign_up_agreement_all"
+                    android:onClick="customOnClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/colorEveryTimeRed" />
@@ -108,7 +109,8 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/chk_1"
+                        android:id="@+id/chk_sign_up_agreement_1"
+                        android:onClick="customOnClick"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorEveryTimeRed" />
@@ -158,7 +160,7 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/chk_2"
+                        android:id="@+id/chk_sign_up_agreement_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="customOnClick"
@@ -209,7 +211,8 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/chk_3"
+                        android:id="@+id/chk_sign_up_agreement_3"
+                        android:onClick="customOnClick"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorEveryTimeRed" />
@@ -259,7 +262,8 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/chk_4"
+                        android:id="@+id/chk_sign_up_agreement_4"
+                        android:onClick="customOnClick"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorEveryTimeRed" />
@@ -309,7 +313,8 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/chk_5"
+                        android:id="@+id/chk_sign_up_agreement_5"
+                        android:onClick="customOnClick"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorEveryTimeRed" />
@@ -360,7 +365,8 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/chk_6"
+                        android:id="@+id/chk_sign_up_agreement_6"
+                        android:onClick="customOnClick"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/colorEveryTimeRed" />
@@ -403,20 +409,20 @@
                 android:layout_marginEnd="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="휴대폰 인증"
+                android:text="다음"
                 android:background="@drawable/btn_red"
                 android:textColor="@color/colorWhite" />
 
-            <Button
-                android:id="@+id/btn_signUp_1_gotoSignUp_2"
-                android:layout_marginTop="15dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="아이핀 인증(일단 생략하고 정보입력창으로 이동)"
-                android:background="@drawable/btn_lightgrey"
-                android:textColor="@color/colorDarkGrey" />
+<!--            <Button-->
+<!--                android:id="@+id/btn_signUp_1_gotoSignUp_2"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:layout_marginStart="15dp"-->
+<!--                android:layout_marginEnd="15dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="다음"-->
+<!--                android:background="@drawable/btn_lightgrey"-->
+<!--                android:textColor="@color/colorDarkGrey" />-->
 
         </LinearLayout>
 

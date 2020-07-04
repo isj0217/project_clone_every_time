@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.everytime_mock.R;
 
-public class FragmentCampusPick extends Fragment {
+public class FragCampusPick extends Fragment {
     ViewGroup viewGroup;
 
     @Nullable

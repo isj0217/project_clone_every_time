@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.signup1_agreement.interfaces;
+package com.example.everytime_mock.src.SignUp.interfaces;
 
 public interface SignUpAgreementActivityView {
 

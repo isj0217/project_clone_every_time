@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main.frag_home.frag_home_interfaces;
+package com.example.everytime_mock.src.Main.frag_home.interfaces;
 
 public interface FragHomeView {
 

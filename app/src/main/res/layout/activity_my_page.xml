@@ -8,8 +8,9 @@
     android:orientation="vertical"
     tools:context=".src.Main.MyPageActivity">
 
+<!--    상단 바-->
     <LinearLayout
-        android:id="@+id/linear_layout_writing_top_bar"
+        android:id="@+id/linear_layout_my_page_top_bar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center_vertical"
@@ -21,29 +22,17 @@
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/btn_cancel" />
+            android:src="@drawable/left_arrow_red" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
-            android:text="글 쓰기"
+            android:text="내 정보"
             android:textColor="@color/colorBlack"
             android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/btn_writing_complete"
-            android:layout_width="55dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="14dp"
-            android:background="@drawable/btn_red"
-            android:text="완료"
-            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -51,83 +40,179 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp">
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
 
+<!--        스크롤뷰 안에 들어가는 유일한 하나의 레이아웃-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/et_writing_title"
+<!--            프로필사진~학번 정보-->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:hint="제목"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorDarkGrey"
-                android:textCursorDrawable="@drawable/cursor_red"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:background="@drawable/white_background_with_light_grey_border">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="18dp"
-                android:background="@color/colorLightGrey" />
+                <LinearLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/et_writing_content"
+                    <ImageView
+                        android:id="@+id/iv_my_page_profile_picture"
+                        android:layout_width="55dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/profile_default" />
+                    
+                    <LinearLayout
+                        android:layout_marginStart="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_my_page_user_nickname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="유저 닉네임"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorBlack" />
+
+                        <TextView
+                            android:id="@+id/tv_my_page_user_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="유저 아이디"
+                            android:textSize="13sp"
+                            android:textColor="@color/colorDarkGrey" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_my_page_univ_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="대학명"
+                                android:textSize="13sp"
+                                android:textColor="@color/colorDarkGrey" />
+
+                            <TextView
+                                android:id="@+id/tv_my_page_univ_year"
+                                android:layout_marginStart="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="학번"
+                                android:textSize="13sp"
+                                android:textColor="@color/colorDarkGrey" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+<!--            계정 카테고리-->
+            <LinearLayout
+                android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:background="@android:color/transparent"
-                android:gravity="top"
-                android:hint="@string/activity_writing_content_hint"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/colorDarkGrey"
-                android:textCursorDrawable="@drawable/cursor_red"
-                android:textSize="12sp" />
+                android:orientation="horizontal"
+                android:background="@drawable/white_background_with_light_grey_border">
+
+                <LinearLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+<!--                    계정-->
+                    <TextView
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="계정"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+<!--                    학교인증-->
+                    <TextView
+                        android:id="@+id/tv_my_page_univ_certification"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="학교 인증"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp" />
+
+<!--                    프로필 이미지 변경-->
+                    <TextView
+                        android:id="@+id/tv_my_page_change_profile_image"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="프로필 이미지 변경"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp" />
+
+<!--                    닉네임 변경-->
+                    <TextView
+                        android:id="@+id/tv_my_page_change_nickname"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="닉네임 변경"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        android:onClick="custonOnClick" />
+
+<!--                    회원 탈퇴-->
+                    <TextView
+                        android:id="@+id/tv_my_page_unregister"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="회원 탈퇴"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp" />
+
+<!--                    로그아웃-->
+                    <TextView
+                        android:id="@+id/tv_my_page_log_out"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="로그아웃"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp" />
+
+
+
+
+
+
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp">
-
-        <ImageView
-            android:id="@+id/btn_writing_attach_photo"
-            android:layout_marginStart="6dp"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:src="@drawable/icon_camera" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-        <CheckBox
-            android:id="@+id/chk_writing_anonymous"
-            android:checked="true"
-            android:buttonTint="@color/colorEveryTimeRed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleX="0.7"
-            android:scaleY="0.7"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="익명"
-            android:textStyle="bold"
-            android:textColor="@color/colorEveryTimeRed"
-            android:textSize="12sp" />
-
-    </LinearLayout>
 
 
 </LinearLayout>

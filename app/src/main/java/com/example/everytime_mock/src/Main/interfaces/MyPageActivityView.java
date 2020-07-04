@@ -1,8 +1,12 @@
 package com.example.everytime_mock.src.Main.interfaces;
 
-public interface WritingActivityView {
+import com.example.everytime_mock.src.Main.models.MyPageResponse;
+
+public interface MyPageActivityView {
 
     void validateSuccess(String text);
 
     void validateFailure(String message);
+
+    void myPageSuccess(MyPageResponse myPageResponse);
 }

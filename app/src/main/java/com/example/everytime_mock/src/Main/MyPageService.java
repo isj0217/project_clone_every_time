@@ -1,6 +1,10 @@
-package com.example.everytime_mock.src.Main.models;
+package com.example.everytime_mock.src.Main;
+
+import android.util.Log;
 
 import com.example.everytime_mock.src.Main.interfaces.MyPageActivityView;
+import com.example.everytime_mock.src.Main.interfaces.MyPageRetrofitInterface;
+import com.example.everytime_mock.src.Main.models.MyPageResponse;
 import com.example.everytime_mock.src.SignUp.interfaces.SignUpInputFormActivityView;
 import com.example.everytime_mock.src.SignUp.interfaces.SignUpInputFormRetrofitInterface;
 import com.example.everytime_mock.src.SignUp.models.SignUpResponse;
@@ -11,38 +15,43 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.everytime_mock.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
+import static com.example.everytime_mock.src.ApplicationClass.sSharedPreferences;
 
 class MyPageService {
     private final MyPageActivityView mMyPageActivityView;
     private HashMap<String, Object> mParams;
 
+    private static final String TAG = "MyPageService";
+
     MyPageService(final MyPageActivityView myPageActivityView) {
         this.mMyPageActivityView = myPageActivityView;
     }
 
-    MyPageService(final MyPageActivityView myPageActivityView, HashMap<String, Object> mParams) {
-        this.mMyPageActivityView = myPageActivityView;
-        this.mParams = mParams;
-    }
-
     void getMyPage() {
-        final SignUpInputFormRetrofitInterface signUpInputForms_retrofitInterface = getRetrofit().create(SignUpInputFormRetrofitInterface.class);
-        signUpInputForms_retrofitInterface.signUpTest(mParams).enqueue(new Callback<SignUpResponse>() {
-            @Override
-            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+        final MyPageRetrofitInterface myPageRetrofitInterface = getRetrofit().create(MyPageRetrofitInterface.class);
 
-                final SignUpResponse signUpResponse = response.body();
-                if (signUpResponse == null) {
+        Log.d(TAG, "sSharedPreferences: " + sSharedPreferences.getString("jwt", ""));
+        Log.d(TAG, "token: " + X_ACCESS_TOKEN);
+
+        myPageRetrofitInterface.getMyPage(X_ACCESS_TOKEN).enqueue(new Callback<MyPageResponse>() {
+            @Override
+            public void onResponse(Call<MyPageResponse> call, Response<MyPageResponse> response) {
+
+                final MyPageResponse myPageResponse = response.body();
+                if (myPageResponse == null) {
+                    System.out.println("mypageResponse가 null입니다.");
+
                     mMyPageActivityView.validateFailure(null);
                     return;
                 }
-
-                mMyPageActivityView.signUpSuccess(signUpResponse);
+                mMyPageActivityView.myPageSuccess(myPageResponse);
             }
 
             @Override
-            public void onFailure(Call<SignUpResponse> call, Throwable t) {
+            public void onFailure(Call<MyPageResponse> call, Throwable t) {
+                System.out.println("통신 실패");
                 mMyPageActivityView.validateFailure(null);
             }
         });

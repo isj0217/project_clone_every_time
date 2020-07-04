@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.Main.interfaces;
 
-public interface WritingActivityView {
+public interface InPostActivityView {
 
     void validateSuccess(String text);
 

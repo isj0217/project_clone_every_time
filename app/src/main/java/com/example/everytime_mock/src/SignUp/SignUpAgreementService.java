@@ -1,8 +1,8 @@
-package com.example.everytime_mock.src.signup1_agreement;
+package com.example.everytime_mock.src.SignUp;
 
 import com.example.everytime_mock.src.SignIn.interfaces.SignInRetrofitInterface;
 import com.example.everytime_mock.src.SignIn.models.DefaultResponse;
-import com.example.everytime_mock.src.signup1_agreement.interfaces.SignUpAgreementActivityView;
+import com.example.everytime_mock.src.SignUp.interfaces.SignUpAgreementActivityView;
 
 import retrofit2.Call;
 import retrofit2.Callback;

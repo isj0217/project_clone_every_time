@@ -1,6 +1,6 @@
-package com.example.everytime_mock.src.Main.frag_home.frag_home_interfaces;
+package com.example.everytime_mock.src.Main.frag_home.interfaces;
 
-import com.example.everytime_mock.src.SignIn.models.DefaultResponse;
+import com.example.everytime_mock.src.Main.frag_home.models.FragHomeResponse;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -13,15 +13,15 @@ import retrofit2.http.Query;
 public interface FragHomeRetrofitInterface {
     //    @GET("/test")
     @GET("/jwt")
-    Call<DefaultResponse> getTest();
+    Call<FragHomeResponse> getTest();
 
     @GET("/test/{number}")
-    Call<DefaultResponse> getTestPathAndQuery(
+    Call<FragHomeResponse> getTestPathAndQuery(
             @Path("number") int number,
             @Query("content") final String content
 //            @Header('X-ACCESS-TOKEN') final String
     );
 
     @POST("/test")
-    Call<DefaultResponse> postTest(@Body RequestBody params);
+    Call<FragHomeResponse> postTest(@Body RequestBody params);
 }

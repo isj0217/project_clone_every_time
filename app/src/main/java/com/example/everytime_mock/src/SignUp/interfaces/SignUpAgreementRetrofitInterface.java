@@ -1,6 +1,6 @@
-package com.example.everytime_mock.src.signup1_agreement.interfaces;
+package com.example.everytime_mock.src.SignUp.interfaces;
 
-import com.example.everytime_mock.src.SignIn.models.DefaultResponse;
+import com.example.everytime_mock.src.SignUp.models.DefaultResponse;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;

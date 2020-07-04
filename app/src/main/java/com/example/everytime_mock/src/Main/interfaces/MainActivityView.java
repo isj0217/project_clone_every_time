@@ -1,6 +1,6 @@
-package com.example.everytime_mock.src.Home.interfaces;
+package com.example.everytime_mock.src.Main.interfaces;
 
-public interface HomeActivityView {
+public interface MainActivityView {
 
     void validateSuccess(String text);
 

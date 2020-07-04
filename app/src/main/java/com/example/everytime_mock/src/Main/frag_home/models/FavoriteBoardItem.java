@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main.frag_home;
+package com.example.everytime_mock.src.Main.frag_home.models;
 
 public class FavoriteBoardItem {
     private String tv_board_name;

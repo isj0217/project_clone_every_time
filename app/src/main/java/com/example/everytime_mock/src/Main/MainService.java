@@ -1,8 +1,8 @@
-package com.example.everytime_mock.src.Home;
+package com.example.everytime_mock.src.Main;
 
-import com.example.everytime_mock.src.Home.interfaces.HomeActivityView;
-import com.example.everytime_mock.src.Home.interfaces.HomeRetrofitInterface;
-import com.example.everytime_mock.src.SignIn.models.DefaultResponse;
+import com.example.everytime_mock.src.Main.interfaces.MainActivityView;
+import com.example.everytime_mock.src.Main.interfaces.MainRetrofitInterface;
+import com.example.everytime_mock.src.Main.models.DefaultResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -10,30 +10,30 @@ import retrofit2.Response;
 
 import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
 
-class HomeService {
-    private final HomeActivityView mHomeActivityView;
+class MainService {
+    private final MainActivityView mMainActivityView;
 
-    HomeService(final HomeActivityView homeActivityView) {
-        this.mHomeActivityView = homeActivityView;
+    MainService(final MainActivityView mainActivityView) {
+        this.mMainActivityView = mainActivityView;
     }
 
     void getTest() {
-        final HomeRetrofitInterface homeRetrofitInterface = getRetrofit().create(HomeRetrofitInterface.class);
-        homeRetrofitInterface.getTest().enqueue(new Callback<DefaultResponse>() {
+        final MainRetrofitInterface mainRetrofitInterface = getRetrofit().create(MainRetrofitInterface.class);
+        mainRetrofitInterface.getTest().enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 final DefaultResponse defaultResponse = response.body();
                 if (defaultResponse == null) {
-                    mHomeActivityView.validateFailure(null);
+                    mMainActivityView.validateFailure(null);
                     return;
                 }
 
-                mHomeActivityView.validateSuccess(defaultResponse.getMessage());
+                mMainActivityView.validateSuccess(defaultResponse.getMessage());
             }
 
             @Override
             public void onFailure(Call<DefaultResponse> call, Throwable t) {
-                mHomeActivityView.validateFailure(null);
+                mMainActivityView.validateFailure(null);
             }
         });
     }

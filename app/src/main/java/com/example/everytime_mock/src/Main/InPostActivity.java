@@ -1,23 +1,19 @@
 package com.example.everytime_mock.src.Main;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
+import com.example.everytime_mock.src.Main.interfaces.InPostActivityView;
 import com.example.everytime_mock.src.Main.interfaces.WritingActivityView;
 
 
-public class WritingActivity extends BaseActivity implements WritingActivityView {
+public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activitiy_writing);
+        setContentView(R.layout.activitiy_in_post);
     }
 
     @Override

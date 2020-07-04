@@ -1,6 +1,6 @@
-package com.example.everytime_mock.src.SignUp.interfaces;
+package com.example.everytime_mock.src.Main.interfaces;
 
-public interface SignUpAgreementActivityView {
+public interface WritingActivityView {
 
     void validateSuccess(String text);
 

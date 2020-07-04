@@ -1,6 +1,10 @@
-package com.example.everytime_mock.src.main.interfaces;
+package com.example.everytime_mock.src.SignIn.interfaces;
 
-import com.example.everytime_mock.src.main.models.DefaultResponse;
+import com.example.everytime_mock.src.SignIn.models.DefaultResponse;
+import com.example.everytime_mock.src.SignIn.models.SignInBody;
+import com.example.everytime_mock.src.SignIn.models.SignInResponse;
+
+import java.util.HashMap;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -10,7 +14,13 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface MainRetrofitInterface {
+public interface SignInRetrofitInterface {
+
+    @POST("/login")
+    Call<SignInResponse> signInTest(@Body HashMap<String, Object> params);
+
+
+
     //    @GET("/test")
     @GET("/jwt")
     Call<DefaultResponse> getTest();

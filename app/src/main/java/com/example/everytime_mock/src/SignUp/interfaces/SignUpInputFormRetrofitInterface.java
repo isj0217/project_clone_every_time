@@ -1,8 +1,6 @@
-package com.example.everytime_mock.src.signup1_agreement.interfaces;
+package com.example.everytime_mock.src.SignUp.interfaces;
 
-import com.example.everytime_mock.src.SignIn.models.DefaultResponse;
-import com.example.everytime_mock.src.signup2_inputForms.models.SignUpBody;
-import com.example.everytime_mock.src.signup2_inputForms.models.SignUpResponse;
+import com.example.everytime_mock.src.SignUp.models.SignUpResponse;
 
 import java.util.HashMap;
 
@@ -17,16 +15,16 @@ import retrofit2.http.Query;
 public interface SignUpInputFormRetrofitInterface {
     //    @GET("/test")
     @GET("/jwt")
-    Call<DefaultResponse> getTest();
+    Call<SignUpInputFormRetrofitInterface> getTest();
 
     @GET("/test/{number}")
-    Call<DefaultResponse> getTestPathAndQuery(
+    Call<SignUpInputFormRetrofitInterface> getTestPathAndQuery(
             @Path("number") int number,
             @Query("content") final String content
     );
 
     @POST("/test")
-    Call<DefaultResponse> postTest(@Body RequestBody params);
+    Call<SignUpInputFormRetrofitInterface> postTest(@Body RequestBody params);
 
     @POST("/user")
     Call<SignUpResponse> signUpTest(@Body HashMap<String, Object> params);

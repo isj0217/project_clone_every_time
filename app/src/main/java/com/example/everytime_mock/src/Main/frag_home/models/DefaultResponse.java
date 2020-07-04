@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main.frag_home.frag_home_models;
+package com.example.everytime_mock.src.Main.frag_home.models;
 
 import com.google.gson.annotations.SerializedName;
 

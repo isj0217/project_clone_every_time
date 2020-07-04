@@ -1,8 +1,8 @@
-package com.example.everytime_mock.src.SignUp.models;
+package com.example.everytime_mock.src.Main.frag_home.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SignUpResponse {
+public class FragHomeResponse {
 
     public class SignUpResult {
         @SerializedName("jwt")

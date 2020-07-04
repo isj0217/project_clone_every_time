@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.signup2_inputForms.models;
+package com.example.everytime_mock.src.SignUp.models;
 
 import com.google.gson.annotations.SerializedName;
 

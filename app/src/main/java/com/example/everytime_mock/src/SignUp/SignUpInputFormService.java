@@ -1,10 +1,10 @@
-package com.example.everytime_mock.src.signup2_inputForms;
+package com.example.everytime_mock.src.SignUp;
 
 import com.example.everytime_mock.src.SignIn.interfaces.SignInRetrofitInterface;
 import com.example.everytime_mock.src.SignIn.models.DefaultResponse;
-import com.example.everytime_mock.src.signup1_agreement.interfaces.SignUpInputFormActivityView;
-import com.example.everytime_mock.src.signup1_agreement.interfaces.SignUpInputFormRetrofitInterface;
-import com.example.everytime_mock.src.signup2_inputForms.models.SignUpResponse;
+import com.example.everytime_mock.src.SignUp.interfaces.SignUpInputFormActivityView;
+import com.example.everytime_mock.src.SignUp.interfaces.SignUpInputFormRetrofitInterface;
+import com.example.everytime_mock.src.SignUp.models.SignUpResponse;
 
 import java.util.HashMap;
 
@@ -14,38 +14,17 @@ import retrofit2.Response;
 
 import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
 
-class Signup2_Service {
-    private final SignUpInputFormActivityView mSignUpInputFormActivity__View;
+class SignUpInputFormService {
+    private final SignUpInputFormActivityView mSignUpInputFormActivity_View;
     private HashMap<String, Object> mParams;
 
-    Signup2_Service(final SignUpInputFormActivityView signUpInputFormActivity__view) {
-        this.mSignUpInputFormActivity__View = signUpInputFormActivity__view;
+    SignUpInputFormService(final SignUpInputFormActivityView signUpInputFormActivity_view) {
+        this.mSignUpInputFormActivity_View = signUpInputFormActivity_view;
     }
 
-    Signup2_Service(final SignUpInputFormActivityView signUpInputFormActivity__view, HashMap<String, Object> mParams) {
-        this.mSignUpInputFormActivity__View = signUpInputFormActivity__view;
+    SignUpInputFormService(final SignUpInputFormActivityView signUpInputFormActivity_view, HashMap<String, Object> mParams) {
+        this.mSignUpInputFormActivity_View = signUpInputFormActivity_view;
         this.mParams = mParams;
-    }
-
-    void getTest() {
-        final SignInRetrofitInterface signInRetrofitInterface = getRetrofit().create(SignInRetrofitInterface.class);
-        signInRetrofitInterface.getTest().enqueue(new Callback<DefaultResponse>() {
-            @Override
-            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
-                final DefaultResponse defaultResponse = response.body();
-                if (defaultResponse == null) {
-                    mSignUpInputFormActivity__View.validateFailure(null);
-                    return;
-                }
-
-                mSignUpInputFormActivity__View.validateSuccess(defaultResponse.getMessage());
-            }
-
-            @Override
-            public void onFailure(Call<DefaultResponse> call, Throwable t) {
-                mSignUpInputFormActivity__View.validateFailure(null);
-            }
-        });
     }
 
     void postSignUp() {
@@ -53,18 +32,19 @@ class Signup2_Service {
         signUpInputForms_retrofitInterface.signUpTest(mParams).enqueue(new Callback<SignUpResponse>() {
             @Override
             public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+
                 final SignUpResponse signUpResponse = response.body();
                 if (signUpResponse == null) {
-                    mSignUpInputFormActivity__View.validateFailure(null);
+                    mSignUpInputFormActivity_View.validateFailure(null);
                     return;
                 }
 
-                mSignUpInputFormActivity__View.signUpSuccess(signUpResponse.getSignUpResult());
+                mSignUpInputFormActivity_View.signUpSuccess(signUpResponse);
             }
 
             @Override
             public void onFailure(Call<SignUpResponse> call, Throwable t) {
-                mSignUpInputFormActivity__View.validateFailure(null);
+                mSignUpInputFormActivity_View.validateFailure(null);
             }
         });
     }

@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.everytime_mock.R;
 
-public class FragmentNotification extends Fragment {
+public class FragNotification extends Fragment {
     ViewGroup viewGroup;
 
     @Nullable

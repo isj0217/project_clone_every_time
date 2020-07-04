@@ -1,18 +1,38 @@
-package com.example.everytime_mock.src.SignUp.models;
+package com.example.everytime_mock.src.Main.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SignUpResponse {
+public class MyPageResponse {
 
-    public class SignUpResult {
-        @SerializedName("jwt")
-        private String jwt;
+    public class MyPageResult {
+        @SerializedName("userNickname")
+        private String userNickname;
 
-        public String getJwt() {
-            return jwt;
+        @SerializedName("userID")
+        private String userID;
+
+        @SerializedName("univName")
+        private String univName;
+
+        @SerializedName("univYear")
+        private String univYear;
+
+        public String getUserNickname() {
+            return userNickname;
+        }
+
+        public String getUserID() {
+            return userID;
+        }
+
+        public String getUnivName() {
+            return univName;
+        }
+
+        public String getUnivYear() {
+            return univYear;
         }
     }
-
 
     @SerializedName("code")
     private int code;
@@ -24,8 +44,7 @@ public class SignUpResponse {
     private boolean isSuccess;
 
     @SerializedName("result")
-    private SignUpResult signUpResult;
-
+    private MyPageResult myPageResult;
 
     public int getCode() {
         return code;
@@ -35,11 +54,11 @@ public class SignUpResponse {
         return message;
     }
 
-    public boolean getIsSuccess() {
+    public boolean isSuccess() {
         return isSuccess;
     }
 
-    public SignUpResult getSignUpResult() {
-        return signUpResult;
+    public MyPageResult getMyPageResult() {
+        return myPageResult;
     }
 }

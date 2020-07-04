@@ -1,16 +1,17 @@
-package com.example.everytime_mock.src.Home.interfaces;
+package com.example.everytime_mock.src.Main.interfaces;
 
-import com.example.everytime_mock.src.SignIn.models.DefaultResponse;
+import com.example.everytime_mock.src.Main.models.DefaultResponse;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface HomeRetrofitInterface {
+public interface MainRetrofitInterface {
     //    @GET("/test")
     @GET("/jwt")
     Call<DefaultResponse> getTest();
@@ -19,6 +20,7 @@ public interface HomeRetrofitInterface {
     Call<DefaultResponse> getTestPathAndQuery(
             @Path("number") int number,
             @Query("content") final String content
+//            @Header('X-ACCESS-TOKEN') final String
     );
 
     @POST("/test")

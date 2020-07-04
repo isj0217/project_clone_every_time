@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Home.models;
+package com.example.everytime_mock.src.Main.models;
 
 import com.google.gson.annotations.SerializedName;
 
