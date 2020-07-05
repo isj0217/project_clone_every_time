@@ -1,9 +1,7 @@
 package com.example.everytime_mock.src.Main;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,10 +11,6 @@ import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
 import com.example.everytime_mock.src.Main.interfaces.MyPageActivityView;
 import com.example.everytime_mock.src.Main.models.MyPageResponse;
-
-import java.util.HashMap;
-
-import static com.example.everytime_mock.src.ApplicationClass.sSharedPreferences;
 
 
 public class MyPageActivity extends BaseActivity implements MyPageActivityView {
@@ -35,8 +29,8 @@ public class MyPageActivity extends BaseActivity implements MyPageActivityView {
 
         tv_my_page_user_nickname = findViewById(R.id.tv_my_page_user_nickname);
         tv_my_page_user_id = findViewById(R.id.tv_my_page_user_id);
-        tv_my_page_univ_name = findViewById(R.id.et_signup2_univName);
-        tv_my_page_univ_year = findViewById(R.id.et_signup2_univYear);
+        tv_my_page_univ_name = findViewById(R.id.tv_my_page_univ_name);
+        tv_my_page_univ_year = findViewById(R.id.tv_my_page_univ_year);
 
         tv_my_page_change_nickname = findViewById(R.id.tv_my_page_change_nickname);
 
@@ -66,10 +60,10 @@ public class MyPageActivity extends BaseActivity implements MyPageActivityView {
 
         switch (myPageResponse.getCode()){
             case 100:
-                tv_my_page_user_nickname.setText(myPageResponse.getMyPageResult().getUserNickname());
-                tv_my_page_user_id.setText(myPageResponse.getMyPageResult().getUserID());
-                tv_my_page_univ_name.setText(myPageResponse.getMyPageResult().getUnivName());
-                tv_my_page_univ_year.setText(myPageResponse.getMyPageResult().getUnivYear());
+                tv_my_page_user_nickname.setText(myPageResponse.getMyPageResult().get(0).getUserNickname());
+                tv_my_page_user_id.setText(myPageResponse.getMyPageResult().get(0).getUserID());
+                tv_my_page_univ_name.setText(myPageResponse.getMyPageResult().get(0).getUnivName());
+                tv_my_page_univ_year.setText(myPageResponse.getMyPageResult().get(0).getUnivYear());
                 break;
             default:
                 System.out.println(myPageResponse.getCode());

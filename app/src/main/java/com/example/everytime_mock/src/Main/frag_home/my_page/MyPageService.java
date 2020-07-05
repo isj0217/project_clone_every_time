@@ -5,9 +5,6 @@ import android.util.Log;
 import com.example.everytime_mock.src.Main.interfaces.MyPageActivityView;
 import com.example.everytime_mock.src.Main.interfaces.MyPageRetrofitInterface;
 import com.example.everytime_mock.src.Main.models.MyPageResponse;
-import com.example.everytime_mock.src.SignUp.interfaces.SignUpInputFormActivityView;
-import com.example.everytime_mock.src.SignUp.interfaces.SignUpInputFormRetrofitInterface;
-import com.example.everytime_mock.src.SignUp.models.SignUpResponse;
 
 import java.util.HashMap;
 
@@ -42,16 +39,18 @@ class MyPageService {
                 final MyPageResponse myPageResponse = response.body();
                 if (myPageResponse == null) {
                     System.out.println("mypageResponse가 null입니다.");
-
+                    Log.d(TAG, "onResponse: null");
                     mMyPageActivityView.validateFailure(null);
                     return;
                 }
+                Log.d(TAG, "onResponse: success" + myPageResponse.getMyPageResult().get(0).getUserNickname());
                 mMyPageActivityView.myPageSuccess(myPageResponse);
             }
 
             @Override
             public void onFailure(Call<MyPageResponse> call, Throwable t) {
                 System.out.println("통신 실패");
+                Log.d(TAG, "onFailure: ");
                 mMyPageActivityView.validateFailure(null);
             }
         });
