@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.Main.interfaces;
 
-public interface InBoardActivityView {
+public interface FreeBoardActivityView {
 
     void validateSuccess(String text);
 

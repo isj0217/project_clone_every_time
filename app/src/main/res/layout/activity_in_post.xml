@@ -83,7 +83,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="익명"
+                        android:text="@string/activity_in_post_nickname"
                         android:textColor="@color/colorBlack"
                         android:textSize="17sp" />
 
@@ -91,7 +91,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="방금"
+                        android:text="@string/activity_in_post_time"
                         android:textColor="@color/colorDarkGrey" />
                 </LinearLayout>
 
@@ -118,7 +118,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="공감"
+                        android:text="@string/activity_in_post_like"
                         android:textColor="@color/colorDarkerGrey"
                         android:textSize="12sp"
                         android:textStyle="bold" />
@@ -144,7 +144,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="스크랩"
+                        android:text="@string/activity_in_post_scrap"
                         android:textColor="@color/colorDarkerGrey"
                         android:textSize="12sp"
                         android:textStyle="bold" />
@@ -163,7 +163,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="글 제목"
+                    android:text="@string/activity_in_post_title"
                     android:textColor="@color/colorBlack"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -172,7 +172,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="글 내용"
+                    android:text="@string/activity_in_post_content"
                     android:textColor="@color/colorBlack"
                     android:textSize="15sp" />
 
@@ -193,7 +193,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="0"
+                        android:text="@string/activity_in_post_like_num"
                         android:textColor="@color/colorEveryTimeRed" />
 
                     <ImageView
@@ -207,7 +207,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="0"
+                        android:text="@string/activity_in_post_comment_num"
                         android:textColor="@color/colorMint" />
 
                     <ImageView
@@ -221,7 +221,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="0"
+                        android:text="@string/activity_in_post_scrap_num"
                         android:textColor="@color/colorYellow" />
 
 

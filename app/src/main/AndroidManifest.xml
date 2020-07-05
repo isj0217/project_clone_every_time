@@ -31,6 +31,10 @@
         <activity android:name=".src.Main.WritingActivity" />
         <activity android:name=".src.Main.InPostActivity" />
         <activity android:name=".src.Main.MyPageActivity" />
+        <activity android:name=".src.Main.FreeBoardActivity" />
+        <activity android:name=".src.Main.SecretBoardActivity" />
+        <activity android:name=".src.Main.AlumniBoardActivity" />
+        <activity android:name=".src.Main.FreshmenBoardActivity" />
     </application>
 
 </manifest>

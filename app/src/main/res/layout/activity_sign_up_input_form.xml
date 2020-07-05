@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="회원가입"
+            android:text="@string/activity_sign_up_input_form_sign_up"
             android:textColor="@color/colorBlack"
             android:textSize="18sp" />
 
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
-                android:text="회원 정보"
+                android:text="@string/activity_sign_up_input_form_member_info"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -86,7 +86,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="아이디"
+                        android:text="@string/activity_sign_up_input_form_id"
                         android:textColor="@color/colorDarkerGrey" />
 
                     <TextView
@@ -97,7 +97,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="영문, 숫자, 4~20자"
+                        android:text="@string/activity_sign_up_input_form_id_constraint"
                         android:textColor="@color/colorDarkGrey" />
                 </LinearLayout>
 
@@ -109,7 +109,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/btn_lightgrey"
-                    android:hint="아이디"
+                    android:hint="@string/activity_sign_up_input_form_id_hint"
                     android:inputType="text"
                     android:padding="9dp"
                     android:paddingStart="15dp"
@@ -137,7 +137,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="비밀번호"
+                        android:text="@string/activity_sign_up_input_form_pw"
                         android:textColor="@color/colorDarkerGrey" />
 
                     <TextView
@@ -148,7 +148,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="4~20자"
+                        android:text="@string/activity_sign_up_input_form_pw_constraint"
                         android:textColor="@color/colorDarkGrey" />
                 </LinearLayout>
 
@@ -160,7 +160,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/btn_lightgrey"
-                    android:hint="비밀번호"
+                    android:hint="@string/activity_sign_up_input_form_pw_hint"
                     android:inputType="textPassword"
                     android:padding="9dp"
                     android:paddingStart="15dp"
@@ -176,7 +176,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/btn_lightgrey"
-                    android:hint="비밀번호 확인"
+                    android:hint="@string/activity_sign_up_input_form_pw_again_hint"
                     android:inputType="textPassword"
                     android:padding="9dp"
                     android:paddingStart="15dp"
@@ -204,7 +204,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="이메일"
+                        android:text="@string/activity_sign_up_input_form_email"
                         android:textColor="@color/colorDarkerGrey" />
 
                     <TextView
@@ -215,7 +215,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="아이디/비밀번호 찾기에 필요"
+                        android:text="@string/activity_sign_up_input_form_email_description"
                         android:textColor="@color/colorDarkGrey" />
                 </LinearLayout>
 
@@ -227,7 +227,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/btn_lightgrey"
-                    android:hint="이메일"
+                    android:hint="@string/activity_sign_up_input_form_email_hint"
                     android:inputType="text"
                     android:padding="9dp"
                     android:paddingStart="15dp"
@@ -255,7 +255,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="닉네임"
+                        android:text="@string/activity_sign_up_input_form_nickname"
                         android:textColor="@color/colorDarkerGrey" />
 
                     <TextView
@@ -266,7 +266,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="커뮤니티 활동에 필요"
+                        android:text="@string/activity_sign_up_input_form_nickname_description"
                         android:textColor="@color/colorDarkGrey" />
                 </LinearLayout>
 
@@ -278,7 +278,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/btn_lightgrey"
-                    android:hint="닉네임"
+                    android:hint="@string/activity_sign_up_input_form_nickname_hint"
                     android:inputType="text"
                     android:padding="9dp"
                     android:paddingStart="15dp"
@@ -306,7 +306,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="대학교"
+                        android:text="@string/activity_sign_up_input_form_univ"
                         android:textColor="@color/colorDarkerGrey" />
 
                     <TextView
@@ -317,7 +317,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="해당 대학의 커뮤니티로 자동 가입"
+                        android:text="@string/activity_sign_up_input_form_univ_description"
                         android:textColor="@color/colorDarkGrey" />
                 </LinearLayout>
 
@@ -329,7 +329,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/btn_lightgrey"
-                    android:hint="대학교"
+                    android:hint="@string/activity_sign_up_input_form_univ_hint"
                     android:inputType="text"
                     android:padding="9dp"
                     android:paddingStart="15dp"
@@ -357,7 +357,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="학번"
+                        android:text="@string/activity_sign_up_input_form_univ_year"
                         android:textColor="@color/colorDarkerGrey" />
 
                     <TextView
@@ -368,7 +368,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2020, 2018 등으로 입력"
+                        android:text="@string/activity_sign_up_input_form_univ_year_constraint"
                         android:textColor="@color/colorDarkGrey" />
                 </LinearLayout>
 
@@ -380,7 +380,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/btn_lightgrey"
-                    android:hint="ex)2015"
+                    android:hint="@string/activity_sign_up_input_form_univ_year_hint"
                     android:inputType="text"
                     android:padding="9dp"
                     android:paddingStart="15dp"
@@ -408,7 +408,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="휴대폰"
+                        android:text="@string/activity_sign_up_input_form_phone"
                         android:textColor="@color/colorDarkerGrey" />
 
                     <TextView
@@ -419,7 +419,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="띄어쓰기나 '-' 없이 입력"
+                        android:text="@string/activity_sign_up_input_form_phone_constraint"
                         android:textColor="@color/colorDarkGrey" />
                 </LinearLayout>
 
@@ -431,7 +431,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/btn_lightgrey"
-                    android:hint="ex)01012345678"
+                    android:hint="@string/activity_sign_up_input_form_phone_hint"
                     android:inputType="text"
                     android:padding="9dp"
                     android:paddingStart="15dp"
@@ -449,7 +449,7 @@
                 android:layout_marginTop="35dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/btn_red"
-                android:text="회원가입"
+                android:text="@string/activity_sign_up_input_form_btn_sign_up"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp"
                 android:textStyle="bold" />

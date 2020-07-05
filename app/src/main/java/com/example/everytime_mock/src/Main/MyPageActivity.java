@@ -78,7 +78,7 @@ public class MyPageActivity extends BaseActivity implements MyPageActivityView {
         }
     }
 
-    public void custonOnClick(View view) {
+    public void customOnClick(View view) {
         switch (view.getId()){
             case R.id.tv_my_page_change_nickname:
                 AlertDialog.Builder builder = new AlertDialog.Builder(MyPageActivity.this);

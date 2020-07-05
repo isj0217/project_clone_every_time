@@ -4,15 +4,15 @@ import android.os.Bundle;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.Main.interfaces.InBoardActivityView;
+import com.example.everytime_mock.src.Main.interfaces.FreeBoardActivityView;
 
 
-public class InBoardActivity extends BaseActivity implements InBoardActivityView {
+public class FreeBoardActivity extends BaseActivity implements FreeBoardActivityView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activitiy_free_board);
+        setContentView(R.layout.activity_free_board);
     }
 
     @Override

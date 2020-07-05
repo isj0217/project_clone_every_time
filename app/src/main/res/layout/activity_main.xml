@@ -18,8 +18,9 @@
         android:layout_gravity="bottom"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:background="@color/cardview_dark_background"
-        app:itemBackground="@color/cardview_dark_background"
+        app:itemIconTint="@color/bottom_navigation_view_selector"
+        app:itemTextColor="@color/bottom_navigation_view_selector"
+        android:background="@color/colorWhite"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_bottom" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

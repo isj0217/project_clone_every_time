@@ -4,15 +4,15 @@ import android.os.Bundle;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.Main.interfaces.FreeBoardActivityView;
+import com.example.everytime_mock.src.Main.interfaces.SecretBoardActivityView;
 
 
-public class FreeBoardActivity extends BaseActivity implements FreeBoardActivityView {
+public class SecretBoardActivity extends BaseActivity implements SecretBoardActivityView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activitiy_free_board);
+        setContentView(R.layout.activity_secret_board);
     }
 
     @Override

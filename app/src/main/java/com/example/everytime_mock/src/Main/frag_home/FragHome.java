@@ -1,9 +1,7 @@
 package com.example.everytime_mock.src.Main.frag_home;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
-import com.example.everytime_mock.src.Main.InPostActivity;
+import com.example.everytime_mock.src.Main.FreeBoardActivity;
 import com.example.everytime_mock.src.Main.MyPageActivity;
-import com.example.everytime_mock.src.Main.WritingActivity;
 import com.example.everytime_mock.src.Main.frag_home.interfaces.FragHomeView;
 import com.example.everytime_mock.src.Main.frag_home.models.FavoriteBoardAdapter;
 import com.example.everytime_mock.src.Main.frag_home.models.FavoriteBoardItem;
 
 import java.util.ArrayList;
-
-import static com.example.everytime_mock.src.ApplicationClass.sSharedPreferences;
 
 public class FragHome extends Fragment implements FragHomeView {
     ViewGroup viewGroup;
@@ -46,7 +41,15 @@ public class FragHome extends Fragment implements FragHomeView {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), MyPageActivity.class);
                 startActivity(intent);
+            }
+        });
 
+        ImageView search = viewGroup.findViewById(R.id.iv_frag_home_search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), FreeBoardActivity.class);
+                startActivity(intent);
             }
         });
 

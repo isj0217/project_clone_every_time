@@ -9,12 +9,16 @@
     <color name="colorLigntGreen">#BFFF00</color>
     <color name="colorOrange">#FFA500</color>
     <color name="colorBlue">#00BFFF</color>
-    <color name="colorGrey">#CCCCCC</color>
-    <color name="colorLightGrey">#DDDDDD</color>
     <color name="colorEveryTimeRed">#c62918</color>
-    <color name="colorDarkGrey">#AAAAAA</color>
-    <color name="colorDarkerGrey">#555555</color>
     <color name="colorMint">#2B9AA5</color>
     <color name="colorYellow">#F0C940</color>
+
+
+    <!--    grey 계열 색상-->
+    <color name="colorLightGrey">#DDDDDD</color>
+    <color name="colorGrey">#CCCCCC</color>
+    <color name="colorDarkGrey">#AAAAAA</color>
+    <color name="colorTextContentGrey">#777777</color>
+    <color name="colorDarkerGrey">#555555</color>
 
 </resources>
