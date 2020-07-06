@@ -28,7 +28,7 @@ class RealTimeHotPostService {
                     mFragHomeView.validateFailure(null);
                     return;
                 }
-                mFragHomeView.RealTimeHotPostSuccess(realTimeHotPostResponse);
+                mFragHomeView.realTimeHotPostSuccess(realTimeHotPostResponse);
             }
 
             @Override

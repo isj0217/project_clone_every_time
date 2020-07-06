@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main.interfaces;
+package com.example.everytime_mock.src.Boards.interfaces;
 
 public interface SecretBoardActivityView {
 

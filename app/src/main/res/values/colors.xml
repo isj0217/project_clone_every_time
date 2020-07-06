@@ -15,6 +15,7 @@
 
 
     <!--    grey 계열 색상-->
+    <color name="colorTimeTableEdgeGrey">#F6F6F6</color>
     <color name="colorLightGrey">#DDDDDD</color>
     <color name="colorGrey">#CCCCCC</color>
     <color name="colorDarkGrey">#AAAAAA</color>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".src.Main.MyPageActivity">
+    tools:context=".src.Main.frag_home.my_page.MyPageActivity">
 
     <!--    상단 바-->
     <LinearLayout

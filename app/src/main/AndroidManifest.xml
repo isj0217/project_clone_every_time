@@ -30,11 +30,11 @@
         <activity android:name=".src.Main.MainActivity" />
         <activity android:name=".src.Main.WritingActivity" />
         <activity android:name=".src.Main.InPostActivity" />
-        <activity android:name=".src.Main.MyPageActivity" />
-        <activity android:name=".src.Main.FreeBoardActivity" />
-        <activity android:name=".src.Main.SecretBoardActivity" />
-        <activity android:name=".src.Main.AlumniBoardActivity" />
-        <activity android:name=".src.Main.FreshmenBoardActivity" />
+        <activity android:name=".src.Main.frag_home.my_page.MyPageActivity" />
+        <activity android:name=".src.Boards.FreeBoardActivity" />
+        <activity android:name=".src.Boards.SecretBoardActivity" />
+        <activity android:name=".src.Boards.AlumniBoardActivity" />
+        <activity android:name=".src.Boards.FreshmenBoardActivity" />
     </application>
 
 </manifest>

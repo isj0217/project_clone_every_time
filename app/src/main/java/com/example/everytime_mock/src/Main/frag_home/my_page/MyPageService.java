@@ -1,10 +1,10 @@
-package com.example.everytime_mock.src.Main;
+package com.example.everytime_mock.src.Main.frag_home.my_page;
 
 import android.util.Log;
 
-import com.example.everytime_mock.src.Main.interfaces.MyPageActivityView;
-import com.example.everytime_mock.src.Main.interfaces.MyPageRetrofitInterface;
-import com.example.everytime_mock.src.Main.models.MyPageResponse;
+import com.example.everytime_mock.src.Main.frag_home.my_page.interfaces.MyPageActivityView;
+import com.example.everytime_mock.src.Main.frag_home.my_page.interfaces.MyPageRetrofitInterface;
+import com.example.everytime_mock.src.Main.frag_home.my_page.models.MyPageResponse;
 
 import java.util.HashMap;
 
@@ -28,9 +28,6 @@ class MyPageService {
 
     void getMyPage() {
         final MyPageRetrofitInterface myPageRetrofitInterface = getRetrofit().create(MyPageRetrofitInterface.class);
-
-        Log.d(TAG, "sSharedPreferences: " + sSharedPreferences.getString("jwt", ""));
-        Log.d(TAG, "token: " + X_ACCESS_TOKEN);
 
         myPageRetrofitInterface.getMyPage(X_ACCESS_TOKEN).enqueue(new Callback<MyPageResponse>() {
             @Override

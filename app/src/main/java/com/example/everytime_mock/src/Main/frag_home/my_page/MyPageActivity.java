@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main;
+package com.example.everytime_mock.src.Main.frag_home.my_page;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.Main.interfaces.MyPageActivityView;
-import com.example.everytime_mock.src.Main.models.MyPageResponse;
+import com.example.everytime_mock.src.Main.frag_home.my_page.interfaces.MyPageActivityView;
+import com.example.everytime_mock.src.Main.frag_home.my_page.models.MyPageResponse;
 
 
 public class MyPageActivity extends BaseActivity implements MyPageActivityView {

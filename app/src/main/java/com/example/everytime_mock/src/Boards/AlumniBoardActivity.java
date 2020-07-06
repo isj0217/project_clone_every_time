@@ -1,11 +1,10 @@
-package com.example.everytime_mock.src.Main;
+package com.example.everytime_mock.src.Boards;
 
 import android.os.Bundle;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.Main.interfaces.AlumniBoardActivityView;
-import com.example.everytime_mock.src.Main.interfaces.SecretBoardActivityView;
+import com.example.everytime_mock.src.Boards.interfaces.AlumniBoardActivityView;
 
 
 public class AlumniBoardActivity extends BaseActivity implements AlumniBoardActivityView {

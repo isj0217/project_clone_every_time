@@ -1,52 +1,50 @@
-package com.example.everytime_mock.src.Main.frag_home.my_page.models;
+package com.example.everytime_mock.src.Main.frag_home.models;
 
-public class MyPageResult {
+public class RealTimeHotPostResult {
 
-    String userNickname;
-    String userID;
-    String univName;
-    String univYear;
+    String contentWriter;
+    String contentTitle;
+    String contentInf;
+    String noticeName;
+    String writeDay;
+    String countLike;
+    String countComment;
 
-    public MyPageResult(String userNickname, String userID, String univName, String univYear) {
-        this.userNickname = userNickname;
-        this.userID = userID;
-        this.univName = univName;
-        this.univYear = univYear;
+    public RealTimeHotPostResult(String contentWriter, String contentTitle, String contentInf, String noticeName, String writeDay, String countLike, String countComment) {
+        this.contentWriter = contentWriter;
+        this.contentTitle = contentTitle;
+        this.contentInf = contentInf;
+        this.noticeName = noticeName;
+        this.writeDay = writeDay;
+        this.countLike = countLike;
+        this.countComment = countComment;
     }
 
-    public MyPageResult() {
-
+    public String getContentWriter() {
+        return contentWriter;
     }
 
-    public String getUserNickname() {
-        return userNickname;
+    public String getContentTitle() {
+        return contentTitle;
     }
 
-    public void setUserNickname(String userNickname) {
-        this.userNickname = userNickname;
+    public String getContentInf() {
+        return contentInf;
     }
 
-    public String getUserID() {
-        return userID;
+    public String getNoticeName() {
+        return noticeName;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public String getWriteDay() {
+        return writeDay;
     }
 
-    public String getUnivName() {
-        return univName;
+    public String getCountLike() {
+        return countLike;
     }
 
-    public void setUnivName(String univName) {
-        this.univName = univName;
-    }
-
-    public String getUnivYear() {
-        return univYear;
-    }
-
-    public void setUnivYear(String univYear) {
-        this.univYear = univYear;
+    public String getCountComment() {
+        return countComment;
     }
 }

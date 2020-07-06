@@ -1,13 +1,13 @@
-package com.example.everytime_mock.src.Main.frag_home.my_page.models;
+package com.example.everytime_mock.src.Boards.models;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MyPageResponse {
+public class FreeBoardResponse {
 
     @SerializedName("result")
-    private List<MyPageResult> myPageResult;
+    private List<FreeBoardResult> freeBoardResults;
 
     @SerializedName("code")
     private int code;
@@ -18,45 +18,26 @@ public class MyPageResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
-    public MyPageResponse() {
-    }
-
-    public MyPageResponse(List<MyPageResult> myPageResult, int code, String message, boolean isSuccess) {
-        this.myPageResult = myPageResult;
+    public FreeBoardResponse(List<FreeBoardResult> freeBoardResults, int code, String message, boolean isSuccess) {
+        this.freeBoardResults = freeBoardResults;
         this.code = code;
         this.message = message;
         this.isSuccess = isSuccess;
     }
 
-    public List<MyPageResult> getMyPageResult() {
-        return myPageResult;
-    }
-
-    public void setMyPageResult(List<MyPageResult> myPageResult) {
-        this.myPageResult = myPageResult;
+    public List<FreeBoardResult> getFreeBoardResults() {
+        return freeBoardResults;
     }
 
     public int getCode() {
         return code;
     }
 
-    public void setCode(int code) {
-        this.code = code;
-    }
-
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public boolean isSuccess() {
         return isSuccess;
-    }
-
-    public void setSuccess(boolean success) {
-        isSuccess = success;
     }
 }

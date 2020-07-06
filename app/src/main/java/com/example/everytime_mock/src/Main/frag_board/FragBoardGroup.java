@@ -11,19 +11,19 @@ import androidx.fragment.app.Fragment;
 
 import com.example.everytime_mock.R;
 
-public class FragBoardAll extends Fragment {
+public class FragBoardGroup extends Fragment {
 
     private View view;
 
-    public static FragBoardAll newInstance() {
-        FragBoardAll fragBoardAll = new FragBoardAll();
-        return fragBoardAll;
+    public static FragBoardGroup newInstance() {
+        FragBoardGroup fragBoardGroup = new FragBoardGroup();
+        return fragBoardGroup;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frag_board, container, false);
+        view = inflater.inflate(R.layout.frag_board_group, container, false);
 
         return view;
     }

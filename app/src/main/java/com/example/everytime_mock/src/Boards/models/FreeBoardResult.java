@@ -1,52 +1,68 @@
-package com.example.everytime_mock.src.Main.frag_home.my_page.models;
+package com.example.everytime_mock.src.Boards.models;
 
-public class MyPageResult {
+public class FreeBoardResult {
 
-    String userNickname;
-    String userID;
-    String univName;
-    String univYear;
+    int contentIdx;
+    String contentWriter;
+    String contentTitle;
+    String contentInf;
+    String noticeName;
+    String contentThumbnailURL;
+    String writeDay;
+    int countLike;
+    int countComment;
+    int countImage;
 
-    public MyPageResult(String userNickname, String userID, String univName, String univYear) {
-        this.userNickname = userNickname;
-        this.userID = userID;
-        this.univName = univName;
-        this.univYear = univYear;
+    public FreeBoardResult(int contentIdx, String contentWriter, String contentTitle, String contentInf, String noticeName, String contentThumbnailURL, String writeDay, int countLike, int countComment, int countImage) {
+        this.contentIdx = contentIdx;
+        this.contentWriter = contentWriter;
+        this.contentTitle = contentTitle;
+        this.contentInf = contentInf;
+        this.noticeName = noticeName;
+        this.contentThumbnailURL = contentThumbnailURL;
+        this.writeDay = writeDay;
+        this.countLike = countLike;
+        this.countComment = countComment;
+        this.countImage = countImage;
     }
 
-    public MyPageResult() {
-
+    public int getContentIdx() {
+        return contentIdx;
     }
 
-    public String getUserNickname() {
-        return userNickname;
+    public String getContentWriter() {
+        return contentWriter;
     }
 
-    public void setUserNickname(String userNickname) {
-        this.userNickname = userNickname;
+    public String getContentTitle() {
+        return contentTitle;
     }
 
-    public String getUserID() {
-        return userID;
+    public String getContentInf() {
+        return contentInf;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public String getNoticeName() {
+        return noticeName;
     }
 
-    public String getUnivName() {
-        return univName;
+    public String getContentThumbnailURL() {
+        return contentThumbnailURL;
     }
 
-    public void setUnivName(String univName) {
-        this.univName = univName;
+    public String getWriteDay() {
+        return writeDay;
     }
 
-    public String getUnivYear() {
-        return univYear;
+    public int getCountLike() {
+        return countLike;
     }
 
-    public void setUnivYear(String univYear) {
-        this.univYear = univYear;
+    public int getCountComment() {
+        return countComment;
+    }
+
+    public int getCountImage() {
+        return countImage;
     }
 }

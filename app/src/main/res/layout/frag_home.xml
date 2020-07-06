@@ -609,14 +609,7 @@ android:orientation="vertical">
                             android:textColor="@color/colorDarkGrey"
                             android:textSize="12sp" />
 
-                        <TextView
-                            android:id="@+id/tv_frag_home_realtime_hot_post_1_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/frag_home_time"
-                            android:textColor="@color/colorDarkGrey"
-                            android:textSize="12sp" />
+
 
                     </LinearLayout>
 
@@ -664,6 +657,7 @@ android:orientation="vertical">
                             android:src="@drawable/red_thumb_up" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_realtime_hot_post_1_like_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -678,10 +672,11 @@ android:orientation="vertical">
                             android:src="@drawable/mint_comment" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_realtime_hot_post_1_comment_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
-                            android:text="@string/frag_home_realtime_hot_post_2_comment_num"
+                            android:text="@string/frag_home_realtime_hot_post_1_comment_num"
                             android:textColor="@color/colorMint"
                             android:textSize="12sp" />
 
@@ -732,15 +727,6 @@ android:orientation="vertical">
                             android:textColor="@color/colorDarkGrey"
                             android:textSize="12sp" />
 
-                        <TextView
-                            android:id="@+id/tv_frag_home_realtime_hot_post_2_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/frag_home_realtime_hot_post_2_time"
-                            android:textColor="@color/colorDarkGrey"
-                            android:textSize="12sp" />
-
                     </LinearLayout>
 
                     <TextView
@@ -787,6 +773,7 @@ android:orientation="vertical">
                             android:src="@drawable/red_thumb_up" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_realtime_hot_post_2_like_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -801,6 +788,7 @@ android:orientation="vertical">
                             android:src="@drawable/mint_comment" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_realtime_hot_post_2_comment_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -918,6 +906,7 @@ android:orientation="vertical">
                             android:src="@drawable/red_thumb_up" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_hot_post_1_like_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -932,6 +921,7 @@ android:orientation="vertical">
                             android:src="@drawable/mint_comment" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_hot_post_1_comment_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -992,6 +982,7 @@ android:orientation="vertical">
                             android:src="@drawable/red_thumb_up" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_hot_post_2_like_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -1006,6 +997,7 @@ android:orientation="vertical">
                             android:src="@drawable/mint_comment" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_hot_post_2_comment_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -1066,6 +1058,7 @@ android:orientation="vertical">
                             android:src="@drawable/red_thumb_up" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_hot_post_3_like_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -1080,6 +1073,7 @@ android:orientation="vertical">
                             android:src="@drawable/mint_comment" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_hot_post_3_comment_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -1140,6 +1134,7 @@ android:orientation="vertical">
                             android:src="@drawable/red_thumb_up" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_hot_post_4_like_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -1154,6 +1149,7 @@ android:orientation="vertical">
                             android:src="@drawable/mint_comment" />
 
                         <TextView
+                            android:id="@+id/tv_frag_home_hot_post_4_comment_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"

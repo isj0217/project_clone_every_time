@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main.models;
+package com.example.everytime_mock.src.Main.frag_time_table;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,14 +1,13 @@
 package com.example.everytime_mock.src.Main.frag_home.models;
 
-import com.example.everytime_mock.src.Main.frag_home.my_page.models.MyPageResult;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class RealTimeHotPostResponse {
+public class HotPostResponse {
 
     @SerializedName("result")
-    private List<RealTimeHotPostResult> realTimeHotPostResults;
+    private List<HotPostResult> hotPostResults;
 
     @SerializedName("code")
     private int code;
@@ -19,15 +18,15 @@ public class RealTimeHotPostResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
-    public RealTimeHotPostResponse(List<RealTimeHotPostResult> realTimeHotPostResults, int code, String message, boolean isSuccess) {
-        this.realTimeHotPostResults = realTimeHotPostResults;
+    public HotPostResponse(List<HotPostResult> hotPostResults, int code, String message, boolean isSuccess) {
+        this.hotPostResults = hotPostResults;
         this.code = code;
         this.message = message;
         this.isSuccess = isSuccess;
     }
 
-    public List<RealTimeHotPostResult> getRealTimeHotPostResults() {
-        return realTimeHotPostResults;
+    public List<HotPostResult> getHotPostResults() {
+        return hotPostResults;
     }
 
     public int getCode() {

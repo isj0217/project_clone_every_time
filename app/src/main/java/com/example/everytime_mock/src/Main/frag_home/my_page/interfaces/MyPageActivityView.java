@@ -1,6 +1,6 @@
-package com.example.everytime_mock.src.Main.interfaces;
+package com.example.everytime_mock.src.Main.frag_home.my_page.interfaces;
 
-import com.example.everytime_mock.src.Main.models.MyPageResponse;
+import com.example.everytime_mock.src.Main.frag_home.my_page.models.MyPageResponse;
 
 public interface MyPageActivityView {
 
