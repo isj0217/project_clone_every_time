@@ -1,16 +1,12 @@
 package com.example.everytime_mock.src.Main.frag_home.models;
 
+import com.example.everytime_mock.src.Main.frag_home.FragHome;
 import com.google.gson.annotations.SerializedName;
 
 public class FragHomeResponse {
 
-    public class SignUpResult {
-        @SerializedName("jwt")
-        private String jwt;
+    public class FragHomeResult {
 
-        public String getJwt() {
-            return jwt;
-        }
     }
 
 
@@ -24,7 +20,7 @@ public class FragHomeResponse {
     private boolean isSuccess;
 
     @SerializedName("result")
-    private SignUpResult signUpResult;
+    private FragHomeResult fragHomeResult;
 
 
     public int getCode() {
@@ -39,7 +35,7 @@ public class FragHomeResponse {
         return isSuccess;
     }
 
-    public SignUpResult getSignUpResult() {
-        return signUpResult;
+    public FragHomeResult getFragHomeResult() {
+        return fragHomeResult;
     }
 }
