@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.Boards.interfaces;
 
-import com.example.everytime_mock.src.Boards.models.FreeBoardResponse;
+import com.example.everytime_mock.src.Boards.models.BoardResponse;
 
 public interface FreeBoardActivityView {
 
@@ -8,5 +8,5 @@ public interface FreeBoardActivityView {
 
     void validateFailure(String message);
 
-    void freeBoardSuccess(FreeBoardResponse freeBoardResponse);
+    void freeBoardSuccess(BoardResponse boardResponse);
 }
