@@ -15,24 +15,53 @@
         android:paddingEnd="22dp"
         android:paddingBottom="2dp">
 
-        <TextView
-            android:id="@+id/tv_item_post_title"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@string/tv_item_post_title"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_item_hot_post_profile"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/profile_default" />
+
+            <TextView
+                android:layout_marginStart="5dp"
+                android:id="@+id/tv_item_hot_post_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="유저 닉네임"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_item_hot_post_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12분 전"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="11sp" />
+
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_item_post_content"
+            android:id="@+id/tv_item_hot_post_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@string/tv_item_post_content"
+            android:text="표시될 게시글의 내용"
             android:textColor="@color/colorTextContentGrey"
             android:textSize="12sp" />
 
@@ -44,27 +73,11 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_item_post_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tv_item_post_time"
-                android:textColor="@color/colorDarkGrey"
-                android:textSize="11sp" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="3dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@color/colorLightGrey" />
-
-            <TextView
-                android:id="@+id/tv_item_post_nickname"
+                android:id="@+id/tv_item_hot_post_board_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:text="@string/tv_item_post_nickname"
+                android:text="자유게시판"
                 android:textColor="@color/colorDarkGrey"
                 android:textSize="11sp" />
 
@@ -74,9 +87,9 @@
                 android:layout_weight="1" />
 
             <LinearLayout
-                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -85,32 +98,33 @@
                     android:src="@drawable/red_thumb_up" />
 
                 <TextView
-                    android:id="@+id/tv_item_post_like_num"
+                    android:id="@+id/tv_item_hot_post_like_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="@string/tv_item_post_like_num"
+                    android:text="0"
                     android:textColor="@color/colorEveryTimeRed"
                     android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginStart="7dp">
+                android:layout_marginStart="7dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="13dp"
                     android:layout_height="13dp"
                     android:src="@drawable/mint_comment" />
 
                 <TextView
-                    android:id="@+id/tv_item_post_comment_num"
+                    android:id="@+id/tv_item_hot_post_comment_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:text="@string/tv_item_post_comment_num"
+                    android:text="0"
                     android:textColor="@color/colorMint"
                     android:textSize="12sp" />
 

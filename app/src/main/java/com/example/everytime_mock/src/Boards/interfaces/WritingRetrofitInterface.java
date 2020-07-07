@@ -1,7 +1,7 @@
-package com.example.everytime_mock.src.SignIn.interfaces;
+package com.example.everytime_mock.src.Boards.interfaces;
 
+import com.example.everytime_mock.src.Boards.models.WritingResponse;
 import com.example.everytime_mock.src.SignIn.models.DefaultResponse;
-import com.example.everytime_mock.src.SignIn.models.SignInBody;
 import com.example.everytime_mock.src.SignIn.models.SignInResponse;
 
 import java.util.HashMap;
@@ -10,15 +10,29 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface SignInRetrofitInterface {
+public interface WritingRetrofitInterface {
 
     @POST("/login")
     Call<SignInResponse> signInTest(@Body HashMap<String, Object> params);
 
+//    @POST("/notice/{noticeIdx}/content")
+//    Call<WritingResponse> postWriting(@Body HashMap<String, Object> params);
+
+    @POST("/notice/{noticeIdx}/content")
+    Call<WritingResponse> postWriting(
+            @Header("x-access-token")String accessToken,
+            @Path("noticeIdx") int boardNumber,
+            @Body HashMap<String, Object> params);
+
+//    @POST("/notice/{noticeIdx}/content")
+//    Call<WritingResponse> postWriting(
+//            @Path("noticeIdx") int boardNumber
+//    );
 
 
     //    @GET("/test")

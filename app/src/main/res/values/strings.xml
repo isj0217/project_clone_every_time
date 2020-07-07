@@ -232,13 +232,13 @@
 
     <!--    frag_home_recent_lecture_review-->
     <string name="frag_home_recent_lecture_review">최근 강의평</string>
-    <string name="frag_home_recent_lecture_review_1_subject">서양철학사 : 송하석</string>
+    <string name="frag_home_recent_lecture_review_1_subject">서양철학사</string>
     <string name="frag_home_recent_lecture_review_1_content">첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평 첫 번째 강의평</string>
-    <string name="frag_home_recent_lecture_review_2_subject">마케팅 애널리틱스 : 이홍재</string>
+    <string name="frag_home_recent_lecture_review_2_subject">마케팅 애널리틱스</string>
     <string name="frag_home_recent_lecture_review_2_content">두 번째 강의평 두 번째 강의평 두 번째 강의평 두 번째 강의평 두 번째 강의평 두 번째 강의평 두 번째 강의평 두 번째 강의평</string>
-    <string name="frag_home_recent_lecture_review_3_subject">전자기학 : 박익모</string>
+    <string name="frag_home_recent_lecture_review_3_subject">전자기학</string>
     <string name="frag_home_recent_lecture_review_3_content">세 번째 강의평 세 번째 강의평 세 번째 강의평 세 번째 강의평 세 번째 강의평 세 번째 강의평 세 번째 강의평 세 번째 강의평</string>
-    <string name="frag_home_recent_lecture_review_4_subject">경제학이란 무엇인가 : 최희갑</string>
+    <string name="frag_home_recent_lecture_review_4_subject">경제학이란 무엇인가</string>
     <string name="frag_home_recent_lecture_review_4_content">네 번째 강의평 네 번째 강의평 네 번째 강의평 네 번째 강의평 네 번째 강의평 네 번째 강의평 네 번째 강의평 네 번째 강의평</string>
     <string name="frag_home_btn_home_setting">홈 화면 설정</string>
 

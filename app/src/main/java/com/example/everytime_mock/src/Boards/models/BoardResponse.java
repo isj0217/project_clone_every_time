@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class FreeBoardResponse {
+public class BoardResponse {
 
     @SerializedName("result")
-    private List<FreeBoardResult> freeBoardResults;
+    private List<BoardResult> boardResults;
 
     @SerializedName("code")
     private int code;
@@ -18,15 +18,15 @@ public class FreeBoardResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
-    public FreeBoardResponse(List<FreeBoardResult> freeBoardResults, int code, String message, boolean isSuccess) {
-        this.freeBoardResults = freeBoardResults;
+    public BoardResponse(List<BoardResult> boardResults, int code, String message, boolean isSuccess) {
+        this.boardResults = boardResults;
         this.code = code;
         this.message = message;
         this.isSuccess = isSuccess;
     }
 
-    public List<FreeBoardResult> getFreeBoardResults() {
-        return freeBoardResults;
+    public List<BoardResult> getBoardResults() {
+        return boardResults;
     }
 
     public int getCode() {

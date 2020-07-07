@@ -1,13 +1,8 @@
 package com.example.everytime_mock.src.Boards;
 
-import android.util.Log;
-
-import com.example.everytime_mock.src.Boards.interfaces.FreeBoardActivityView;
-import com.example.everytime_mock.src.Boards.interfaces.FreeBoardRetrofitInterface;
-import com.example.everytime_mock.src.Boards.interfaces.SecretBoardActivityView;
+import com.example.everytime_mock.src.Boards.interfaces.BoardActivityView;
 import com.example.everytime_mock.src.Boards.interfaces.SecretBoardRetrofitInterface;
-import com.example.everytime_mock.src.Boards.models.FreeBoardResponse;
-import com.example.everytime_mock.src.Boards.models.SecretBoardResponse;
+import com.example.everytime_mock.src.Boards.models.BoardResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,28 +12,28 @@ import static com.example.everytime_mock.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
 
 class SecretBoardService {
-    private final SecretBoardActivityView mSecretBoardActivityView;
+    private final BoardActivityView mBoardActivityView;
 
-    SecretBoardService(final SecretBoardActivityView secretBoardActivityView) {
-        this.mSecretBoardActivityView = secretBoardActivityView;
+    SecretBoardService(final BoardActivityView boardActivityView) {
+        this.mBoardActivityView = boardActivityView;
     }
 
     void getSecretBoard() {
         final SecretBoardRetrofitInterface secretBoardRetrofitInterface = getRetrofit().create(SecretBoardRetrofitInterface.class);
-        secretBoardRetrofitInterface.getSecretBoard(X_ACCESS_TOKEN).enqueue(new Callback<SecretBoardResponse>() {
+        secretBoardRetrofitInterface.getSecretBoard(X_ACCESS_TOKEN).enqueue(new Callback<BoardResponse>() {
             @Override
-            public void onResponse(Call<SecretBoardResponse> call, Response<SecretBoardResponse> response) {
-                final SecretBoardResponse secretBoardResponse = response.body();
-                if (secretBoardResponse == null) {
-                    mSecretBoardActivityView.validateFailure(null);
+            public void onResponse(Call<BoardResponse> call, Response<BoardResponse> response) {
+                final BoardResponse boardResponse = response.body();
+                if (boardResponse == null) {
+                    mBoardActivityView.validateFailure(null);
                     return;
                 }
-                mSecretBoardActivityView.secretBoardSuccess(secretBoardResponse);
+                mBoardActivityView.boardSuccess(boardResponse);
             }
 
             @Override
-            public void onFailure(Call<SecretBoardResponse> call, Throwable t) {
-                mSecretBoardActivityView.validateFailure(null);
+            public void onFailure(Call<BoardResponse> call, Throwable t) {
+                mBoardActivityView.validateFailure(null);
             }
         });
     }

@@ -21,7 +21,8 @@ public class ApplicationClass extends Application {
 
     // 테스트 서버 주소
 //    public static String BASE_URL = "http://apis.newvement.com/";
-    public static String BASE_URL = "http://3.34.118.117";
+//    public static String BASE_URL = "http://3.34.118.117/";
+    public static String BASE_URL = "https://nays111.com/";
 
     // 실서버 주소
 //    public static String BASE_URL = "https://template.softsquared.com/";

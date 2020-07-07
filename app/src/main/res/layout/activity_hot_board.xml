@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".src.Boards.FreeBoardActivity">
+    tools:context=".src.Boards.HotBoardActivity">
 
     <LinearLayout
-        android:id="@+id/linear_layout_free_board_top_bar"
+        android:id="@+id/linear_layout_hot_board_top_bar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center_vertical"
@@ -17,18 +17,18 @@
         android:padding="5dp">
 
         <ImageView
-            android:id="@+id/iv_free_board_go_back"
-            android:onClick="customOnClick"
+            android:id="@+id/iv_hot_board_go_back"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/left_arrow_red" />
+            android:onClick="customOnClick"
+            android:src="@drawable/left_arrow_black" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
-            android:text="자유게시판"
+            android:text="HOT 게시판"
             android:textColor="@color/colorBlack"
             android:textSize="18sp" />
 
@@ -38,35 +38,58 @@
             android:layout_weight="1" />
 
         <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:layout_marginEnd="25dp"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:src="@drawable/red_sync" />
-
-        <ImageView
-            android:layout_marginEnd="15dp"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:src="@drawable/search_glass" />
-
-        <ImageView
-            android:id="@+id/iv_free_board_more"
-            android:onClick="customOnClick"
-            android:layout_marginEnd="15dp"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:src="@drawable/red_more" />
+            android:src="@drawable/black_sync" />
 
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_free_board_post_list"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:padding="13dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/unit_edges"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="안내"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorEveryTimeRed" />
+                <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="공감 10개를 받으면 HOT 게시물로 자동 선정됩니다."
+                    android:textSize="12sp"
+                    android:textColor="@color/colorDarkerGrey" />
 
 
+
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_hot_board_post_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

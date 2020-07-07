@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class RecentLectureReviewResponse {
+public class AdvertisementResponse {
 
     @SerializedName("result")
-    private List<RecentLectureReviewResult> recentLectureReviewResults;
+    private List<AdvertisementResult> advertisementResults;
 
     @SerializedName("code")
     private int code;
@@ -18,15 +18,15 @@ public class RecentLectureReviewResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
-    public RecentLectureReviewResponse(List<RecentLectureReviewResult> recentLectureReviewResults, int code, String message, boolean isSuccess) {
-        this.recentLectureReviewResults = recentLectureReviewResults;
+    public AdvertisementResponse(List<AdvertisementResult> advertisementResults, int code, String message, boolean isSuccess) {
+        this.advertisementResults = advertisementResults;
         this.code = code;
         this.message = message;
         this.isSuccess = isSuccess;
     }
 
-    public List<RecentLectureReviewResult> getRecentLectureReviewResults() {
-        return recentLectureReviewResults;
+    public List<AdvertisementResult> getAdvertisementResults() {
+        return advertisementResults;
     }
 
     public int getCode() {

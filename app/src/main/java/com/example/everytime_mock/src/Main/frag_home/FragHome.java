@@ -1,11 +1,16 @@
 package com.example.everytime_mock.src.Main.frag_home;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,17 +21,29 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.Boards.FreeBoardActivity;
+import com.example.everytime_mock.src.Boards.HotBoardActivity;
+import com.example.everytime_mock.src.Boards.LectureReviewInSubjectActivity;
+import com.example.everytime_mock.src.Boards.RecentLectureReviewBoardActivity;
+import com.example.everytime_mock.src.Boards.InPostActivity;
+import com.example.everytime_mock.src.Main.frag_home.models.AdvertisementResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.HotPostResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.RealTimeHotPostResponse;
+import com.example.everytime_mock.src.Main.frag_home.models.RecentLectureReviewResponse;
+import com.example.everytime_mock.src.Main.frag_home.models.RecentLectureReviewResult;
 import com.example.everytime_mock.src.Main.frag_home.my_page.MyPageActivity;
 import com.example.everytime_mock.src.Main.frag_home.interfaces.FragHomeView;
 import com.example.everytime_mock.src.Main.frag_home.models.FavoriteBoardAdapter;
 import com.example.everytime_mock.src.Main.frag_home.models.FavoriteBoardItem;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class FragHome extends Fragment implements FragHomeView {
     ViewGroup viewGroup;
+
+    private LinearLayout linear_layout_frag_home_univ_homepage, linear_layout_frag_home_shuttle_bus, linear_layout_frag_home_notificaition,
+            linear_layout_frag_home_schedule, linear_layout_frag_home_library, linear_layout_frag_home_web_mail;
 
     private ArrayList<FavoriteBoardItem> favorite_board_item_list;
     private FavoriteBoardAdapter favorite_board_adapter;
@@ -54,6 +71,23 @@ public class FragHome extends Fragment implements FragHomeView {
     private TextView tv_frag_home_hot_post_3_title, tv_frag_home_hot_post_3_time, tv_frag_home_hot_post_3_like_num, tv_frag_home_hot_post_3_comment_num;
     private TextView tv_frag_home_hot_post_4_title, tv_frag_home_hot_post_4_time, tv_frag_home_hot_post_4_like_num, tv_frag_home_hot_post_4_comment_num;
 
+    private TextView tv_frag_home_recent_lecture_review_1_subject, tv_frag_home_recent_lecture_review_1_professor, tv_frag_home_recent_lecture_review_1_content,
+            tv_frag_home_recent_lecture_review_2_subject, tv_frag_home_recent_lecture_review_2_professor, tv_frag_home_recent_lecture_review_2_content,
+            tv_frag_home_recent_lecture_review_3_subject, tv_frag_home_recent_lecture_review_3_professor, tv_frag_home_recent_lecture_review_3_content,
+            tv_frag_home_recent_lecture_review_4_subject, tv_frag_home_recent_lecture_review_4_professor, tv_frag_home_recent_lecture_review_4_content;
+
+    private ImageView iv_frag_home_recent_lecture_review_1_rank, iv_frag_home_recent_lecture_review_2_rank,
+            iv_frag_home_recent_lecture_review_3_rank, iv_frag_home_recent_lecture_review_4_rank;
+
+    private ImageView iv_frag_home_advertisement;
+
+    private LinearLayout linear_layout_frag_home_hot_board_more, linear_layout_frag_home_recent_lecture_review_more;
+
+    private LinearLayout linear_layout_frag_home_realtime_hot_post_1, linear_layout_frag_home_realtime_hot_post_2,
+            linear_layout_frag_home_hot_post_1, linear_layout_frag_home_hot_post_2,
+            linear_layout_frag_home_hot_post_3, linear_layout_frag_home_hot_post_4,
+            linear_layout_frag_home_recent_lecture_review_1, linear_layout_frag_home_recent_lecture_review_2,
+            linear_layout_frag_home_recent_lecture_review_3, linear_layout_frag_home_recent_lecture_review_4;
 
 
 
@@ -64,7 +98,55 @@ public class FragHome extends Fragment implements FragHomeView {
 
         viewBindRealTimeHotPost();
         viewBindHotPost();
+        viewBindRecentLectureReviews();
 
+        linkIconsToWebSites();
+
+
+
+
+
+        iv_frag_home_advertisement = viewGroup.findViewById(R.id.iv_frag_home_advertisement);
+
+
+        viewBindLinearLayout();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        linear_layout_frag_home_hot_board_more = viewGroup.findViewById(R.id.linear_layout_frag_home_hot_board_more);
+        linear_layout_frag_home_hot_board_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), HotBoardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_recent_lecture_review_more = viewGroup.findViewById(R.id.linear_layout_frag_home_recent_lecture_review_more);
+        linear_layout_frag_home_recent_lecture_review_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), RecentLectureReviewBoardActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         ImageView myPage = viewGroup.findViewById(R.id.iv_frag_home_my_page);
@@ -75,17 +157,6 @@ public class FragHome extends Fragment implements FragHomeView {
                 startActivity(intent);
             }
         });
-
-        ImageView search = viewGroup.findViewById(R.id.iv_frag_home_search);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), FreeBoardActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
 
 
         rv_favorite_board = viewGroup.findViewById(R.id.rv_home_favorite_board_list);
@@ -101,17 +172,24 @@ public class FragHome extends Fragment implements FragHomeView {
         //todo
 //        여기서 직접 받아와서 넣어보자!!!
 
-        for (int i = 0; i < 8; i++){
+        for (int i = 0; i < 8; i++) {
             FavoriteBoardItem fbi = new FavoriteBoardItem("자유게시판", "...", R.drawable.new_red);
             favorite_board_item_list.add(fbi);
         }
         favorite_board_adapter.notifyDataSetChanged();
 
 
+        tryGetAdvertisement();
         tryGetRealTimeHotPost();
         tryGetHotPost();
+        tryGetRecentLectureReview();
 
         return viewGroup;
+    }
+
+    private void tryGetAdvertisement() {
+        final AdvertisementService advertisementService = new AdvertisementService(this);
+        advertisementService.getAdvertisement();
     }
 
     private void tryGetHotPost() {
@@ -124,6 +202,11 @@ public class FragHome extends Fragment implements FragHomeView {
         realTimeHotPostService.getRealTimeHotPost();
     }
 
+    private void tryGetRecentLectureReview() {
+        final RecentLectureReviewService recentLectureReview = new RecentLectureReviewService(this);
+        recentLectureReview.getRecentLectureReview();
+    }
+
 
     private void tryGetFavoriteBoard() {
 
@@ -131,10 +214,32 @@ public class FragHome extends Fragment implements FragHomeView {
 //        favoriteBoardService.getFavoriteBoard();
     }
 
-
-
-
-
+    public int convertDoubleRateToDiscreteInt(RecentLectureReviewResult recentLectureReviewResult) {
+        int int_rate = 0;
+        double double_rate = recentLectureReviewResult.getClassStar();
+        if (double_rate <= 0.5) {
+            int_rate = 1;
+        } else if (double_rate <= 1) {
+            int_rate = 2;
+        } else if (double_rate <= 1.5) {
+            int_rate = 3;
+        } else if (double_rate <= 2) {
+            int_rate = 4;
+        } else if (double_rate <= 2.5) {
+            int_rate = 5;
+        } else if (double_rate <= 3) {
+            int_rate = 6;
+        } else if (double_rate <= 3.5) {
+            int_rate = 7;
+        } else if (double_rate <= 4) {
+            int_rate = 8;
+        } else if (double_rate <= 4.5) {
+            int_rate = 9;
+        } else if (double_rate <= 5) {
+            int_rate = 10;
+        }
+        return int_rate;
+    }
 
 
     @Override
@@ -147,8 +252,50 @@ public class FragHome extends Fragment implements FragHomeView {
 
     }
 
+    @Override
+    public void advertisementSuccess(AdvertisementResponse advertisementResponse) {
+
+        final String adThumbnail = advertisementResponse.getAdvertisementResults().get(0).getAdThumbnaillURL();
+        iv_frag_home_advertisement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(adThumbnail));
+                startActivity(intent);
+            }
+        });
+
+        new DownloadAdsTask().execute(adThumbnail);
+    }
+
+    private class DownloadAdsTask extends AsyncTask<String, Void, Bitmap> {
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            Bitmap bmp = null;
+            try {
+                String img_url = strings[0]; //url of the image
+                URL url = new URL(img_url);
+                bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return bmp;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            // doInBackground 에서 받아온 total 값 사용 장소
+            iv_frag_home_advertisement.setImageBitmap(result);
+        }
+    }
+
     public void viewBindRealTimeHotPost() {
-        tv_frag_home_realtime_hot_post_1_user_name =viewGroup.findViewById(R.id.tv_frag_home_realtime_hot_post_1_user_name);
+        tv_frag_home_realtime_hot_post_1_user_name = viewGroup.findViewById(R.id.tv_frag_home_realtime_hot_post_1_user_name);
         tv_frag_home_realtime_hot_post_1_date = viewGroup.findViewById(R.id.tv_frag_home_realtime_hot_post_1_date);
         tv_frag_home_realtime_hot_post_1_title = viewGroup.findViewById(R.id.tv_frag_home_realtime_hot_post_1_title);
         tv_frag_home_realtime_hot_post_1_content = viewGroup.findViewById(R.id.tv_frag_home_realtime_hot_post_1_content);
@@ -164,6 +311,7 @@ public class FragHome extends Fragment implements FragHomeView {
         tv_frag_home_realtime_hot_post_2_like_num = viewGroup.findViewById(R.id.tv_frag_home_realtime_hot_post_2_like_num);
         tv_frag_home_realtime_hot_post_2_comment_num = viewGroup.findViewById(R.id.tv_frag_home_realtime_hot_post_2_comment_num);
     }
+
     public void viewBindHotPost() {
         tv_frag_home_hot_post_1_title = viewGroup.findViewById(R.id.tv_frag_home_hot_post_1_title);
         tv_frag_home_hot_post_1_time = viewGroup.findViewById(R.id.tv_frag_home_hot_post_1_time);
@@ -186,9 +334,31 @@ public class FragHome extends Fragment implements FragHomeView {
         tv_frag_home_hot_post_4_comment_num = viewGroup.findViewById(R.id.tv_frag_home_hot_post_4_comment_num);
     }
 
+    public void viewBindRecentLectureReviews() {
+        iv_frag_home_recent_lecture_review_1_rank = viewGroup.findViewById(R.id.iv_frag_home_recent_lecture_review_1_rank);
+        tv_frag_home_recent_lecture_review_1_subject = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_1_subject);
+        tv_frag_home_recent_lecture_review_1_professor = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_1_professor);
+        tv_frag_home_recent_lecture_review_1_content = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_1_content);
+
+        iv_frag_home_recent_lecture_review_2_rank = viewGroup.findViewById(R.id.iv_frag_home_recent_lecture_review_2_rank);
+        tv_frag_home_recent_lecture_review_2_subject = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_2_subject);
+        tv_frag_home_recent_lecture_review_2_professor = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_2_professor);
+        tv_frag_home_recent_lecture_review_2_content = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_2_content);
+
+        iv_frag_home_recent_lecture_review_3_rank = viewGroup.findViewById(R.id.iv_frag_home_recent_lecture_review_3_rank);
+        tv_frag_home_recent_lecture_review_3_subject = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_3_subject);
+        tv_frag_home_recent_lecture_review_3_professor = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_3_professor);
+        tv_frag_home_recent_lecture_review_3_content = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_3_content);
+
+        iv_frag_home_recent_lecture_review_4_rank = viewGroup.findViewById(R.id.iv_frag_home_recent_lecture_review_4_rank);
+        tv_frag_home_recent_lecture_review_4_subject = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_4_subject);
+        tv_frag_home_recent_lecture_review_4_professor = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_4_professor);
+        tv_frag_home_recent_lecture_review_4_content = viewGroup.findViewById(R.id.tv_frag_home_recent_lecture_review_4_content);
+    }
+
     @Override
     public void realTimeHotPostSuccess(RealTimeHotPostResponse realTimeHotPostResponse) {
-        switch (realTimeHotPostResponse.getCode()){
+        switch (realTimeHotPostResponse.getCode()) {
             case 100:
                 tv_frag_home_realtime_hot_post_1_user_name.setText(realTimeHotPostResponse.getRealTimeHotPostResults().get(0).getContentWriter());
                 tv_frag_home_realtime_hot_post_1_date.setText(realTimeHotPostResponse.getRealTimeHotPostResults().get(0).getWriteDay());
@@ -216,7 +386,7 @@ public class FragHome extends Fragment implements FragHomeView {
             case 100:
                 int num_of_hot_posts = hotPostResponse.getHotPostResults().size();
 
-                switch (num_of_hot_posts){
+                switch (num_of_hot_posts) {
                     case 0:
                         break;
                     case 1:
@@ -276,5 +446,567 @@ public class FragHome extends Fragment implements FragHomeView {
         }
     }
 
+    @Override
+    public void recentLectureReviewSuccess(RecentLectureReviewResponse recentLectureReviewResponse) {
+        switch (recentLectureReviewResponse.getCode()) {
+            case 100:
+                int num_of_recent_lecture_reviews = recentLectureReviewResponse.getRecentLectureReviewResults().size();
 
+                int int_rate_1 = 0;
+                int int_rate_2 = 0;
+                int int_rate_3 = 0;
+                int int_rate_4 = 0;
+
+                switch (num_of_recent_lecture_reviews) {
+
+                    case 0:
+                        break;
+                    case 1:
+                        int_rate_1 = convertDoubleRateToDiscreteInt(recentLectureReviewResponse.getRecentLectureReviewResults().get(0));
+                        switch (int_rate_1) {
+                            case 1:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_0_half);
+                                break;
+                            case 2:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_1);
+                                break;
+                            case 3:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_1_half);
+                                break;
+                            case 4:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_2);
+                                break;
+                            case 5:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_2_half);
+                                break;
+                            case 6:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_3);
+                                break;
+                            case 7:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_3_half);
+                                break;
+                            case 8:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_4);
+                                break;
+                            case 9:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_4_half);
+                                break;
+                            case 10:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_5);
+                                break;
+                        }
+                        tv_frag_home_recent_lecture_review_1_subject.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getClassName());
+                        tv_frag_home_recent_lecture_review_1_professor.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getProfessor());
+                        tv_frag_home_recent_lecture_review_1_content.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getClassCommentInf());
+                        break;
+                    case 2:
+                        int_rate_1 = convertDoubleRateToDiscreteInt(recentLectureReviewResponse.getRecentLectureReviewResults().get(0));
+                        int_rate_2 = convertDoubleRateToDiscreteInt(recentLectureReviewResponse.getRecentLectureReviewResults().get(1));
+                        switch (int_rate_1) {
+                            case 1:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_0_half);
+                                break;
+                            case 2:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_1);
+                                break;
+                            case 3:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_1_half);
+                                break;
+                            case 4:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_2);
+                                break;
+                            case 5:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_2_half);
+                                break;
+                            case 6:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_3);
+                                break;
+                            case 7:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_3_half);
+                                break;
+                            case 8:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_4);
+                                break;
+                            case 9:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_4_half);
+                                break;
+                            case 10:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_5);
+                                break;
+                        }
+                        tv_frag_home_recent_lecture_review_1_subject.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getClassName());
+                        tv_frag_home_recent_lecture_review_1_professor.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getProfessor());
+                        tv_frag_home_recent_lecture_review_1_content.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getClassCommentInf());
+
+                        switch (int_rate_2) {
+                            case 1:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_0_half);
+                                break;
+                            case 2:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_1);
+                                break;
+                            case 3:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_1_half);
+                                break;
+                            case 4:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_2);
+                                break;
+                            case 5:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_2_half);
+                                break;
+                            case 6:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_3);
+                                break;
+                            case 7:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_3_half);
+                                break;
+                            case 8:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_4);
+                                break;
+                            case 9:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_4_half);
+                                break;
+                            case 10:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_5);
+                                break;
+                        }
+                        tv_frag_home_recent_lecture_review_2_subject.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(1).getClassName());
+                        tv_frag_home_recent_lecture_review_2_professor.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(1).getProfessor());
+                        tv_frag_home_recent_lecture_review_2_content.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(1).getClassCommentInf());
+                        break;
+
+                    case 3:
+                        int_rate_1 = convertDoubleRateToDiscreteInt(recentLectureReviewResponse.getRecentLectureReviewResults().get(0));
+                        int_rate_2 = convertDoubleRateToDiscreteInt(recentLectureReviewResponse.getRecentLectureReviewResults().get(1));
+                        int_rate_3 = convertDoubleRateToDiscreteInt(recentLectureReviewResponse.getRecentLectureReviewResults().get(2));
+
+                        switch (int_rate_1) {
+                            case 1:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_0_half);
+                                break;
+                            case 2:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_1);
+                                break;
+                            case 3:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_1_half);
+                                break;
+                            case 4:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_2);
+                                break;
+                            case 5:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_2_half);
+                                break;
+                            case 6:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_3);
+                                break;
+                            case 7:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_3_half);
+                                break;
+                            case 8:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_4);
+                                break;
+                            case 9:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_4_half);
+                                break;
+                            case 10:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_5);
+                                break;
+                        }
+                        tv_frag_home_recent_lecture_review_1_subject.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getClassName());
+                        tv_frag_home_recent_lecture_review_1_professor.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getProfessor());
+                        tv_frag_home_recent_lecture_review_1_content.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getClassCommentInf());
+
+                        switch (int_rate_2) {
+                            case 1:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_0_half);
+                                break;
+                            case 2:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_1);
+                                break;
+                            case 3:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_1_half);
+                                break;
+                            case 4:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_2);
+                                break;
+                            case 5:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_2_half);
+                                break;
+                            case 6:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_3);
+                                break;
+                            case 7:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_3_half);
+                                break;
+                            case 8:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_4);
+                                break;
+                            case 9:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_4_half);
+                                break;
+                            case 10:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_5);
+                                break;
+                        }
+                        tv_frag_home_recent_lecture_review_2_subject.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(1).getClassName());
+                        tv_frag_home_recent_lecture_review_2_professor.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(1).getProfessor());
+                        tv_frag_home_recent_lecture_review_2_content.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(1).getClassCommentInf());
+
+                        switch (int_rate_3) {
+                            case 1:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_0_half);
+                                break;
+                            case 2:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_1);
+                                break;
+                            case 3:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_1_half);
+                                break;
+                            case 4:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_2);
+                                break;
+                            case 5:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_2_half);
+                                break;
+                            case 6:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_3);
+                                break;
+                            case 7:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_3_half);
+                                break;
+                            case 8:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_4);
+                                break;
+                            case 9:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_4_half);
+                                break;
+                            case 10:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_5);
+                                break;
+                        }
+                        tv_frag_home_recent_lecture_review_3_subject.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(2).getClassName());
+                        tv_frag_home_recent_lecture_review_3_professor.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(2).getProfessor());
+                        tv_frag_home_recent_lecture_review_3_content.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(2).getClassCommentInf());
+                        break;
+                    default:
+                        int_rate_1 = convertDoubleRateToDiscreteInt(recentLectureReviewResponse.getRecentLectureReviewResults().get(0));
+                        int_rate_2 = convertDoubleRateToDiscreteInt(recentLectureReviewResponse.getRecentLectureReviewResults().get(1));
+                        int_rate_3 = convertDoubleRateToDiscreteInt(recentLectureReviewResponse.getRecentLectureReviewResults().get(2));
+                        int_rate_4 = convertDoubleRateToDiscreteInt(recentLectureReviewResponse.getRecentLectureReviewResults().get(3));
+
+                        switch (int_rate_1) {
+                            case 1:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_0_half);
+                                break;
+                            case 2:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_1);
+                                break;
+                            case 3:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_1_half);
+                                break;
+                            case 4:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_2);
+                                break;
+                            case 5:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_2_half);
+                                break;
+                            case 6:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_3);
+                                break;
+                            case 7:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_3_half);
+                                break;
+                            case 8:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_4);
+                                break;
+                            case 9:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_4_half);
+                                break;
+                            case 10:
+                                iv_frag_home_recent_lecture_review_1_rank.setImageResource(R.drawable.star_rate_5);
+                                break;
+                        }
+                        tv_frag_home_recent_lecture_review_1_subject.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getClassName());
+                        tv_frag_home_recent_lecture_review_1_professor.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getProfessor());
+                        tv_frag_home_recent_lecture_review_1_content.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(0).getClassCommentInf());
+
+                        switch (int_rate_2) {
+                            case 1:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_0_half);
+                                break;
+                            case 2:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_1);
+                                break;
+                            case 3:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_1_half);
+                                break;
+                            case 4:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_2);
+                                break;
+                            case 5:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_2_half);
+                                break;
+                            case 6:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_3);
+                                break;
+                            case 7:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_3_half);
+                                break;
+                            case 8:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_4);
+                                break;
+                            case 9:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_4_half);
+                                break;
+                            case 10:
+                                iv_frag_home_recent_lecture_review_2_rank.setImageResource(R.drawable.star_rate_5);
+                                break;
+                        }
+                        tv_frag_home_recent_lecture_review_2_subject.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(1).getClassName());
+                        tv_frag_home_recent_lecture_review_2_professor.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(1).getProfessor());
+                        tv_frag_home_recent_lecture_review_2_content.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(1).getClassCommentInf());
+
+                        switch (int_rate_3) {
+                            case 1:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_0_half);
+                                break;
+                            case 2:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_1);
+                                break;
+                            case 3:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_1_half);
+                                break;
+                            case 4:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_2);
+                                break;
+                            case 5:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_2_half);
+                                break;
+                            case 6:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_3);
+                                break;
+                            case 7:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_3_half);
+                                break;
+                            case 8:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_4);
+                                break;
+                            case 9:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_4_half);
+                                break;
+                            case 10:
+                                iv_frag_home_recent_lecture_review_3_rank.setImageResource(R.drawable.star_rate_5);
+                                break;
+                        }
+                        tv_frag_home_recent_lecture_review_3_subject.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(2).getClassName());
+                        tv_frag_home_recent_lecture_review_3_professor.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(2).getProfessor());
+                        tv_frag_home_recent_lecture_review_3_content.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(2).getClassCommentInf());
+
+                        switch (int_rate_4) {
+                            case 1:
+                                iv_frag_home_recent_lecture_review_4_rank.setImageResource(R.drawable.star_rate_0_half);
+                                break;
+                            case 2:
+                                iv_frag_home_recent_lecture_review_4_rank.setImageResource(R.drawable.star_rate_1);
+                                break;
+                            case 3:
+                                iv_frag_home_recent_lecture_review_4_rank.setImageResource(R.drawable.star_rate_1_half);
+                                break;
+                            case 4:
+                                iv_frag_home_recent_lecture_review_4_rank.setImageResource(R.drawable.star_rate_2);
+                                break;
+                            case 5:
+                                iv_frag_home_recent_lecture_review_4_rank.setImageResource(R.drawable.star_rate_2_half);
+                                break;
+                            case 6:
+                                iv_frag_home_recent_lecture_review_4_rank.setImageResource(R.drawable.star_rate_3);
+                                break;
+                            case 7:
+                                iv_frag_home_recent_lecture_review_4_rank.setImageResource(R.drawable.star_rate_3_half);
+                                break;
+                            case 8:
+                                iv_frag_home_recent_lecture_review_4_rank.setImageResource(R.drawable.star_rate_4);
+                                break;
+                            case 9:
+                                iv_frag_home_recent_lecture_review_4_rank.setImageResource(R.drawable.star_rate_4_half);
+                                break;
+                            case 10:
+                                iv_frag_home_recent_lecture_review_4_rank.setImageResource(R.drawable.star_rate_5);
+                                break;
+                        }
+                        tv_frag_home_recent_lecture_review_4_subject.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(3).getClassName());
+                        tv_frag_home_recent_lecture_review_4_professor.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(3).getProfessor());
+                        tv_frag_home_recent_lecture_review_4_content.setText(recentLectureReviewResponse.getRecentLectureReviewResults().get(3).getClassCommentInf());
+                        break;
+                }
+
+
+        }
+
+
+    }
+
+    public void linkIconsToWebSites() {
+        /**
+         * frag_home 상단의 6개 아이콘에 링크 걸어주기
+         * */
+        linear_layout_frag_home_univ_homepage = viewGroup.findViewById(R.id.linear_layout_frag_home_univ_homepage);
+        linear_layout_frag_home_univ_homepage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://mportal.ajou.ac.kr/main.do"));
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_shuttle_bus = viewGroup.findViewById(R.id.linear_layout_frag_home_shuttle_bus);
+        linear_layout_frag_home_shuttle_bus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ajou.ac.kr/main/life/bus01.jsp"));
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_notificaition = viewGroup.findViewById(R.id.linear_layout_frag_home_notificaition);
+        linear_layout_frag_home_notificaition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ajou.ac.kr/main/ajou/notice.jsp"));
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_schedule = viewGroup.findViewById(R.id.linear_layout_frag_home_schedule);
+        linear_layout_frag_home_schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.ajou.ac.kr/main/life/schedule_haksa.jsp"));
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_library = viewGroup.findViewById(R.id.linear_layout_frag_home_library);
+        linear_layout_frag_home_library.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://library.ajou.ac.kr/#/"));
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_web_mail = viewGroup.findViewById(R.id.linear_layout_frag_home_web_mail);
+        linear_layout_frag_home_web_mail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ajou.ac.kr/main/index.jsp"));
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void viewBindLinearLayout() {
+        /**
+         * 클릭하는 게시물에 따라서, 무엇을 클릭하였는지를 같이 putExtra로 넘겨준다!!
+         * */
+        linear_layout_frag_home_realtime_hot_post_1 = viewGroup.findViewById(R.id.linear_layout_frag_home_realtime_hot_post_1);
+        linear_layout_frag_home_realtime_hot_post_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "realtime_hot_post_1");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_realtime_hot_post_2 = viewGroup.findViewById(R.id.linear_layout_frag_home_realtime_hot_post_2);
+        linear_layout_frag_home_realtime_hot_post_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "realtime_hot_post_2");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_hot_post_1 = viewGroup.findViewById(R.id.linear_layout_frag_home_hot_post_1);
+        linear_layout_frag_home_hot_post_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "hot_post_1");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_hot_post_2 = viewGroup.findViewById(R.id.linear_layout_frag_home_hot_post_2);
+        linear_layout_frag_home_hot_post_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "hot_post_2");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_hot_post_3 = viewGroup.findViewById(R.id.linear_layout_frag_home_hot_post_3);
+        linear_layout_frag_home_hot_post_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "hot_post_3");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_hot_post_4 = viewGroup.findViewById(R.id.linear_layout_frag_home_hot_post_4);
+        linear_layout_frag_home_hot_post_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "hot_post_4");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_recent_lecture_review_1 = viewGroup.findViewById(R.id.linear_layout_frag_home_recent_lecture_review_1);
+        linear_layout_frag_home_recent_lecture_review_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), LectureReviewInSubjectActivity.class);
+                intent.putExtra("clicked", "review_1");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_recent_lecture_review_2 = viewGroup.findViewById(R.id.linear_layout_frag_home_recent_lecture_review_2);
+        linear_layout_frag_home_recent_lecture_review_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), LectureReviewInSubjectActivity.class);
+                intent.putExtra("clicked", "review_2");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_recent_lecture_review_3 = viewGroup.findViewById(R.id.linear_layout_frag_home_recent_lecture_review_3);
+        linear_layout_frag_home_recent_lecture_review_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), LectureReviewInSubjectActivity.class);
+                intent.putExtra("clicked", "review_3");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_recent_lecture_review_4 = viewGroup.findViewById(R.id.linear_layout_frag_home_recent_lecture_review_4);
+        linear_layout_frag_home_recent_lecture_review_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), LectureReviewInSubjectActivity.class);
+                intent.putExtra("clicked", "review_4");
+                startActivity(intent);
+            }
+        });
+    }
 }

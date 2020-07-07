@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.Boards.models;
 
-public class FreeBoardResult {
+public class BoardResult {
 
     int contentIdx;
     String contentWriter;
@@ -13,7 +13,7 @@ public class FreeBoardResult {
     int countComment;
     int countImage;
 
-    public FreeBoardResult(int contentIdx, String contentWriter, String contentTitle, String contentInf, String noticeName, String contentThumbnailURL, String writeDay, int countLike, int countComment, int countImage) {
+    public BoardResult(int contentIdx, String contentWriter, String contentTitle, String contentInf, String noticeName, String contentThumbnailURL, String writeDay, int countLike, int countComment, int countImage) {
         this.contentIdx = contentIdx;
         this.contentWriter = contentWriter;
         this.contentTitle = contentTitle;

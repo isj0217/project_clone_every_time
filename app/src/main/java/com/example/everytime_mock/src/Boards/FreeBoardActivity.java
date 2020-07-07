@@ -18,7 +18,7 @@ import com.example.everytime_mock.src.Boards.models.PostItem;
 
 import java.util.ArrayList;
 
-public class BoardActivity extends BaseActivity implements BoardActivityView, PopupMenu.OnMenuItemClickListener {
+public class FreeBoardActivity extends BaseActivity implements BoardActivityView, PopupMenu.OnMenuItemClickListener {
 
     private ArrayList<PostItem> m_post_item_list;
     private BoardAdapter free_board_adapter;
@@ -66,7 +66,7 @@ public class BoardActivity extends BaseActivity implements BoardActivityView, Po
     }
 
     @Override
-    public void freeBoardSuccess(BoardResponse boardResponse) {
+    public void boardSuccess(BoardResponse boardResponse) {
         hideProgressDialog();
 
         switch (boardResponse.getCode()) {
@@ -74,8 +74,8 @@ public class BoardActivity extends BaseActivity implements BoardActivityView, Po
                 /**
                  * PostItem 형식의 ArrayList에 모두 넣어두고 어댑터를 이용해서 하나하나 레이아웃에 갖다 붙이자!!
                  * */
-                int num_of_posts_in_free_board = boardResponse.getBoardResults().size();
-                for (int i = 0; i < num_of_posts_in_free_board; i++){
+                int num_of_posts_in_alumni_board = boardResponse.getBoardResults().size();
+                for (int i = 0; i < num_of_posts_in_alumni_board; i++){
                     PostItem postItem = new PostItem();
 
                     postItem.setTitle(boardResponse.getBoardResults().get(i).getContentTitle());
@@ -90,6 +90,7 @@ public class BoardActivity extends BaseActivity implements BoardActivityView, Po
                 free_board_adapter.notifyDataSetChanged();
 
                 break;
+
         }
     }
 
@@ -117,7 +118,7 @@ public class BoardActivity extends BaseActivity implements BoardActivityView, Po
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.write_post:
-                Intent intent = new Intent(BoardActivity.this, WritingActivity.class);
+                Intent intent = new Intent(FreeBoardActivity.this, WritingActivity.class);
                 intent.putExtra("boardName", 1);
                 startActivity(intent);
                 return true;

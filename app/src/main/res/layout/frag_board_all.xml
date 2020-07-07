@@ -191,23 +191,68 @@
                         android:src="@drawable/icon_pin" />
 
                     <LinearLayout
-                        android:layout_marginStart="20dp"
                         android:id="@+id/linear_layout_frag_board_all_go_to_free_board"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_marginStart="20dp"
                         android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         android:paddingTop="12dp"
                         android:paddingBottom="11dp">
 
                         <TextView
-                            android:clickable="false"
-                            android:focusable="false"
-                            android:duplicateParentState="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:duplicateParentState="true"
+                            android:focusable="false"
                             android:onClick="customOnClick"
                             android:text="자유게시판"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginStart="5dp"
+                            android:src="@drawable/new_red" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--                비밀게시판-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/icon_pin" />
+
+                    <LinearLayout
+                        android:id="@+id/linear_layout_frag_board_all_go_to_secret_board"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="11dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:duplicateParentState="true"
+                            android:focusable="false"
+                            android:onClick="customOnClick"
+                            android:text="비밀게시판"
                             android:textColor="@color/colorBlack"
                             android:textSize="16sp" />
 
@@ -224,8 +269,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="11dp"
+
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingStart="8dp"
@@ -236,51 +280,33 @@
                         android:layout_height="25dp"
                         android:src="@drawable/icon_pin" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/linear_layout_frag_board_all_go_to_alumni_board"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="졸업생게시판"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="16sp" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="11dp">
 
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginStart="5dp"
-                        android:src="@drawable/new_red" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:duplicateParentState="true"
+                            android:focusable="false"
+                            android:onClick="customOnClick"
+                            android:text="졸업생게시판"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
 
-                </LinearLayout>
-
-                <!--                비밀게시판-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="11dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp">
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/icon_pin" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:text="비밀게시판"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="16sp" />
-
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginStart="5dp"
-                        android:src="@drawable/new_red" />
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginStart="5dp"
+                            android:src="@drawable/new_red" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -288,8 +314,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="11dp"
+
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingStart="8dp"
@@ -300,19 +325,33 @@
                         android:layout_height="25dp"
                         android:src="@drawable/icon_pin" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/linear_layout_frag_board_all_go_to_freshmen_board"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="새내기게시판"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="16sp" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="11dp">
 
-                    <ImageView
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginStart="5dp"
-                        android:src="@drawable/new_red" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:duplicateParentState="true"
+                            android:focusable="false"
+                            android:onClick="customOnClick"
+                            android:text="새내기게시판"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginStart="5dp"
+                            android:src="@drawable/new_red" />
+                    </LinearLayout>
 
                 </LinearLayout>
 

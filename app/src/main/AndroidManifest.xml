@@ -28,13 +28,16 @@
         <activity android:name=".src.SignUp.SignUpAgreementActivity" />
         <activity android:name=".src.SignUp.SignUpInputFormActivity" />
         <activity android:name=".src.Main.MainActivity" />
-        <activity android:name=".src.Main.WritingActivity" />
-        <activity android:name=".src.Main.InPostActivity" />
+        <activity android:name=".src.Boards.WritingActivity" />
+        <activity android:name=".src.Boards.InPostActivity" />
         <activity android:name=".src.Main.frag_home.my_page.MyPageActivity" />
         <activity android:name=".src.Boards.FreeBoardActivity" />
         <activity android:name=".src.Boards.SecretBoardActivity" />
         <activity android:name=".src.Boards.AlumniBoardActivity" />
         <activity android:name=".src.Boards.FreshmenBoardActivity" />
+        <activity android:name=".src.Boards.HotBoardActivity" />
+        <activity android:name=".src.Boards.RecentLectureReviewBoardActivity" />
+        <activity android:name=".src.Boards.LectureReviewInSubjectActivity" />
     </application>
 
 </manifest>

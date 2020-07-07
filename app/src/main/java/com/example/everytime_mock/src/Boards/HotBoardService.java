@@ -1,7 +1,9 @@
 package com.example.everytime_mock.src.Boards;
 
+import android.util.Log;
+
 import com.example.everytime_mock.src.Boards.interfaces.BoardActivityView;
-import com.example.everytime_mock.src.Boards.interfaces.SecretBoardRetrofitInterface;
+import com.example.everytime_mock.src.Boards.interfaces.HotBoardRetrofitInterface;
 import com.example.everytime_mock.src.Boards.models.BoardResponse;
 
 import retrofit2.Call;
@@ -11,28 +13,33 @@ import retrofit2.Response;
 import static com.example.everytime_mock.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
 
-class SecretBoardService {
+class HotBoardService {
     private final BoardActivityView mBoardActivityView;
 
-    SecretBoardService(final BoardActivityView boardActivityView) {
+    private static final String TAG = "HotBoardService";
+
+    HotBoardService(final BoardActivityView boardActivityView) {
         this.mBoardActivityView = boardActivityView;
     }
 
-    void getSecretBoard() {
-        final SecretBoardRetrofitInterface secretBoardRetrofitInterface = getRetrofit().create(SecretBoardRetrofitInterface.class);
-        secretBoardRetrofitInterface.getSecretBoard(X_ACCESS_TOKEN).enqueue(new Callback<BoardResponse>() {
+    void getHotBoard() {
+        final HotBoardRetrofitInterface hotBoardRetrofitInterface = getRetrofit().create(HotBoardRetrofitInterface.class);
+        hotBoardRetrofitInterface.getHotBoard(X_ACCESS_TOKEN, "hot-content").enqueue(new Callback<BoardResponse>() {
             @Override
             public void onResponse(Call<BoardResponse> call, Response<BoardResponse> response) {
                 final BoardResponse boardResponse = response.body();
                 if (boardResponse == null) {
+                    Log.d(TAG, "onResponse: onResponse 인데 실패");
                     mBoardActivityView.validateFailure(null);
                     return;
                 }
+                Log.d(TAG, "onResponse: 성공");
                 mBoardActivityView.boardSuccess(boardResponse);
             }
 
             @Override
             public void onFailure(Call<BoardResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: 통신 실패");
                 mBoardActivityView.validateFailure(null);
             }
         });

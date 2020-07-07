@@ -2,6 +2,7 @@ package com.example.everytime_mock.src.Boards;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
@@ -18,41 +19,43 @@ import com.example.everytime_mock.src.Boards.models.PostItem;
 
 import java.util.ArrayList;
 
-public class FreeBoardActivity extends BaseActivity implements BoardActivityView, PopupMenu.OnMenuItemClickListener {
+public class HotBoardActivity extends BaseActivity implements BoardActivityView, PopupMenu.OnMenuItemClickListener {
 
     private ArrayList<PostItem> m_post_item_list;
-    private BoardAdapter free_board_adapter;
-    private RecyclerView rv_free_board;
+    private BoardAdapter hot_board_adapter;
+    private RecyclerView rv_hot_board;
     private LinearLayoutManager linear_layout_manager;
+
+    private static final String TAG = "HotBoardActivity";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_free_board);
+        setContentView(R.layout.activity_hot_board);
 
         m_post_item_list = new ArrayList<>();
 
-        free_board_adapter = new BoardAdapter(m_post_item_list);
-        rv_free_board = findViewById(R.id.rv_free_board_post_list);
+        hot_board_adapter = new BoardAdapter(m_post_item_list);
+        rv_hot_board = findViewById(R.id.rv_hot_board_post_list);
 
         linear_layout_manager = new LinearLayoutManager(getApplicationContext());
-        rv_free_board.setLayoutManager(linear_layout_manager);
+        rv_hot_board.setLayoutManager(linear_layout_manager);
 
         m_post_item_list = new ArrayList<>();
-        free_board_adapter = new BoardAdapter(m_post_item_list);
-        rv_free_board.setAdapter(free_board_adapter);
+        hot_board_adapter = new BoardAdapter(m_post_item_list);
+        rv_hot_board.setAdapter(hot_board_adapter);
 
-        tryGetFreeBoard();
+        tryGetHotBoard();
 
 
     }
 
-    private void tryGetFreeBoard() {
+    private void tryGetHotBoard() {
         showProgressDialog();
 
-        final FreeBoardService freeBoardService = new FreeBoardService(this);
-        freeBoardService.getFreeBoard();
+        final HotBoardService hotBoardService = new HotBoardService(this);
+        hotBoardService.getHotBoard();
     }
 
     @Override
@@ -69,13 +72,20 @@ public class FreeBoardActivity extends BaseActivity implements BoardActivityView
     public void boardSuccess(BoardResponse boardResponse) {
         hideProgressDialog();
 
+        Log.d(TAG, "boardSuccess: code: " + boardResponse.getCode());
+
         switch (boardResponse.getCode()) {
-            case 100:
+
+            case 113:
                 /**
                  * PostItem 형식의 ArrayList에 모두 넣어두고 어댑터를 이용해서 하나하나 레이아웃에 갖다 붙이자!!
                  * */
-                int num_of_posts_in_alumni_board = boardResponse.getBoardResults().size();
-                for (int i = 0; i < num_of_posts_in_alumni_board; i++){
+
+//                System.out.println(boardResponse.getBoardResults().get(0).getContentTitle());
+
+                int num_of_posts_in_hot_board = boardResponse.getBoardResults().size();
+
+                for (int i = 0; i < num_of_posts_in_hot_board; i++){
                     PostItem postItem = new PostItem();
 
                     postItem.setTitle(boardResponse.getBoardResults().get(i).getContentTitle());
@@ -87,7 +97,7 @@ public class FreeBoardActivity extends BaseActivity implements BoardActivityView
 
                     m_post_item_list.add(postItem);
                 }
-                free_board_adapter.notifyDataSetChanged();
+                hot_board_adapter.notifyDataSetChanged();
 
                 break;
 
@@ -118,7 +128,7 @@ public class FreeBoardActivity extends BaseActivity implements BoardActivityView
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.write_post:
-                Intent intent = new Intent(FreeBoardActivity.this, WritingActivity.class);
+                Intent intent = new Intent(HotBoardActivity.this, WritingActivity.class);
                 intent.putExtra("boardName", 1);
                 startActivity(intent);
                 return true;

@@ -1,38 +1,20 @@
 package com.example.everytime_mock.src.Main.frag_home.models;
 
-public class RecentLectureReviewResult {
+public class AdvertisementResult {
 
-    String classCommentIdx;
-    String className;
-    String professor;
-    String classCommentInf;
-    double classStar;
+    int adIdx;
+    String adThumbnaillURL;
 
-    public RecentLectureReviewResult(String classCommentIdx, String className, String professor, String classCommentInf, double classStar) {
-        this.classCommentIdx = classCommentIdx;
-        this.className = className;
-        this.professor = professor;
-        this.classCommentInf = classCommentInf;
-        this.classStar = classStar;
+    public AdvertisementResult(int adIdx, String adThumbnaillURL) {
+        this.adIdx = adIdx;
+        this.adThumbnaillURL = adThumbnaillURL;
     }
 
-    public String getClassCommentIdx() {
-        return classCommentIdx;
+    public int getAdIdx() {
+        return adIdx;
     }
 
-    public String getClassName() {
-        return className;
-    }
-
-    public String getProfessor() {
-        return professor;
-    }
-
-    public String getClassCommentInf() {
-        return classCommentInf;
-    }
-
-    public double getClassStar() {
-        return classStar;
+    public String getAdThumbnaillURL() {
+        return adThumbnaillURL;
     }
 }

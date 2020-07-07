@@ -1,38 +1,38 @@
 package com.example.everytime_mock.src.Main.frag_home.models;
 
-public class HotPostResult {
+public class RecentLectureReviewResult {
 
-    String contentIdx;
-    String contentTitle;
-    String writeDay;
-    String countLike;
-    String countComment;
+    String classCommentIdx;
+    String className;
+    String professor;
+    String classCommentInf;
+    double classStar;
 
-    public HotPostResult(String contentIdx, String contentTitle, String writeDay, String countLike, String countComment) {
-        this.contentIdx = contentIdx;
-        this.contentTitle = contentTitle;
-        this.writeDay = writeDay;
-        this.countLike = countLike;
-        this.countComment = countComment;
+    public RecentLectureReviewResult(String classCommentIdx, String className, String professor, String classCommentInf, double classStar) {
+        this.classCommentIdx = classCommentIdx;
+        this.className = className;
+        this.professor = professor;
+        this.classCommentInf = classCommentInf;
+        this.classStar = classStar;
     }
 
-    public String getContentIdx() {
-        return contentIdx;
+    public String getClassCommentIdx() {
+        return classCommentIdx;
     }
 
-    public String getContentTitle() {
-        return contentTitle;
+    public String getClassName() {
+        return className;
     }
 
-    public String getWriteDay() {
-        return writeDay;
+    public String getProfessor() {
+        return professor;
     }
 
-    public String getCountLike() {
-        return countLike;
+    public String getClassCommentInf() {
+        return classCommentInf;
     }
 
-    public String getCountComment() {
-        return countComment;
+    public double getClassStar() {
+        return classStar;
     }
 }

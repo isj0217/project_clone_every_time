@@ -11,45 +11,44 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.Boards.interfaces.AlumniBoardActivityView;
-import com.example.everytime_mock.src.Boards.models.AlumniBoardResponse;
+import com.example.everytime_mock.src.Boards.interfaces.BoardActivityView;
 import com.example.everytime_mock.src.Boards.models.BoardAdapter;
+import com.example.everytime_mock.src.Boards.models.BoardResponse;
 import com.example.everytime_mock.src.Boards.models.PostItem;
-import com.example.everytime_mock.src.Boards.models.SecretBoardResponse;
 
 import java.util.ArrayList;
 
-public class AlumniBoardActivity extends BaseActivity implements AlumniBoardActivityView, PopupMenu.OnMenuItemClickListener {
+public class FreshmenBoardActivity extends BaseActivity implements BoardActivityView, PopupMenu.OnMenuItemClickListener {
 
     private ArrayList<PostItem> m_post_item_list;
-    private BoardAdapter alumni_board_adapter;
-    private RecyclerView rv_alumni_board;
+    private BoardAdapter freshmen_board_adapter;
+    private RecyclerView rv_freshmen_board;
     private LinearLayoutManager linear_layout_manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alumni_board);
+        setContentView(R.layout.activity_freshmen_board);
 
-        rv_alumni_board = findViewById(R.id.rv_alumni_board_post_list);
+        rv_freshmen_board = findViewById(R.id.rv_freshmen_board_post_list);
 
         linear_layout_manager = new LinearLayoutManager(getApplicationContext());
-        rv_alumni_board.setLayoutManager(linear_layout_manager);
+        rv_freshmen_board.setLayoutManager(linear_layout_manager);
 
         m_post_item_list = new ArrayList<>();
-        alumni_board_adapter = new BoardAdapter(m_post_item_list);
-        rv_alumni_board.setAdapter(alumni_board_adapter);
+        freshmen_board_adapter = new BoardAdapter(m_post_item_list);
+        rv_freshmen_board.setAdapter(freshmen_board_adapter);
 
-        tryGetAluniBoard();
+        tryGetFreshmenBoard();
 
 
     }
 
-    private void tryGetAluniBoard() {
+    private void tryGetFreshmenBoard() {
         showProgressDialog();
 
-        final AlumniBoardService alumniBoardService = new AlumniBoardService(this);
-        alumniBoardService.getAlumniBoard();
+        final FreshmenBoardService freshmenBoardService = new FreshmenBoardService(this);
+        freshmenBoardService.getFreshmenBoard();
     }
 
     @Override
@@ -63,41 +62,41 @@ public class AlumniBoardActivity extends BaseActivity implements AlumniBoardActi
     }
 
     @Override
-    public void alumniBoardSuccess(AlumniBoardResponse alumniBoardResponse) {
+    public void boardSuccess(BoardResponse boardResponse) {
         hideProgressDialog();
 
-        switch (alumniBoardResponse.getCode()) {
+        switch (boardResponse.getCode()) {
             case 100:
                 /**
                  * PostItem 형식의 ArrayList에 모두 넣어두고 어댑터를 이용해서 하나하나 레이아웃에 갖다 붙이자!!
                  * */
-                int num_of_posts_in_alumni_board = alumniBoardResponse.getAlumniBoardResults().size();
+                int num_of_posts_in_alumni_board = boardResponse.getBoardResults().size();
                 for (int i = 0; i < num_of_posts_in_alumni_board; i++){
                     PostItem postItem = new PostItem();
 
-                    postItem.setTitle(alumniBoardResponse.getAlumniBoardResults().get(i).getContentTitle());
-                    postItem.setContent(alumniBoardResponse.getAlumniBoardResults().get(i).getContentInf());
-                    postItem.setTime(alumniBoardResponse.getAlumniBoardResults().get(i).getWriteDay());
-                    postItem.setWriter(alumniBoardResponse.getAlumniBoardResults().get(i).getContentWriter());
-                    postItem.setLike_num(alumniBoardResponse.getAlumniBoardResults().get(i).getCountLike());
-                    postItem.setComment_num(alumniBoardResponse.getAlumniBoardResults().get(i).getCountComment());
+                    postItem.setTitle(boardResponse.getBoardResults().get(i).getContentTitle());
+                    postItem.setContent(boardResponse.getBoardResults().get(i).getContentInf());
+                    postItem.setTime(boardResponse.getBoardResults().get(i).getWriteDay());
+                    postItem.setWriter(boardResponse.getBoardResults().get(i).getContentWriter());
+                    postItem.setLike_num(boardResponse.getBoardResults().get(i).getCountLike());
+                    postItem.setComment_num(boardResponse.getBoardResults().get(i).getCountComment());
 
                     m_post_item_list.add(postItem);
                 }
-                alumni_board_adapter.notifyDataSetChanged();
+                freshmen_board_adapter.notifyDataSetChanged();
 
                 break;
 
         }
-
     }
+
 
     public void customOnClick(View view) {
         switch (view.getId()){
-            case R.id.iv_alumni_board_go_back:
+            case R.id.iv_freshmen_board_go_back:
                 onBackPressed();
                 break;
-            case R.id.iv_alumni_board_more:
+            case R.id.iv_freshmen_board_more:
                 showPopUp(view);
                 break;
         }
@@ -116,8 +115,8 @@ public class AlumniBoardActivity extends BaseActivity implements AlumniBoardActi
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.write_post:
-                Intent intent = new Intent(AlumniBoardActivity.this, WritingActivity.class);
-                intent.putExtra("boardName", 3);
+                Intent intent = new Intent(FreshmenBoardActivity.this, WritingActivity.class);
+                intent.putExtra("boardName", 4);
                 startActivity(intent);
                 return true;
             case R.id.remove_from_favorite:

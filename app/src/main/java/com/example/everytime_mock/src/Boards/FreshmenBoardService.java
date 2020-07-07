@@ -1,11 +1,8 @@
 package com.example.everytime_mock.src.Boards;
 
-import com.example.everytime_mock.src.Boards.interfaces.AlumniBoardActivityView;
-import com.example.everytime_mock.src.Boards.interfaces.AlumniBoardRetrofitInterface;
-import com.example.everytime_mock.src.Boards.interfaces.SecretBoardActivityView;
-import com.example.everytime_mock.src.Boards.interfaces.SecretBoardRetrofitInterface;
-import com.example.everytime_mock.src.Boards.models.AlumniBoardResponse;
-import com.example.everytime_mock.src.Boards.models.SecretBoardResponse;
+import com.example.everytime_mock.src.Boards.interfaces.BoardActivityView;
+import com.example.everytime_mock.src.Boards.interfaces.FreshmenBoardRetrofitInterface;
+import com.example.everytime_mock.src.Boards.models.BoardResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,29 +11,29 @@ import retrofit2.Response;
 import static com.example.everytime_mock.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
 
-class AlumniBoardService {
-    private final AlumniBoardActivityView mAlumniBoardActivityView;
+class FreshmenBoardService {
+    private final BoardActivityView mBoardActivityView;
 
-    AlumniBoardService(final AlumniBoardActivityView alumniBoardActivityView) {
-        this.mAlumniBoardActivityView = alumniBoardActivityView;
+    FreshmenBoardService(final BoardActivityView boardActivityView) {
+        this.mBoardActivityView = boardActivityView;
     }
 
-    void getAlumniBoard() {
-        final AlumniBoardRetrofitInterface alumniBoardRetrofitInterface = getRetrofit().create(AlumniBoardRetrofitInterface.class);
-        alumniBoardRetrofitInterface.getAlumniBoard(X_ACCESS_TOKEN).enqueue(new Callback<AlumniBoardResponse>() {
+    void getFreshmenBoard() {
+        final FreshmenBoardRetrofitInterface freshmenBoardRetrofitInterface = getRetrofit().create(FreshmenBoardRetrofitInterface.class);
+        freshmenBoardRetrofitInterface.getFreshmenBoard(X_ACCESS_TOKEN).enqueue(new Callback<BoardResponse>() {
             @Override
-            public void onResponse(Call<AlumniBoardResponse> call, Response<AlumniBoardResponse> response) {
-                final AlumniBoardResponse alumniBoardResponse = response.body();
-                if (alumniBoardResponse == null) {
-                    mAlumniBoardActivityView.validateFailure(null);
+            public void onResponse(Call<BoardResponse> call, Response<BoardResponse> response) {
+                final BoardResponse boardResponse = response.body();
+                if (boardResponse == null) {
+                    mBoardActivityView.validateFailure(null);
                     return;
                 }
-                mAlumniBoardActivityView.alumniBoardSuccess(alumniBoardResponse);
+                mBoardActivityView.boardSuccess(boardResponse);
             }
 
             @Override
-            public void onFailure(Call<AlumniBoardResponse> call, Throwable t) {
-                mAlumniBoardActivityView.validateFailure(null);
+            public void onFailure(Call<BoardResponse> call, Throwable t) {
+                mBoardActivityView.validateFailure(null);
             }
         });
     }

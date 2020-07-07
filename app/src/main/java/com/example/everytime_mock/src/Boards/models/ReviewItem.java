@@ -1,59 +1,68 @@
 package com.example.everytime_mock.src.Boards.models;
 
-public class PostItem {
+public class ReviewItem {
 
-    private String title;
-    private String content;
-    private String time;
-    private String writer;
-    private int like_num;
-    private int comment_num;
+    private int classCommentIdx;
+    private String className;
+    private String professor;
+    private String classCommentInf;
+    private String classStudent;
+    private double classStar;
+    private int classCommentLike;
 
-    public String getTitle() {
-        return title;
+    public int getClassCommentIdx() {
+        return classCommentIdx;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setClassCommentIdx(int classCommentIdx) {
+        this.classCommentIdx = classCommentIdx;
     }
 
-    public String getContent() {
-        return content;
+    public String getClassName() {
+        return className;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setClassName(String className) {
+        this.className = className;
     }
 
-    public String getTime() {
-        return time;
+    public String getProfessor() {
+        return professor;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setProfessor(String professor) {
+        this.professor = professor;
     }
 
-    public String getWriter() {
-        return writer;
+    public String getClassCommentInf() {
+        return classCommentInf;
     }
 
-    public void setWriter(String writer) {
-        this.writer = writer;
+    public void setClassCommentInf(String classCommentInf) {
+        this.classCommentInf = classCommentInf;
     }
 
-    public int getLike_num() {
-        return like_num;
+    public String getClassStudent() {
+        return classStudent;
     }
 
-    public void setLike_num(int like_num) {
-        this.like_num = like_num;
+    public void setClassStudent(String classStudent) {
+        this.classStudent = classStudent;
     }
 
-    public int getComment_num() {
-        return comment_num;
+    public double getClassStar() {
+        return classStar;
     }
 
-    public void setComment_num(int comment_num) {
-        this.comment_num = comment_num;
+    public void setClassStar(double classStar) {
+        this.classStar = classStar;
+    }
+
+    public int getClassCommentLike() {
+        return classCommentLike;
+    }
+
+    public void setClassCommentLike(int classCommentLike) {
+        this.classCommentLike = classCommentLike;
     }
 }

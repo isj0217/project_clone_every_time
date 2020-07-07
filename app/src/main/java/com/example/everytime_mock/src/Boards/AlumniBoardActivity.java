@@ -11,44 +11,44 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.Boards.interfaces.SecretBoardActivityView;
+import com.example.everytime_mock.src.Boards.interfaces.BoardActivityView;
 import com.example.everytime_mock.src.Boards.models.BoardAdapter;
+import com.example.everytime_mock.src.Boards.models.BoardResponse;
 import com.example.everytime_mock.src.Boards.models.PostItem;
-import com.example.everytime_mock.src.Boards.models.SecretBoardResponse;
 
 import java.util.ArrayList;
 
-public class AlumniBoardActivity extends BaseActivity implements SecretBoardActivityView, PopupMenu.OnMenuItemClickListener {
+public class AlumniBoardActivity extends BaseActivity implements BoardActivityView, PopupMenu.OnMenuItemClickListener {
 
     private ArrayList<PostItem> m_post_item_list;
-    private BoardAdapter secret_board_adapter;
-    private RecyclerView rv_secret_board;
+    private BoardAdapter alumni_board_adapter;
+    private RecyclerView rv_alumni_board;
     private LinearLayoutManager linear_layout_manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_secret_board);
+        setContentView(R.layout.activity_alumni_board);
 
-        rv_secret_board = findViewById(R.id.rv_secret_board_post_list);
+        rv_alumni_board = findViewById(R.id.rv_alumni_board_post_list);
 
         linear_layout_manager = new LinearLayoutManager(getApplicationContext());
-        rv_secret_board.setLayoutManager(linear_layout_manager);
+        rv_alumni_board.setLayoutManager(linear_layout_manager);
 
         m_post_item_list = new ArrayList<>();
-        secret_board_adapter = new BoardAdapter(m_post_item_list);
-        rv_secret_board.setAdapter(secret_board_adapter);
+        alumni_board_adapter = new BoardAdapter(m_post_item_list);
+        rv_alumni_board.setAdapter(alumni_board_adapter);
 
-        tryGetSecretBoard();
+        tryGetAluniBoard();
 
 
     }
 
-    private void tryGetSecretBoard() {
+    private void tryGetAluniBoard() {
         showProgressDialog();
 
-        final SecretBoardService secretBoardService = new SecretBoardService(this);
-        secretBoardService.getSecretBoard();
+        final AlumniBoardService alumniBoardService = new AlumniBoardService(this);
+        alumniBoardService.getAlumniBoard();
     }
 
     @Override
@@ -62,46 +62,34 @@ public class AlumniBoardActivity extends BaseActivity implements SecretBoardActi
     }
 
     @Override
-    public void secretBoardSuccess(SecretBoardResponse secretBoardResponse) {
+    public void boardSuccess(BoardResponse boardResponse) {
         hideProgressDialog();
 
-        switch (secretBoardResponse.getCode()) {
+        switch (boardResponse.getCode()) {
             case 100:
                 /**
                  * PostItem 형식의 ArrayList에 모두 넣어두고 어댑터를 이용해서 하나하나 레이아웃에 갖다 붙이자!!
                  * */
-                int num_of_posts_in_secret_board = secretBoardResponse.getSecretBoardResults().size();
-                for (int i = 0; i < num_of_posts_in_secret_board; i++){
+                int num_of_posts_in_alumni_board = boardResponse.getBoardResults().size();
+                for (int i = 0; i < num_of_posts_in_alumni_board; i++){
                     PostItem postItem = new PostItem();
 
-                    postItem.setTitle(secretBoardResponse.getSecretBoardResults().get(i).getContentTitle());
-                    postItem.setContent(secretBoardResponse.getSecretBoardResults().get(i).getContentInf());
-                    postItem.setTime(secretBoardResponse.getSecretBoardResults().get(i).getWriteDay());
-                    postItem.setWriter(secretBoardResponse.getSecretBoardResults().get(i).getContentWriter());
-                    postItem.setLike_num(secretBoardResponse.getSecretBoardResults().get(i).getCountLike());
-                    postItem.setComment_num(secretBoardResponse.getSecretBoardResults().get(i).getCountComment());
+                    postItem.setTitle(boardResponse.getBoardResults().get(i).getContentTitle());
+                    postItem.setContent(boardResponse.getBoardResults().get(i).getContentInf());
+                    postItem.setTime(boardResponse.getBoardResults().get(i).getWriteDay());
+                    postItem.setWriter(boardResponse.getBoardResults().get(i).getContentWriter());
+                    postItem.setLike_num(boardResponse.getBoardResults().get(i).getCountLike());
+                    postItem.setComment_num(boardResponse.getBoardResults().get(i).getCountComment());
 
                     m_post_item_list.add(postItem);
                 }
-                secret_board_adapter.notifyDataSetChanged();
+                alumni_board_adapter.notifyDataSetChanged();
 
                 break;
 
         }
-
     }
 
-    public void customOnClick(View view) {
-        switch (view.getId()){
-            case R.id.iv_secret_board_go_back:
-                onBackPressed();
-                break;
-            case R.id.iv_secret_board_more:
-                showPopUp(view);
-                break;
-        }
-
-    }
 
     public void showPopUp(View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);
@@ -116,7 +104,7 @@ public class AlumniBoardActivity extends BaseActivity implements SecretBoardActi
         switch (item.getItemId()) {
             case R.id.write_post:
                 Intent intent = new Intent(AlumniBoardActivity.this, WritingActivity.class);
-                intent.putExtra("boardName", 2);
+                intent.putExtra("boardName", 3);
                 startActivity(intent);
                 return true;
             case R.id.remove_from_favorite:

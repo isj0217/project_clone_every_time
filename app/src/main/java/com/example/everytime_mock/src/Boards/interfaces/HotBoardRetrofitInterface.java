@@ -12,13 +12,15 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface SecretBoardRetrofitInterface {
+public interface HotBoardRetrofitInterface {
     //    @GET("/test")
     @GET("/jwt")
     Call<DefaultResponse> getTest();
 
-    @GET("/notice/2/contents")
-    Call<BoardResponse> getSecretBoard(@Header("x-access-token") String accessToken);
+    @GET("/notice/contents?")
+    Call<BoardResponse> getHotBoard(
+            @Header("x-access-token") String accessToken,
+            @Query("choice") String choice);
 
     @GET("/test/{number}")
     Call<DefaultResponse> getTestPathAndQuery(

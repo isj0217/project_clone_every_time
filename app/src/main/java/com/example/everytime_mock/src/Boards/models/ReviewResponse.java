@@ -7,7 +7,7 @@ import java.util.List;
 public class ReviewResponse {
 
     @SerializedName("result")
-    private List<BoardResult> boardResults;
+    private List<ReviewResult> reviewResults;
 
     @SerializedName("code")
     private int code;
@@ -18,15 +18,15 @@ public class ReviewResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
-    public ReviewResponse(List<BoardResult> boardResults, int code, String message, boolean isSuccess) {
-        this.boardResults = boardResults;
+    public ReviewResponse(List<ReviewResult> reviewResults, int code, String message, boolean isSuccess) {
+        this.reviewResults = reviewResults;
         this.code = code;
         this.message = message;
         this.isSuccess = isSuccess;
     }
 
-    public List<BoardResult> getBoardResults() {
-        return boardResults;
+    public List<ReviewResult> getReviewResults() {
+        return reviewResults;
     }
 
     public int getCode() {

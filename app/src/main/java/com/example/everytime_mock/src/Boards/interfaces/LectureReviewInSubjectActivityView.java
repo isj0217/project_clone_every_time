@@ -3,7 +3,7 @@ package com.example.everytime_mock.src.Boards.interfaces;
 import com.example.everytime_mock.src.Boards.models.BoardResponse;
 import com.example.everytime_mock.src.Boards.models.ReviewResponse;
 
-public interface LectureReviewInSubjectActirityView {
+public interface LectureReviewInSubjectActivityView {
 
     void validateSuccess(String text);
 

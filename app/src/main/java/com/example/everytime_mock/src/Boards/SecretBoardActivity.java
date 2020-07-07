@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,56 +11,44 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.Boards.interfaces.FreeBoardActivityView;
+import com.example.everytime_mock.src.Boards.interfaces.BoardActivityView;
 import com.example.everytime_mock.src.Boards.models.BoardAdapter;
-import com.example.everytime_mock.src.Boards.models.FreeBoardResponse;
+import com.example.everytime_mock.src.Boards.models.BoardResponse;
 import com.example.everytime_mock.src.Boards.models.PostItem;
 
 import java.util.ArrayList;
 
-public class FreeBoardActivity extends BaseActivity implements FreeBoardActivityView, PopupMenu.OnMenuItemClickListener {
+public class SecretBoardActivity extends BaseActivity implements BoardActivityView, PopupMenu.OnMenuItemClickListener {
 
     private ArrayList<PostItem> m_post_item_list;
-    private BoardAdapter free_board_adapter;
-    private RecyclerView rv_free_board;
+    private BoardAdapter secret_board_adapter;
+    private RecyclerView rv_secret_board;
     private LinearLayoutManager linear_layout_manager;
-    private ImageView iv_free_board_go_back;
-    private ImageView iv_free_board_more;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_free_board);
+        setContentView(R.layout.activity_secret_board);
 
-        iv_free_board_go_back = findViewById(R.id.iv_free_board_go_back);
-        iv_free_board_more = findViewById(R.id.iv_free_board_more);
-
-
-
-
-
-        m_post_item_list = new ArrayList<>();
-
-        free_board_adapter = new BoardAdapter(m_post_item_list);
-        rv_free_board = findViewById(R.id.rv_free_board_post_list);
+        rv_secret_board = findViewById(R.id.rv_secret_board_post_list);
 
         linear_layout_manager = new LinearLayoutManager(getApplicationContext());
-        rv_free_board.setLayoutManager(linear_layout_manager);
+        rv_secret_board.setLayoutManager(linear_layout_manager);
 
         m_post_item_list = new ArrayList<>();
-        free_board_adapter = new BoardAdapter(m_post_item_list);
-        rv_free_board.setAdapter(free_board_adapter);
+        secret_board_adapter = new BoardAdapter(m_post_item_list);
+        rv_secret_board.setAdapter(secret_board_adapter);
 
-        tryGetFreeBoard();
+        tryGetSecretBoard();
 
 
     }
 
-    private void tryGetFreeBoard() {
+    private void tryGetSecretBoard() {
         showProgressDialog();
 
-        final FreeBoardService freeBoardService = new FreeBoardService(this);
-        freeBoardService.getFreeBoard();
+        final SecretBoardService secretBoardService = new SecretBoardService(this);
+        secretBoardService.getSecretBoard();
     }
 
     @Override
@@ -75,39 +62,40 @@ public class FreeBoardActivity extends BaseActivity implements FreeBoardActivity
     }
 
     @Override
-    public void freeBoardSuccess(FreeBoardResponse freeBoardResponse) {
+    public void boardSuccess(BoardResponse boardResponse) {
         hideProgressDialog();
 
-        switch (freeBoardResponse.getCode()) {
+        switch (boardResponse.getCode()) {
             case 100:
                 /**
                  * PostItem 형식의 ArrayList에 모두 넣어두고 어댑터를 이용해서 하나하나 레이아웃에 갖다 붙이자!!
                  * */
-                int num_of_posts_in_free_board = freeBoardResponse.getFreeBoardResults().size();
-                for (int i = 0; i < num_of_posts_in_free_board; i++){
+                int num_of_posts_in_alumni_board = boardResponse.getBoardResults().size();
+                for (int i = 0; i < num_of_posts_in_alumni_board; i++){
                     PostItem postItem = new PostItem();
 
-                    postItem.setTitle(freeBoardResponse.getFreeBoardResults().get(i).getContentTitle());
-                    postItem.setContent(freeBoardResponse.getFreeBoardResults().get(i).getContentInf());
-                    postItem.setTime(freeBoardResponse.getFreeBoardResults().get(i).getWriteDay());
-                    postItem.setWriter(freeBoardResponse.getFreeBoardResults().get(i).getContentWriter());
-                    postItem.setLike_num(freeBoardResponse.getFreeBoardResults().get(i).getCountLike());
-                    postItem.setComment_num(freeBoardResponse.getFreeBoardResults().get(i).getCountComment());
+                    postItem.setTitle(boardResponse.getBoardResults().get(i).getContentTitle());
+                    postItem.setContent(boardResponse.getBoardResults().get(i).getContentInf());
+                    postItem.setTime(boardResponse.getBoardResults().get(i).getWriteDay());
+                    postItem.setWriter(boardResponse.getBoardResults().get(i).getContentWriter());
+                    postItem.setLike_num(boardResponse.getBoardResults().get(i).getCountLike());
+                    postItem.setComment_num(boardResponse.getBoardResults().get(i).getCountComment());
 
                     m_post_item_list.add(postItem);
                 }
-                free_board_adapter.notifyDataSetChanged();
+                secret_board_adapter.notifyDataSetChanged();
 
                 break;
+
         }
     }
 
     public void customOnClick(View view) {
         switch (view.getId()){
-            case R.id.iv_free_board_go_back:
+            case R.id.iv_secret_board_go_back:
                 onBackPressed();
                 break;
-            case R.id.iv_free_board_more:
+            case R.id.iv_secret_board_more:
                 showPopUp(view);
                 break;
         }
@@ -126,8 +114,8 @@ public class FreeBoardActivity extends BaseActivity implements FreeBoardActivity
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.write_post:
-                Intent intent = new Intent(FreeBoardActivity.this, WritingActivity.class);
-                intent.putExtra("boardName", 1);
+                Intent intent = new Intent(SecretBoardActivity.this, WritingActivity.class);
+                intent.putExtra("boardName", 2);
                 startActivity(intent);
                 return true;
             case R.id.remove_from_favorite:

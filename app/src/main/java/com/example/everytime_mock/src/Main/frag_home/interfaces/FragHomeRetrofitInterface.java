@@ -1,7 +1,9 @@
 package com.example.everytime_mock.src.Main.frag_home.interfaces;
 
+import com.example.everytime_mock.src.Main.frag_home.models.AdvertisementResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.HotPostResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.RealTimeHotPostResponse;
+import com.example.everytime_mock.src.Main.frag_home.models.RecentLectureReviewResponse;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -17,6 +19,9 @@ public interface FragHomeRetrofitInterface {
     @GET("/jwt")
     Call<RealTimeHotPostResponse> getTest();
 
+    @GET("/ads")
+    Call<AdvertisementResponse> getAdvertisement(@Header("x-access-token")String accessToken);
+
     // 실시간 인기글 조회
     @GET("/popular-content")
     Call<RealTimeHotPostResponse> getRealTimeHotPost(@Header("x-access-token")String accessToken);
@@ -24,6 +29,10 @@ public interface FragHomeRetrofitInterface {
     // HOT 게시물 조회
     @GET("/hot-content")
     Call<HotPostResponse> getHotPost(@Header("x-access-token")String accessToken);
+
+    // 최근 강의평 조회
+    @GET("/new-class-comment")
+    Call<RecentLectureReviewResponse> getRecentLectureReview(@Header("x-access-token")String accessToken);
 
 
     @GET("/test/{number}")

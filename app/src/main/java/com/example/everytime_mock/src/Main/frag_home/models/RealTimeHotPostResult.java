@@ -9,8 +9,9 @@ public class RealTimeHotPostResult {
     String writeDay;
     String countLike;
     String countComment;
+    int countScrab;
 
-    public RealTimeHotPostResult(String contentWriter, String contentTitle, String contentInf, String noticeName, String writeDay, String countLike, String countComment) {
+    public RealTimeHotPostResult(String contentWriter, String contentTitle, String contentInf, String noticeName, String writeDay, String countLike, String countComment, int countScrab) {
         this.contentWriter = contentWriter;
         this.contentTitle = contentTitle;
         this.contentInf = contentInf;
@@ -18,6 +19,7 @@ public class RealTimeHotPostResult {
         this.writeDay = writeDay;
         this.countLike = countLike;
         this.countComment = countComment;
+        this.countScrab = countScrab;
     }
 
     public String getContentWriter() {
@@ -46,5 +48,9 @@ public class RealTimeHotPostResult {
 
     public String getCountComment() {
         return countComment;
+    }
+
+    public int getCountScrab() {
+        return countScrab;
     }
 }
