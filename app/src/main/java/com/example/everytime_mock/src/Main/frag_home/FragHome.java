@@ -175,33 +175,10 @@ public class FragHome extends Fragment implements FragHomeView {
         tryGetFirstAlumniBoardPost();
         tryGetFirstFreshmenBoardPost();
 
-
-
-
-
-
-
         iv_frag_home_advertisement = viewGroup.findViewById(R.id.iv_frag_home_advertisement);
 
 
         viewBindLinearLayout();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

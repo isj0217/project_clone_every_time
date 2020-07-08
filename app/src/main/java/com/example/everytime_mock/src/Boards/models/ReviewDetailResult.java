@@ -1,49 +1,38 @@
 package com.example.everytime_mock.src.Boards.models;
 
-public class ReviewResult {
-    int classCommentIdx;
-    String className;
-    String professor;
-    String classCommentInf;
-    String classStudent;
-    double classStar;
-    int classCommentLike;
+public class ReviewDetailResult {
 
-    public ReviewResult(int classCommentIdx, String className, String professor, String classCommentInf, String classStudent, double classStar, int classCommentLike) {
-        this.classCommentIdx = classCommentIdx;
-        this.className = className;
-        this.professor = professor;
-        this.classCommentInf = classCommentInf;
-        this.classStudent = classStudent;
-        this.classStar = classStar;
-        this.classCommentLike = classCommentLike;
+    String selectHw;
+    String selectTeam;
+    String selectRate;
+    String selectAtt;
+    String selectTest;
+
+    public ReviewDetailResult(String selectHw, String selectTeam, String selectRate, String selectAtt, String selectTest) {
+        this.selectHw = selectHw;
+        this.selectTeam = selectTeam;
+        this.selectRate = selectRate;
+        this.selectAtt = selectAtt;
+        this.selectTest = selectTest;
     }
 
-    public int getClassCommentIdx() {
-        return classCommentIdx;
+    public String getSelectHw() {
+        return selectHw;
     }
 
-    public String getClassName() {
-        return className;
+    public String getSelectTeam() {
+        return selectTeam;
     }
 
-    public String getProfessor() {
-        return professor;
+    public String getSelectRate() {
+        return selectRate;
     }
 
-    public String getClassCommentInf() {
-        return classCommentInf;
+    public String getSelectAtt() {
+        return selectAtt;
     }
 
-    public String getClassStudent() {
-        return classStudent;
-    }
-
-    public double getClassStar() {
-        return classStar;
-    }
-
-    public int getClassCommentLike() {
-        return classCommentLike;
+    public String getSelectTest() {
+        return selectTest;
     }
 }

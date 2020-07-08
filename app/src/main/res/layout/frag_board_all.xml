@@ -186,6 +186,7 @@
                     android:paddingEnd="8dp">
 
                     <ImageView
+                        android:id="@+id/iv_frag_board_all_pin_free"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:src="@drawable/icon_pin" />
@@ -231,6 +232,7 @@
                     android:paddingEnd="8dp">
 
                     <ImageView
+                        android:id="@+id/iv_frag_board_all_pin_secret"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:src="@drawable/icon_pin" />
@@ -276,6 +278,7 @@
                     android:paddingEnd="8dp">
 
                     <ImageView
+                        android:id="@+id/iv_frag_board_all_pin_alumni"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:src="@drawable/icon_pin" />
@@ -321,6 +324,7 @@
                     android:paddingEnd="8dp">
 
                     <ImageView
+                        android:id="@+id/iv_frag_board_all_pin_freshmen"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:src="@drawable/icon_pin" />
@@ -370,10 +374,10 @@
                 android:paddingBottom="12dp">
                 <!--                오늘의 학식-->
                 <LinearLayout
+                    android:paddingTop="12dp"
+                    android:paddingBottom="11dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="11dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingStart="8dp"
@@ -396,10 +400,11 @@
 
                 <!--                강의평가-->
                 <LinearLayout
+                    android:id="@+id/linear_layout_frag_board_all_go_to_lecture_review"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="11dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="11dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingStart="8dp"
@@ -422,10 +427,10 @@
 
                 <!--                스터디-->
                 <LinearLayout
+                    android:paddingTop="12dp"
+                    android:paddingBottom="11dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="11dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingStart="8dp"
@@ -448,10 +453,10 @@
 
                 <!--                책방-->
                 <LinearLayout
+                    android:paddingTop="12dp"
+                    android:paddingBottom="11dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="11dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:paddingStart="8dp"

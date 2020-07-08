@@ -8,6 +8,7 @@ import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
 import com.example.everytime_mock.src.Boards.models.BoardResponse;
 import com.example.everytime_mock.src.Boards.models.RecentLectureReviewBoardResponse;
+import com.example.everytime_mock.src.Boards.models.ReviewResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.HotPostResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.RecentLectureReviewResponse;
@@ -212,8 +213,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     public void freeBoardSuccess(BoardResponse boardResponse) {
         switch (clicked) {
             case "frag_home_favorite_free_board":
-
-                showCustomToast("freeBoardSuccess에 들어왔고, clicked값은: " + clicked);
 
                 tv_in_post_nickname.setText(boardResponse.getBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
                 tv_in_post_time.setText(boardResponse.getBoardResults().get(0).getWriteDay());
