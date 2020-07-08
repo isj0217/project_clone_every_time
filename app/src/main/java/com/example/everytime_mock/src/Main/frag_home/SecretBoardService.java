@@ -1,9 +1,7 @@
 package com.example.everytime_mock.src.Main.frag_home;
 
-import android.util.Log;
-
-import com.example.everytime_mock.src.Boards.interfaces.BoardActivityView;
 import com.example.everytime_mock.src.Boards.interfaces.FreeBoardRetrofitInterface;
+import com.example.everytime_mock.src.Boards.interfaces.SecretBoardRetrofitInterface;
 import com.example.everytime_mock.src.Boards.models.BoardResponse;
 import com.example.everytime_mock.src.Main.frag_home.interfaces.FragHomeView;
 
@@ -14,16 +12,16 @@ import retrofit2.Response;
 import static com.example.everytime_mock.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
 
-class FreeBoardService {
+class SecretBoardService {
     private final FragHomeView mFragHomeView;
 
-    FreeBoardService(final FragHomeView fragHomeView) {
+    SecretBoardService(final FragHomeView fragHomeView) {
         this.mFragHomeView = fragHomeView;
     }
 
-    void getFirstFreeBoardPost() {
-        final FreeBoardRetrofitInterface freeBoardRetrofitInterface = getRetrofit().create(FreeBoardRetrofitInterface.class);
-        freeBoardRetrofitInterface.getFreeBoard(X_ACCESS_TOKEN).enqueue(new Callback<BoardResponse>() {
+    void getFirstSecretBoardPost() {
+        final SecretBoardRetrofitInterface secretBoardRetrofitInterface = getRetrofit().create(SecretBoardRetrofitInterface.class);
+        secretBoardRetrofitInterface.getSecretBoard(X_ACCESS_TOKEN).enqueue(new Callback<BoardResponse>() {
             @Override
             public void onResponse(Call<BoardResponse> call, Response<BoardResponse> response) {
                 final BoardResponse boardResponse = response.body();
@@ -31,7 +29,7 @@ class FreeBoardService {
                     mFragHomeView.validateFailure(null);
                     return;
                 }
-                mFragHomeView.getFreeBoardSuccess(boardResponse);
+                mFragHomeView.getSecretBoardSuccess(boardResponse);
             }
 
             @Override

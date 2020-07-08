@@ -16,4 +16,12 @@ public interface InPostActivityView {
     void hotPostSuccess(BoardResponse hotBoardResponse);
 
     void recentLectureReviewSuccess(RecentLectureReviewResponse recentLectureReviewResponse);
+
+    void freeBoardSuccess(BoardResponse boardResponse);
+
+    void secretBoardSuccess(BoardResponse boardResponse);
+
+    void alumniBoardSuccess(BoardResponse boardResponse);
+
+    void freshmenBoardSuccess(BoardResponse boardResponse);
 }

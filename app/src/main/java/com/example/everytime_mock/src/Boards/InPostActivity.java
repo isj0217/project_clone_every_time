@@ -49,6 +49,18 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
             case "review_4":
                 inPostService.getRecentLectureReview();
                 break;
+            case "frag_home_favorite_free_board":
+                inPostService.getFreeBoard();
+                break;
+            case "frag_home_favorite_secret_board":
+                inPostService.getSecretBoard();
+                break;
+            case "frag_home_favorite_alumni_board":
+                inPostService.getAlumniBoard();
+                break;
+            case "frag_home_favorite_freshmen_board":
+                inPostService.getFreshmenBoard();
+                break;
             default:
                 break;
         }
@@ -63,10 +75,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         tv_in_post_like_num = findViewById(R.id.tv_in_post_like_num);
         tv_in_post_comment_num = findViewById(R.id.tv_in_post_comment_num);
         tv_in_post_scrap_num = findViewById(R.id.tv_in_post_scrap_num);
-    }
-
-    public void getRealtimeHotPost_1() {
-        inPostService.getRealTimeHotBoard();
     }
 
     @Override
@@ -196,6 +204,94 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 //                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(3).getCountComment()));
 //                tv_in_post_scrap_num.setText("0");
 //                // scrap_num이 API에서 넘어오지 않아 임시로 0으로 설정함
+                break;
+        }
+    }
+
+    @Override
+    public void freeBoardSuccess(BoardResponse boardResponse) {
+        switch (clicked) {
+            case "frag_home_favorite_free_board":
+
+                showCustomToast("freeBoardSuccess에 들어왔고, clicked값은: " + clicked);
+
+                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(boardResponse.getBoardResults().get(0).getWriteDay());
+                tv_in_post_title.setText(boardResponse.getBoardResults().get(0).getContentTitle());
+                tv_in_post_content.setText(boardResponse.getBoardResults().get(0).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountComment()));
+                tv_in_post_scrap_num.setText("0");
+                break;
+            case "frag_home_favorite_secret_board":
+                break;
+            case "frag_home_favorite_alumni_board":
+                break;
+            case "frag_home_favorite_freshmen_board":
+                break;
+        }
+    }
+
+    @Override
+    public void secretBoardSuccess(BoardResponse boardResponse) {
+        switch (clicked) {
+            case "frag_home_favorite_free_board":
+                break;
+            case "frag_home_favorite_secret_board":
+                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(boardResponse.getBoardResults().get(0).getWriteDay());
+                tv_in_post_title.setText(boardResponse.getBoardResults().get(0).getContentTitle());
+                tv_in_post_content.setText(boardResponse.getBoardResults().get(0).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountComment()));
+                tv_in_post_scrap_num.setText("0");
+                break;
+            case "frag_home_favorite_alumni_board":
+                break;
+            case "frag_home_favorite_freshmen_board":
+                break;
+        }
+    }
+
+    @Override
+    public void alumniBoardSuccess(BoardResponse boardResponse) {
+        switch (clicked) {
+            case "frag_home_favorite_free_board":
+                break;
+            case "frag_home_favorite_secret_board":
+                break;
+            case "frag_home_favorite_alumni_board":
+                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(boardResponse.getBoardResults().get(0).getWriteDay());
+                tv_in_post_title.setText(boardResponse.getBoardResults().get(0).getContentTitle());
+                tv_in_post_content.setText(boardResponse.getBoardResults().get(0).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountComment()));
+                tv_in_post_scrap_num.setText("0");
+                break;
+            case "frag_home_favorite_freshmen_board":
+                break;
+        }
+
+    }
+
+    @Override
+    public void freshmenBoardSuccess(BoardResponse boardResponse) {
+        switch (clicked) {
+            case "frag_home_favorite_free_board":
+                break;
+            case "frag_home_favorite_secret_board":
+                break;
+            case "frag_home_favorite_alumni_board":
+                break;
+            case "frag_home_favorite_freshmen_board":
+                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(boardResponse.getBoardResults().get(0).getWriteDay());
+                tv_in_post_title.setText(boardResponse.getBoardResults().get(0).getContentTitle());
+                tv_in_post_content.setText(boardResponse.getBoardResults().get(0).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountComment()));
+                tv_in_post_scrap_num.setText("0");
                 break;
         }
     }

@@ -20,11 +20,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
-import com.example.everytime_mock.src.Boards.FreeBoardActivity;
 import com.example.everytime_mock.src.Boards.HotBoardActivity;
 import com.example.everytime_mock.src.Boards.LectureReviewInSubjectActivity;
 import com.example.everytime_mock.src.Boards.RecentLectureReviewBoardActivity;
 import com.example.everytime_mock.src.Boards.InPostActivity;
+import com.example.everytime_mock.src.Boards.models.BoardResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.AdvertisementResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.HotPostResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.RealTimeHotPostResponse;
@@ -49,6 +49,9 @@ public class FragHome extends Fragment implements FragHomeView {
     private FavoriteBoardAdapter favorite_board_adapter;
     private RecyclerView rv_favorite_board;
     private LinearLayoutManager linear_layout_manager;
+
+    private TextView tv_frag_home_favorite_free_board_first_post, tv_frag_home_favorite_secret_board_first_post,
+            tv_frag_home_favorite_alumni_board_first_post, tv_frag_home_favorite_freshmen_board_first_post;
 
     private TextView tv_frag_home_realtime_hot_post_1_user_name,
             tv_frag_home_realtime_hot_post_1_date,
@@ -89,7 +92,69 @@ public class FragHome extends Fragment implements FragHomeView {
             linear_layout_frag_home_recent_lecture_review_1, linear_layout_frag_home_recent_lecture_review_2,
             linear_layout_frag_home_recent_lecture_review_3, linear_layout_frag_home_recent_lecture_review_4;
 
+    private LinearLayout linear_layout_frag_home_favorite_free_board, linear_layout_frag_home_favorite_secret_board,
+            linear_layout_frag_home_favorite_alumni_board, linear_layout_frag_home_favorite_freshmen_board;
 
+    public void tryGetFirstFreeBoardPost() {
+        FreeBoardService freeBoardService = new FreeBoardService(this);
+        freeBoardService.getFirstFreeBoardPost();
+    }
+
+    public void tryGetFirstSecretBoardPost() {
+        SecretBoardService secretBoardService = new SecretBoardService(this);
+        secretBoardService.getFirstSecretBoardPost();
+    }
+    public void tryGetFirstAlumniBoardPost() {
+        AlumniBoardService alumniBoardService = new AlumniBoardService(this);
+        alumniBoardService.getFirstAlumniBoardPost();
+
+    }
+    public void tryGetFirstFreshmenBoardPost() {
+        FreshmenBoardService freshmenBoardService = new FreshmenBoardService(this);
+        freshmenBoardService.getFirstFreshmenBoardPost();
+    }
+
+    public void viewBindFavoriteBoardLinearLayouts() {
+        linear_layout_frag_home_favorite_free_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_free_board);
+        linear_layout_frag_home_favorite_free_board.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "frag_home_favorite_free_board");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_favorite_secret_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_secret_board);
+        linear_layout_frag_home_favorite_secret_board.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "frag_home_favorite_secret_board");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_favorite_alumni_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_alumni_board);
+        linear_layout_frag_home_favorite_alumni_board.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "frag_home_favorite_alumni_board");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_favorite_freshmen_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_freshmen_board);
+        linear_layout_frag_home_favorite_freshmen_board.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "frag_home_favorite_freshmen_board");
+                startActivity(intent);
+            }
+        });
+    }
 
     @Nullable
     @Override
@@ -101,6 +166,16 @@ public class FragHome extends Fragment implements FragHomeView {
         viewBindRecentLectureReviews();
 
         linkIconsToWebSites();
+
+        viewBindFavoriteBoardTextViews();
+        viewBindFavoriteBoardLinearLayouts();
+
+        tryGetFirstFreeBoardPost();
+        tryGetFirstSecretBoardPost();
+        tryGetFirstAlumniBoardPost();
+        tryGetFirstFreshmenBoardPost();
+
+
 
 
 
@@ -158,25 +233,10 @@ public class FragHome extends Fragment implements FragHomeView {
             }
         });
 
-
-        rv_favorite_board = viewGroup.findViewById(R.id.rv_home_favorite_board_list);
-
         linear_layout_manager = new LinearLayoutManager(viewGroup.getContext());
-        rv_favorite_board.setLayoutManager(linear_layout_manager);
 
         favorite_board_item_list = new ArrayList<>();
         favorite_board_adapter = new FavoriteBoardAdapter(favorite_board_item_list);
-        rv_favorite_board.setAdapter(favorite_board_adapter);
-
-        tryGetFavoriteBoard();
-        //todo
-//        여기서 직접 받아와서 넣어보자!!!
-
-        for (int i = 0; i < 8; i++) {
-            FavoriteBoardItem fbi = new FavoriteBoardItem("자유게시판", "...", R.drawable.new_red);
-            favorite_board_item_list.add(fbi);
-        }
-        favorite_board_adapter.notifyDataSetChanged();
 
 
         tryGetAdvertisement();
@@ -185,6 +245,13 @@ public class FragHome extends Fragment implements FragHomeView {
         tryGetRecentLectureReview();
 
         return viewGroup;
+    }
+
+    public void viewBindFavoriteBoardTextViews() {
+        tv_frag_home_favorite_free_board_first_post = viewGroup.findViewById(R.id.tv_frag_home_favorite_free_board_first_post);
+        tv_frag_home_favorite_secret_board_first_post = viewGroup.findViewById(R.id.tv_frag_home_favorite_secret_board_first_post);
+        tv_frag_home_favorite_alumni_board_first_post = viewGroup.findViewById(R.id.tv_frag_home_favorite_alumni_board_first_post);
+        tv_frag_home_favorite_freshmen_board_first_post = viewGroup.findViewById(R.id.tv_frag_home_favorite_freshmen_board_first_post);
     }
 
     private void tryGetAdvertisement() {
@@ -207,12 +274,6 @@ public class FragHome extends Fragment implements FragHomeView {
         recentLectureReview.getRecentLectureReview();
     }
 
-
-    private void tryGetFavoriteBoard() {
-
-//        final FavoriteBoardService favoriteBoardService = new FavoriteBoardService(this);
-//        favoriteBoardService.getFavoriteBoard();
-    }
 
     public int convertDoubleRateToDiscreteInt(RecentLectureReviewResult recentLectureReviewResult) {
         int int_rate = 0;
@@ -844,6 +905,31 @@ public class FragHome extends Fragment implements FragHomeView {
         }
 
 
+    }
+
+    @Override
+    public void getFreeBoardSuccess(BoardResponse boardResponse) {
+        System.out.println("free success");
+
+        tv_frag_home_favorite_free_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
+    }
+
+    @Override
+    public void getSecretBoardSuccess(BoardResponse boardResponse) {
+        System.out.println("secret success");
+        tv_frag_home_favorite_secret_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
+    }
+
+    @Override
+    public void getAlumniBoardSuccess(BoardResponse boardResponse) {
+        System.out.println("alumni success");
+        tv_frag_home_favorite_alumni_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
+    }
+
+    @Override
+    public void getFreshmenBoardSuccess(BoardResponse boardResponse) {
+        System.out.println("freshmen success");
+        tv_frag_home_favorite_freshmen_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
     }
 
     public void linkIconsToWebSites() {

@@ -1,8 +1,10 @@
 package com.example.everytime_mock.src.Main.frag_home.my_page;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -22,10 +24,14 @@ public class MyPageActivity extends BaseActivity implements MyPageActivityView {
 
     TextView tv_my_page_change_nickname;
 
+    ImageView iv_my_page_go_back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
+
+        iv_my_page_go_back = findViewById(R.id.iv_my_page_go_back);
 
         tv_my_page_user_nickname = findViewById(R.id.tv_my_page_user_nickname);
         tv_my_page_user_id = findViewById(R.id.tv_my_page_user_id);
@@ -92,6 +98,9 @@ public class MyPageActivity extends BaseActivity implements MyPageActivityView {
                 });
                 builder.create().show();
                 break;
+            case R.id.iv_my_page_go_back:
+                onBackPressed();
+                finish();
 
         }
     }

@@ -1,5 +1,6 @@
 package com.example.everytime_mock.src.Main.frag_home.interfaces;
 
+import com.example.everytime_mock.src.Boards.models.BoardResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.AdvertisementResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.HotPostResponse;
 import com.example.everytime_mock.src.Main.frag_home.models.RealTimeHotPostResponse;
@@ -18,4 +19,12 @@ public interface FragHomeView {
     void hotPostSuccess(HotPostResponse hotPostResponse);
 
     void recentLectureReviewSuccess(RecentLectureReviewResponse recentLectureReviewResponse);
+
+    void getFreeBoardSuccess(BoardResponse boardResponse);
+
+    void getSecretBoardSuccess(BoardResponse boardResponse);
+
+    void getAlumniBoardSuccess(BoardResponse boardResponse);
+
+    void getFreshmenBoardSuccess(BoardResponse boardResponse);
 }

@@ -1,10 +1,11 @@
-package com.example.everytime_mock.src.Boards;
+package com.example.everytime_mock.src.Main.frag_home;
 
 import android.util.Log;
 
 import com.example.everytime_mock.src.Boards.interfaces.BoardActivityView;
 import com.example.everytime_mock.src.Boards.interfaces.FreeBoardRetrofitInterface;
 import com.example.everytime_mock.src.Boards.models.BoardResponse;
+import com.example.everytime_mock.src.Main.frag_home.interfaces.FragHomeView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,34 +15,28 @@ import static com.example.everytime_mock.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
 
 class FreeBoardService {
-    private final BoardActivityView mBoardActivityView;
+    private final FragHomeView mFragHomeView;
 
-    private static final String TAG = "FreeBoardService";
-
-    FreeBoardService(final BoardActivityView boardActivityView) {
-        this.mBoardActivityView = boardActivityView;
+    FreeBoardService(final FragHomeView fragHomeView) {
+        this.mFragHomeView = fragHomeView;
     }
 
-    void getFreeBoard() {
+    void getFirstFreeBoardPost() {
         final FreeBoardRetrofitInterface freeBoardRetrofitInterface = getRetrofit().create(FreeBoardRetrofitInterface.class);
         freeBoardRetrofitInterface.getFreeBoard(X_ACCESS_TOKEN).enqueue(new Callback<BoardResponse>() {
             @Override
             public void onResponse(Call<BoardResponse> call, Response<BoardResponse> response) {
                 final BoardResponse boardResponse = response.body();
                 if (boardResponse == null) {
-                    Log.d(TAG, "onResponse: validateFailure");
-                    mBoardActivityView.validateFailure(null);
+                    mFragHomeView.validateFailure(null);
                     return;
                 }
-
-                Log.d(TAG, "onResponse: 성공");
-                mBoardActivityView.boardSuccess(boardResponse);
+                mFragHomeView.getFreeBoardSuccess(boardResponse);
             }
 
             @Override
             public void onFailure(Call<BoardResponse> call, Throwable t) {
-                Log.d(TAG, "onFailure: onFailure");
-                mBoardActivityView.validateFailure(null);
+                mFragHomeView.validateFailure(null);
             }
         });
     }

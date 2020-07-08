@@ -1,6 +1,7 @@
 package com.example.everytime_mock.src.Main.frag_home;
 
 import com.example.everytime_mock.src.Boards.interfaces.FreeBoardRetrofitInterface;
+import com.example.everytime_mock.src.Boards.interfaces.FreshmenBoardRetrofitInterface;
 import com.example.everytime_mock.src.Boards.models.BoardResponse;
 import com.example.everytime_mock.src.Main.frag_home.interfaces.FragHomeView;
 
@@ -11,16 +12,16 @@ import retrofit2.Response;
 import static com.example.everytime_mock.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
 
-class AlumniBoardService {
+class FreshmenBoardService {
     private final FragHomeView mFragHomeView;
 
-    AlumniBoardService(final FragHomeView fragHomeView) {
+    FreshmenBoardService(final FragHomeView fragHomeView) {
         this.mFragHomeView = fragHomeView;
     }
 
-    void getFirstAlumniBoardPost() {
-        final FreeBoardRetrofitInterface freeBoardRetrofitInterface = getRetrofit().create(FreeBoardRetrofitInterface.class);
-        freeBoardRetrofitInterface.getFreeBoard(X_ACCESS_TOKEN).enqueue(new Callback<BoardResponse>() {
+    void getFirstFreshmenBoardPost() {
+        final FreshmenBoardRetrofitInterface freshmenBoardRetrofitInterface = getRetrofit().create(FreshmenBoardRetrofitInterface.class);
+        freshmenBoardRetrofitInterface.getFreshmenBoard(X_ACCESS_TOKEN).enqueue(new Callback<BoardResponse>() {
             @Override
             public void onResponse(Call<BoardResponse> call, Response<BoardResponse> response) {
                 final BoardResponse boardResponse = response.body();
@@ -28,7 +29,7 @@ class AlumniBoardService {
                     mFragHomeView.validateFailure(null);
                     return;
                 }
-                mFragHomeView.getAlumniBoardSuccess(boardResponse);
+                mFragHomeView.getFreshmenBoardSuccess(boardResponse);
             }
 
             @Override

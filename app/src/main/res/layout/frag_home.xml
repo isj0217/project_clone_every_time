@@ -513,22 +513,144 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="310dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingStart="5dp">
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_home_favorite_board_list"
+                    <LinearLayout
+                        android:id="@+id/linear_layout_frag_home_favorite_free_board"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:overScrollMode="never">
-                        <!--                        android:scrollbarThumbVertical="@android:color/darker_gray"-->
-                        <!--                        android:scrollbars="vertical"-->
-                        <!--                        android:scrollbarFadeDuration="0"-->
-                        <!--                        android:scrollbarSize="5dp"-->
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="자유게시판"
+                            android:textColor="@color/colorBlack" />
+                        <TextView
+                            android:id="@+id/tv_frag_home_favorite_free_board_first_post"
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="자유게시판의 맨 윗 게시물"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:textColor="@color/colorDarkerGrey" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+                        <ImageView
+                            android:id="@+id/iv_frag_home_favorite_free_board_new"
+                            android:layout_marginEnd="5dp"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/new_red" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linear_layout_frag_home_favorite_secret_board"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="비밀게시판"
+                            android:textColor="@color/colorBlack" />
+                        <TextView
+                            android:id="@+id/tv_frag_home_favorite_secret_board_first_post"
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="비밀게시판의 맨 윗 게시물"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:textColor="@color/colorDarkerGrey" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+                        <ImageView
+                            android:id="@+id/iv_frag_home_favorite_secret_board_new"
+                            android:layout_marginEnd="5dp"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/new_red" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linear_layout_frag_home_favorite_alumni_board"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="졸업생게시판"
+                            android:textColor="@color/colorBlack" />
+                        <TextView
+                            android:id="@+id/tv_frag_home_favorite_alumni_board_first_post"
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="졸업생게시판의 맨 윗 게시물"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:textColor="@color/colorDarkerGrey" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+                        <ImageView
+                            android:id="@+id/iv_frag_home_favorite_alumni_board_new"
+                            android:layout_marginEnd="5dp"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/new_red" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linear_layout_frag_home_favorite_freshmen_board"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="새내기게시판"
+                            android:textColor="@color/colorBlack" />
+                        <TextView
+                            android:id="@+id/tv_frag_home_favorite_freshmen_board_first_post"
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="새내기게시판의 맨 윗 게시물"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:textColor="@color/colorDarkerGrey" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+                        <ImageView
+                            android:id="@+id/iv_frag_home_favorite_freshmen_board_new"
+                            android:layout_marginEnd="5dp"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:src="@drawable/new_red" />
+                    </LinearLayout>
 
-                    </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
 
 

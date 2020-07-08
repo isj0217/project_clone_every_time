@@ -85,6 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:text="@string/activity_in_post_nickname"
+                        android:textStyle="bold"
                         android:textColor="@color/colorBlack"
                         android:textSize="17sp" />
 
