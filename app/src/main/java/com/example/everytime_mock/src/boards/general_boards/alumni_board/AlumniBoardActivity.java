@@ -91,6 +91,16 @@ public class AlumniBoardActivity extends BaseActivity implements BoardActivityVi
         }
     }
 
+    public void customOnClick(View view) {
+        switch (view.getId()){
+            case R.id.iv_alumni_board_go_back:
+                onBackPressed();
+                break;
+            case R.id.iv_alumni_board_more:
+                showPopUp(view);
+                break;
+        }
+    }
 
     public void showPopUp(View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);
