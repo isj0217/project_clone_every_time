@@ -1,59 +1,50 @@
-package com.example.everytime_mock.src.boards.models.items;
+package com.example.everytime_mock.src.boards.in_post.models;
 
-public class PostItem {
+public class CommentItem {
 
-    private String title;
-    private String content;
-    private String time;
-    private String writer;
-    private int like_num;
-    private int comment_num;
+    private int commentIdx;
+    private String commentInf;
+    private String commentWriter;
+    private int commentCountLike;
+    private String commentWriteDay;
 
-    public String getTitle() {
-        return title;
+    public int getCommentIdx() {
+        return commentIdx;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCommentIdx(int commentIdx) {
+        this.commentIdx = commentIdx;
     }
 
-    public String getContent() {
-        return content;
+    public String getCommentInf() {
+        return commentInf;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setCommentInf(String commentInf) {
+        this.commentInf = commentInf;
     }
 
-    public String getTime() {
-        return time;
+    public String getCommentWriter() {
+        return commentWriter;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setCommentWriter(String commentWriter) {
+        this.commentWriter = commentWriter;
     }
 
-    public String getWriter() {
-        return writer;
+    public int getCommentCountLike() {
+        return commentCountLike;
     }
 
-    public void setWriter(String writer) {
-        this.writer = writer;
+    public void setCommentCountLike(int commentCountLike) {
+        this.commentCountLike = commentCountLike;
     }
 
-    public int getLike_num() {
-        return like_num;
+    public String getCommentWriteDay() {
+        return commentWriteDay;
     }
 
-    public void setLike_num(int like_num) {
-        this.like_num = like_num;
-    }
-
-    public int getComment_num() {
-        return comment_num;
-    }
-
-    public void setComment_num(int comment_num) {
-        this.comment_num = comment_num;
+    public void setCommentWriteDay(String commentWriteDay) {
+        this.commentWriteDay = commentWriteDay;
     }
 }

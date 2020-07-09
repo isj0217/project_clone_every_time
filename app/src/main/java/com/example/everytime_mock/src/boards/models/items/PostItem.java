@@ -2,12 +2,22 @@ package com.example.everytime_mock.src.boards.models.items;
 
 public class PostItem {
 
+    private int content_index;
+
     private String title;
     private String content;
     private String time;
     private String writer;
     private int like_num;
     private int comment_num;
+
+    public int getContent_index() {
+        return content_index;
+    }
+
+    public void setContent_index(int content_index) {
+        this.content_index = content_index;
+    }
 
     public String getTitle() {
         return title;

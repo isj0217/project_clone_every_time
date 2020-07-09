@@ -1,49 +1,37 @@
-package com.example.everytime_mock.src.boards.models.review;
+package com.example.everytime_mock.src.boards.in_post.models;
 
-public class ReviewResult {
-    int classCommentIdx;
-    String className;
-    String professor;
-    String classCommentInf;
-    String classStudent;
-    double classStar;
-    int classCommentLike;
+public class CommentResult {
+    int commentIdx;
+    String commentInf;
+    String commentWriter;
+    int commentCountLike;
+    String commentWriteDay;
 
-    public ReviewResult(int classCommentIdx, String className, String professor, String classCommentInf, String classStudent, double classStar, int classCommentLike) {
-        this.classCommentIdx = classCommentIdx;
-        this.className = className;
-        this.professor = professor;
-        this.classCommentInf = classCommentInf;
-        this.classStudent = classStudent;
-        this.classStar = classStar;
-        this.classCommentLike = classCommentLike;
+    public CommentResult(int commentIdx, String commentInf, String commentWriter, int commentCountLike, String commentWriteDay) {
+        this.commentIdx = commentIdx;
+        this.commentInf = commentInf;
+        this.commentWriter = commentWriter;
+        this.commentCountLike = commentCountLike;
+        this.commentWriteDay = commentWriteDay;
     }
 
-    public int getClassCommentIdx() {
-        return classCommentIdx;
+    public int getCommentIdx() {
+        return commentIdx;
     }
 
-    public String getClassName() {
-        return className;
+    public String getCommentInf() {
+        return commentInf;
     }
 
-    public String getProfessor() {
-        return professor;
+    public String getCommentWriter() {
+        return commentWriter;
     }
 
-    public String getClassCommentInf() {
-        return classCommentInf;
+    public int getCommentCountLike() {
+        return commentCountLike;
     }
 
-    public String getClassStudent() {
-        return classStudent;
-    }
-
-    public double getClassStar() {
-        return classStar;
-    }
-
-    public int getClassCommentLike() {
-        return classCommentLike;
+    public String getCommentWriteDay() {
+        return commentWriteDay;
     }
 }

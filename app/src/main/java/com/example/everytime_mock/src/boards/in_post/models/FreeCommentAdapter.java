@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards.models.adapters;
+package com.example.everytime_mock.src.boards.in_post.models;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,14 +16,13 @@ import com.example.everytime_mock.src.boards.models.items.PostItem;
 
 import java.util.ArrayList;
 
-public class FreeBoardAdapter extends RecyclerView.Adapter<FreeBoardAdapter.CustomViewHolder> {
+public class FreeCommentAdapter extends RecyclerView.Adapter<FreeCommentAdapter.CustomViewHolder> {
 
-    private ArrayList<PostItem> post_item_list;
-
+    private ArrayList<CommentItem> comment_item_list;
     private OnItemClickListener mListener = null ;
 
-    public FreeBoardAdapter(ArrayList<PostItem> post_item_list) {
-        this.post_item_list = post_item_list;
+    public FreeCommentAdapter(ArrayList<CommentItem> comment_item_list) {
+        this.comment_item_list = comment_item_list;
     }
 
     public interface OnItemClickListener {
@@ -32,22 +31,19 @@ public class FreeBoardAdapter extends RecyclerView.Adapter<FreeBoardAdapter.Cust
 
     @NonNull
     @Override
-    public FreeBoardAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FreeCommentAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_summarized_post, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_comment, parent, false);
         CustomViewHolder holder = new CustomViewHolder(view);
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FreeBoardAdapter.CustomViewHolder holder, int position) {
-        holder.tv_item_post_title.setText(post_item_list.get(position).getTitle());
-        holder.tv_item_post_content.setText(post_item_list.get(position).getContent());
-        holder.tv_item_post_time.setText(post_item_list.get(position).getTime());
-        holder.tv_item_post_nickname.setText(post_item_list.get(position).getWriter());
-        holder.tv_item_post_like_num.setText(Integer.toString(post_item_list.get(position).getLike_num()));
-        holder.tv_item_post_comment_num.setText(Integer.toString(post_item_list.get(position).getComment_num()));
+    public void onBindViewHolder(@NonNull FreeCommentAdapter.CustomViewHolder holder, int position) {
+        holder.tv_item_comment_commentInf.setText(comment_item_list.get(position).getCommentInf());
+        holder.tv_item_comment_commentWriter.setText(comment_item_list.get(position).getCommentWriter());
+        holder.tv_item_comment_commentWriteDay.setText(comment_item_list.get(position).getCommentWriteDay());
 
         holder.itemView.setTag(position);
 
@@ -59,50 +55,24 @@ public class FreeBoardAdapter extends RecyclerView.Adapter<FreeBoardAdapter.Cust
 
     @Override
     public int getItemCount() {
-        return (null != post_item_list ? post_item_list.size() : 0);
+        return (null != comment_item_list ? comment_item_list.size() : 0);
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
-        protected TextView tv_item_post_title;
-        protected TextView tv_item_post_content;
-        protected TextView tv_item_post_time;
-        protected TextView tv_item_post_nickname;
-        protected TextView tv_item_post_like_num;
-        protected TextView tv_item_post_comment_num;
+        protected TextView tv_item_comment_commentInf;
+        protected TextView tv_item_comment_commentWriter;
 
+        protected TextView tv_item_comment_commentWriteDay;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.tv_item_post_title = itemView.findViewById(R.id.tv_item_post_title);
-            this.tv_item_post_content = itemView.findViewById(R.id.tv_item_post_content);
-            this.tv_item_post_time = itemView.findViewById(R.id.tv_item_post_time);
-            this.tv_item_post_nickname = itemView.findViewById(R.id.tv_item_post_nickname);
-            this.tv_item_post_like_num = itemView.findViewById(R.id.tv_item_post_like_num);
-            this.tv_item_post_comment_num = itemView.findViewById(R.id.tv_item_post_comment_num);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Context context = v.getContext();
-
-                    int pos = getAdapterPosition();
-                    if (pos != RecyclerView.NO_POSITION){
+            this.tv_item_comment_commentInf = itemView.findViewById(R.id.tv_item_comment_content);
+            this.tv_item_comment_commentWriter = itemView.findViewById(R.id.tv_item_comment_nickname);
+            this.tv_item_comment_commentWriteDay = itemView.findViewById(R.id.tv_item_comment_time);
 
 
-                        System.out.println("보내기 전 pos: " + pos);
-
-                        Intent intent = new Intent(v.getContext(), InPostActivity.class);
-                        intent.putExtra("clicked_free_index", pos);
-                        context.startActivity(intent);
-
-                        if (mListener != null) {
-                            mListener.onItemClick(v, pos);
-                        }
-                    }
-                }
-            });
         }
     }
 }

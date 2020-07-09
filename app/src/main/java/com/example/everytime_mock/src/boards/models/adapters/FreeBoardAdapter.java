@@ -42,6 +42,7 @@ public class FreeBoardAdapter extends RecyclerView.Adapter<FreeBoardAdapter.Cust
 
     @Override
     public void onBindViewHolder(@NonNull FreeBoardAdapter.CustomViewHolder holder, int position) {
+
         holder.tv_item_post_title.setText(post_item_list.get(position).getTitle());
         holder.tv_item_post_content.setText(post_item_list.get(position).getContent());
         holder.tv_item_post_time.setText(post_item_list.get(position).getTime());
@@ -64,6 +65,7 @@ public class FreeBoardAdapter extends RecyclerView.Adapter<FreeBoardAdapter.Cust
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
+        protected int content_index;
         protected TextView tv_item_post_title;
         protected TextView tv_item_post_content;
         protected TextView tv_item_post_time;
@@ -95,6 +97,10 @@ public class FreeBoardAdapter extends RecyclerView.Adapter<FreeBoardAdapter.Cust
 
                         Intent intent = new Intent(v.getContext(), InPostActivity.class);
                         intent.putExtra("clicked_free_index", pos);
+                        intent.putExtra("clicked_content_index", post_item_list.get(pos).getContent_index());
+
+                        System.out.println("보내기전 freeItem index: " + post_item_list.get(pos).getContent_index());
+
                         context.startActivity(intent);
 
                         if (mListener != null) {

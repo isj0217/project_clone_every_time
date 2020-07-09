@@ -1,13 +1,14 @@
-package com.example.everytime_mock.src.boards.models.common_board;
+package com.example.everytime_mock.src.boards.in_post.models;
 
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResult;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class CommonBoardResponse {
+public class CommentResponse {
 
     @SerializedName("result")
-    private List<CommonBoardResult> commonBoardResults;
+    private List<CommentResult> commentResults;
 
     @SerializedName("code")
     private int code;
@@ -18,15 +19,15 @@ public class CommonBoardResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
-    public CommonBoardResponse(List<CommonBoardResult> commonBoardResults, int code, String message, boolean isSuccess) {
-        this.commonBoardResults = commonBoardResults;
+    public CommentResponse(List<CommentResult> commentResults, int code, String message, boolean isSuccess) {
+        this.commentResults = commentResults;
         this.code = code;
         this.message = message;
         this.isSuccess = isSuccess;
     }
 
-    public List<CommonBoardResult> getCommonBoardResults() {
-        return commonBoardResults;
+    public List<CommentResult> getCommentResults() {
+        return commentResults;
     }
 
     public int getCode() {

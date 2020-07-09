@@ -75,6 +75,7 @@ public class SecretBoardActivity extends BaseActivity implements BoardActivityVi
                 for (int i = 0; i < num_of_posts_in_alumni_board; i++){
                     PostItem postItem = new PostItem();
 
+                    postItem.setContent_index(commonBoardResponse.getCommonBoardResults().get(i).getContentIdx());
                     postItem.setTitle(commonBoardResponse.getCommonBoardResults().get(i).getContentTitle());
                     postItem.setContent(commonBoardResponse.getCommonBoardResults().get(i).getContentInf());
                     postItem.setTime(commonBoardResponse.getCommonBoardResults().get(i).getWriteDay());

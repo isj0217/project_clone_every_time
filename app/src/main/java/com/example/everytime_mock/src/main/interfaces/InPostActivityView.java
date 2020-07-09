@@ -1,5 +1,6 @@
 package com.example.everytime_mock.src.main.interfaces;
 
+import com.example.everytime_mock.src.boards.in_post.models.CommentResponse;
 import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
@@ -31,4 +32,12 @@ public interface InPostActivityView {
     void exactAlumniPostSuccess(CommonBoardResponse commonBoardResponse);
 
     void exactFreshmenPostSuccess(CommonBoardResponse commonBoardResponse);
+
+    void freeCommentSuccess(CommentResponse commentResponse);
+
+    void secretCommentSuccess(CommentResponse commentResponse);
+
+    void alumniCommentSuccess(CommentResponse commentResponse);
+
+    void freshmenCommentSuccess(CommentResponse commentResponse);
 }

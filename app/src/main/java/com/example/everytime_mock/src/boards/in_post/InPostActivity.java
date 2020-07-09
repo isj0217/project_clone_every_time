@@ -3,15 +3,30 @@ package com.example.everytime_mock.src.boards.in_post;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
+import com.example.everytime_mock.src.boards.in_post.models.CommentItem;
+import com.example.everytime_mock.src.boards.in_post.models.CommentResponse;
+import com.example.everytime_mock.src.boards.in_post.models.FreeCommentAdapter;
+import com.example.everytime_mock.src.boards.models.adapters.FreeBoardAdapter;
 import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
+import com.example.everytime_mock.src.boards.models.items.PostItem;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 import com.example.everytime_mock.src.main.interfaces.InPostActivityView;
 
+import java.util.ArrayList;
+
 
 public class InPostActivity extends BaseActivity implements InPostActivityView {
+
+    private ArrayList<CommentItem> m_comment_item_list;
+    private FreeCommentAdapter free_comment_adapter;
+    private RecyclerView rv_in_post_comment;
+    private LinearLayoutManager linear_layout_manager;
 
     private TextView tv_in_post_nickname, tv_in_post_time, tv_in_post_title, tv_in_post_content, tv_in_post_like_num, tv_in_post_comment_num, tv_in_post_scrap_num;
 
@@ -29,39 +44,50 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_post);
 
+
+        m_comment_item_list = new ArrayList<>();
+
+        free_comment_adapter = new FreeCommentAdapter(m_comment_item_list);
+        rv_in_post_comment = findViewById(R.id.rv_board_comment_list);
+
+        linear_layout_manager = new LinearLayoutManager(getApplicationContext());
+        rv_in_post_comment.setLayoutManager(linear_layout_manager);
+
+        rv_in_post_comment.setAdapter(free_comment_adapter);
+
+        int clicked_content_index = getIntent().getIntExtra("clicked_content_index", 0);
+        tryGetFreeComment(clicked_content_index);
+
+
         inPostService = new InPostService(this);
 
         textViewBinding();
 
         if (getIntent().getStringExtra("clicked") != null) {
             clicked = getIntent().getStringExtra("clicked");
-        }else{
+        } else {
             clicked = "";
         }
 
 
         m_clicked_free_index = getIntent().getIntExtra("clicked_free_index", -1);
-        if (m_clicked_free_index != -1){
+        if (m_clicked_free_index != -1) {
             inPostService.getExactFreePost();
         }
         m_clicked_secret_index = getIntent().getIntExtra("clicked_secret_index", -1);
-        if (m_clicked_secret_index != -1){
+        if (m_clicked_secret_index != -1) {
             inPostService.getExactSecretPost();
         }
 
         m_clicked_alumni_index = getIntent().getIntExtra("clicked_alumni_index", -1);
-        if (m_clicked_alumni_index != -1){
+        if (m_clicked_alumni_index != -1) {
             inPostService.getExactAlumniPost();
         }
 
         m_clicked_freshmen_index = getIntent().getIntExtra("clicked_freshmen_index", -1);
-        if (m_clicked_freshmen_index != -1){
+        if (m_clicked_freshmen_index != -1) {
             inPostService.getExactFreshmenPost();
         }
-
-
-
-
 
 
         switch (clicked) {
@@ -98,9 +124,13 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         }
 
 
+    }
 
+    private void tryGetFreeComment (int content_index) {
+        showProgressDialog();
 
-
+        final InPostService inPostService = new InPostService(this);
+        inPostService.getFreeComment(content_index);
     }
 
     public void textViewBinding() {
@@ -197,7 +227,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     /**
      * 이건 레이아웃 따로 파야 함
-     * */
+     */
     @Override
     public void recentLectureReviewSuccess(RecentLectureReviewResponse recentLectureReviewBoardResponse) {
         switch (clicked) {
@@ -372,5 +402,47 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_index).getCountLike()));
         tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_index).getCountComment()));
         tv_in_post_scrap_num.setText("0");
+    }
+
+    @Override
+    public void freeCommentSuccess(CommentResponse commentResponse) {
+        hideProgressDialog();
+        System.out.println(commentResponse.getCode());
+        System.out.println(commentResponse.getMessage());
+        int size = commentResponse.getCommentResults().size();
+        System.out.println("size: " + size);
+
+        if ((commentResponse.getCode() == 100) && (size > 0)){
+            for (int i = 0; i < commentResponse.getCommentResults().size(); i++){
+                CommentItem commentItem = new CommentItem();
+
+                commentItem.setCommentIdx(commentResponse.getCommentResults().get(i).getCommentIdx());
+                commentItem.setCommentInf(commentResponse.getCommentResults().get(i).getCommentInf());
+                commentItem.setCommentCountLike(commentResponse.getCommentResults().get(i).getCommentCountLike());
+                commentItem.setCommentWriteDay(commentResponse.getCommentResults().get(i).getCommentWriteDay());
+                commentItem.setCommentWriter(commentResponse.getCommentResults().get(i).getCommentWriter());
+
+                m_comment_item_list.add(commentItem);
+            }
+            free_comment_adapter.notifyDataSetChanged();
+
+        }
+
+
+    }
+
+    @Override
+    public void secretCommentSuccess(CommentResponse commentResponse) {
+
+    }
+
+    @Override
+    public void alumniCommentSuccess(CommentResponse commentResponse) {
+
+    }
+
+    @Override
+    public void freshmenCommentSuccess(CommentResponse commentResponse) {
+
     }
 }

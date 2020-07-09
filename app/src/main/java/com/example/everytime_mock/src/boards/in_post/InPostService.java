@@ -1,10 +1,13 @@
 package com.example.everytime_mock.src.boards.in_post;
 
+import android.util.Log;
+
 import com.example.everytime_mock.src.boards.general_boards.alumni_board.interfaces.AlumniBoardRetrofitInterface;
 import com.example.everytime_mock.src.boards.general_boards.free_board.interfaces.FreeBoardRetrofitInterface;
 import com.example.everytime_mock.src.boards.general_boards.freshmen_board.interfaces.FreshmenBoardRetrofitInterface;
-import com.example.everytime_mock.src.boards.interfaces.InPostRetrofitInterface;
+import com.example.everytime_mock.src.boards.in_post.interfaces.InPostRetrofitInterface;
 import com.example.everytime_mock.src.boards.general_boards.secret_board.interfaces.SecretBoardRetrofitInterface;
+import com.example.everytime_mock.src.boards.in_post.models.CommentResponse;
 import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
@@ -239,6 +242,31 @@ class InPostService {
 
             @Override
             public void onFailure(Call<CommonBoardResponse> call, Throwable t) {
+                mInPostActivityView.validateFailure(null);
+            }
+        });
+    }
+
+    void getFreeComment(int contentIndex) {
+        final InPostRetrofitInterface inFreePostRetrofitInterface = getRetrofit().create(InPostRetrofitInterface.class);
+        inFreePostRetrofitInterface.getFreeComment(X_ACCESS_TOKEN, contentIndex).enqueue(new Callback<CommentResponse>() {
+
+            private static final String TAG = "getFreeComment";
+            @Override
+            public void onResponse(Call<CommentResponse> call, Response<CommentResponse> response) {
+                final CommentResponse commentResponse = response.body();
+                if (commentResponse == null) {
+                    Log.d(TAG, "onResponse: response지만 실패");
+                    mInPostActivityView.validateFailure(null);
+                    return;
+                }
+                Log.d(TAG, "성공");
+                mInPostActivityView.freeCommentSuccess(commentResponse);
+            }
+
+            @Override
+            public void onFailure(Call<CommentResponse> call, Throwable t) {
+                Log.d(TAG, "통신실패");
                 mInPostActivityView.validateFailure(null);
             }
         });

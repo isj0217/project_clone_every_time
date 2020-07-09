@@ -48,14 +48,18 @@
 
     </LinearLayout>
 
-    <ScrollView
+
+    <!--        스크롤뷰 안에 들어가는 유일한 하나의 레이아웃-->
+    <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:orientation="vertical"
         android:paddingStart="20dp"
         android:paddingEnd="20dp">
 
-        <!--        스크롤뷰 안에 들어가는 유일한 하나의 레이아웃-->
+        <!--            댓글 윗부분-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,9 +89,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:text="@string/activity_in_post_nickname"
-                        android:textStyle="bold"
                         android:textColor="@color/colorBlack"
-                        android:textSize="17sp" />
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_in_post_time"
@@ -157,6 +161,7 @@
 
             </LinearLayout>
 
+            <!--            글 제목~스크랩 갯수-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -234,10 +239,19 @@
 
 
             </LinearLayout>
-
         </LinearLayout>
 
-    </ScrollView>
+        <!--            댓글 부분-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_board_comment_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -252,9 +266,9 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
+            android:orientation="horizontal"
             android:scaleX="0.7"
             android:scaleY="0.7">
 
@@ -263,8 +277,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/colorEveryTimeRed"
-                android:checked="true"
-                 />
+                android:checked="true" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -282,10 +295,10 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:hint="댓글을 입력하세요."
-            android:textSize="13sp"
             android:textColor="@color/colorBlack"
             android:textColorHint="@color/colorDarkGrey"
-            android:textCursorDrawable="@drawable/cursor_red" />
+            android:textCursorDrawable="@drawable/cursor_red"
+            android:textSize="13sp" />
 
         <ImageView
             android:layout_width="20dp"
