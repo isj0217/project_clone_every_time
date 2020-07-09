@@ -11,7 +11,7 @@ import com.example.everytime_mock.src.boards.in_post.models.CommentResponse;
 import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
-import com.example.everytime_mock.src.main.interfaces.InPostActivityView;
+import com.example.everytime_mock.src.boards.in_post.interfaces.InPostActivityView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -271,6 +271,70 @@ class InPostService {
             }
         });
     }
+
+    void getSecretComment(int contentIndex) {
+        final InPostRetrofitInterface inFreePostRetrofitInterface = getRetrofit().create(InPostRetrofitInterface.class);
+        inFreePostRetrofitInterface.getSecretComment(X_ACCESS_TOKEN, contentIndex).enqueue(new Callback<CommentResponse>() {
+
+            @Override
+            public void onResponse(Call<CommentResponse> call, Response<CommentResponse> response) {
+                final CommentResponse commentResponse = response.body();
+                if (commentResponse == null) {
+                    mInPostActivityView.validateFailure(null);
+                    return;
+                }
+                mInPostActivityView.secretCommentSuccess(commentResponse);
+            }
+
+            @Override
+            public void onFailure(Call<CommentResponse> call, Throwable t) {
+                mInPostActivityView.validateFailure(null);
+            }
+        });
+    }
+
+    void getAlumniComment(int contentIndex) {
+        final InPostRetrofitInterface inFreePostRetrofitInterface = getRetrofit().create(InPostRetrofitInterface.class);
+        inFreePostRetrofitInterface.getAlumniComment(X_ACCESS_TOKEN, contentIndex).enqueue(new Callback<CommentResponse>() {
+
+            @Override
+            public void onResponse(Call<CommentResponse> call, Response<CommentResponse> response) {
+                final CommentResponse commentResponse = response.body();
+                if (commentResponse == null) {
+                    mInPostActivityView.validateFailure(null);
+                    return;
+                }
+                mInPostActivityView.alumniCommentSuccess(commentResponse);
+            }
+
+            @Override
+            public void onFailure(Call<CommentResponse> call, Throwable t) {
+                mInPostActivityView.validateFailure(null);
+            }
+        });
+    }
+
+    void getFreshmenComment(int contentIndex) {
+        final InPostRetrofitInterface inFreePostRetrofitInterface = getRetrofit().create(InPostRetrofitInterface.class);
+        inFreePostRetrofitInterface.getFreshmenComment(X_ACCESS_TOKEN, contentIndex).enqueue(new Callback<CommentResponse>() {
+
+            @Override
+            public void onResponse(Call<CommentResponse> call, Response<CommentResponse> response) {
+                final CommentResponse commentResponse = response.body();
+                if (commentResponse == null) {
+                    mInPostActivityView.validateFailure(null);
+                    return;
+                }
+                mInPostActivityView.freshmenCommentSuccess(commentResponse);
+            }
+
+            @Override
+            public void onFailure(Call<CommentResponse> call, Throwable t) {
+                mInPostActivityView.validateFailure(null);
+            }
+        });
+    }
+
 
 }
 

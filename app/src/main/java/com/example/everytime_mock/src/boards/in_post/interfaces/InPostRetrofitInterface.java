@@ -36,4 +36,19 @@ public interface InPostRetrofitInterface {
     Call<CommentResponse> getFreeComment(@Header("x-access-token") String accessToken,
                                          @Path("contentIdx") int contentIdx);
 
+    // 비밀게시판 게시글의 댓글 조회
+    @GET("/notice/content/{contentIdx}/comments")
+    Call<CommentResponse> getSecretComment(@Header("x-access-token") String accessToken,
+                                           @Path("contentIdx") int contentIdx);
+
+    // 졸업생게시판 게시글의 댓글 조회
+    @GET("/notice/content/{contentIdx}/comments")
+    Call<CommentResponse> getAlumniComment(@Header("x-access-token") String accessToken,
+                                           @Path("contentIdx") int contentIdx);
+
+    // 신입생게시판 게시글의 댓글 조회
+    @GET("/notice/content/{contentIdx}/comments")
+    Call<CommentResponse> getFreshmenComment(@Header("x-access-token") String accessToken,
+                                           @Path("contentIdx") int contentIdx);
+
 }

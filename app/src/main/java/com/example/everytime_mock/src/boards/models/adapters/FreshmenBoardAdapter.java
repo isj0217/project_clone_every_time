@@ -94,7 +94,9 @@ public class FreshmenBoardAdapter extends RecyclerView.Adapter<FreshmenBoardAdap
                         System.out.println("보내기 전 pos: " + pos);
 
                         Intent intent = new Intent(v.getContext(), InPostActivity.class);
-                        intent.putExtra("clicked_freshmen_index", pos);
+                        intent.putExtra("clicked_freshmen_pos", pos);
+                        intent.putExtra("clicked_content_index", post_item_list.get(pos).getContent_index());
+
                         context.startActivity(intent);
 
                         if (mListener != null) {

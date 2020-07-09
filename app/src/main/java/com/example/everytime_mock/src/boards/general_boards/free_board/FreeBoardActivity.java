@@ -26,7 +26,6 @@ public class FreeBoardActivity extends BaseActivity implements BoardActivityView
     private RecyclerView rv_free_board;
     private LinearLayoutManager linear_layout_manager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +44,6 @@ public class FreeBoardActivity extends BaseActivity implements BoardActivityView
         rv_free_board.setAdapter(free_board_adapter);
 
         tryGetFreeBoard();
-
-
     }
 
     private void tryGetFreeBoard() {
@@ -75,8 +72,8 @@ public class FreeBoardActivity extends BaseActivity implements BoardActivityView
                 /**
                  * PostItem 형식의 ArrayList에 모두 넣어두고 어댑터를 이용해서 하나하나 레이아웃에 갖다 붙이자!!
                  * */
-                int num_of_posts_in_alumni_board = commonBoardResponse.getCommonBoardResults().size();
-                for (int i = 0; i < num_of_posts_in_alumni_board; i++){
+                int num_of_posts_in_free_board = commonBoardResponse.getCommonBoardResults().size();
+                for (int i = 0; i < num_of_posts_in_free_board; i++) {
                     PostItem postItem = new PostItem();
 
                     postItem.setContent_index(commonBoardResponse.getCommonBoardResults().get(i).getContentIdx());
@@ -90,14 +87,12 @@ public class FreeBoardActivity extends BaseActivity implements BoardActivityView
                     m_post_item_list.add(postItem);
                 }
                 free_board_adapter.notifyDataSetChanged();
-
                 break;
-
         }
     }
 
     public void customOnClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.iv_free_board_go_back:
                 onBackPressed();
                 break;

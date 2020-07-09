@@ -31,6 +31,9 @@ public class SecretBoardActivity extends BaseActivity implements BoardActivityVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secret_board);
 
+        m_post_item_list = new ArrayList<>();
+
+        secret_board_adapter = new SecretBoardAdapter(m_post_item_list);
         rv_secret_board = findViewById(R.id.rv_secret_board_post_list);
 
         linear_layout_manager = new LinearLayoutManager(getApplicationContext());
@@ -41,8 +44,6 @@ public class SecretBoardActivity extends BaseActivity implements BoardActivityVi
         rv_secret_board.setAdapter(secret_board_adapter);
 
         tryGetSecretBoard();
-
-
     }
 
     private void tryGetSecretBoard() {
@@ -71,8 +72,8 @@ public class SecretBoardActivity extends BaseActivity implements BoardActivityVi
                 /**
                  * PostItem 형식의 ArrayList에 모두 넣어두고 어댑터를 이용해서 하나하나 레이아웃에 갖다 붙이자!!
                  * */
-                int num_of_posts_in_alumni_board = commonBoardResponse.getCommonBoardResults().size();
-                for (int i = 0; i < num_of_posts_in_alumni_board; i++){
+                int num_of_posts_in_secret_board = commonBoardResponse.getCommonBoardResults().size();
+                for (int i = 0; i < num_of_posts_in_secret_board; i++) {
                     PostItem postItem = new PostItem();
 
                     postItem.setContent_index(commonBoardResponse.getCommonBoardResults().get(i).getContentIdx());
@@ -86,14 +87,12 @@ public class SecretBoardActivity extends BaseActivity implements BoardActivityVi
                     m_post_item_list.add(postItem);
                 }
                 secret_board_adapter.notifyDataSetChanged();
-
                 break;
-
         }
     }
 
     public void customOnClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.iv_secret_board_go_back:
                 onBackPressed();
                 break;

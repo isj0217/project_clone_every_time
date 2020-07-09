@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.main.interfaces;
+package com.example.everytime_mock.src.boards.in_post.interfaces;
 
 import com.example.everytime_mock.src.boards.in_post.models.CommentResponse;
 import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;

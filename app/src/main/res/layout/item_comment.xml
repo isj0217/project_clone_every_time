@@ -10,9 +10,7 @@
         android:background="@color/colorWhite"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        android:paddingStart="22dp"
         android:paddingTop="15dp"
-        android:paddingEnd="22dp"
         android:paddingBottom="15dp">
 
         <LinearLayout

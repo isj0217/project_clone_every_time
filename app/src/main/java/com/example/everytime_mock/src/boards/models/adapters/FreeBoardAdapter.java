@@ -96,7 +96,7 @@ public class FreeBoardAdapter extends RecyclerView.Adapter<FreeBoardAdapter.Cust
                         System.out.println("보내기 전 pos: " + pos);
 
                         Intent intent = new Intent(v.getContext(), InPostActivity.class);
-                        intent.putExtra("clicked_free_index", pos);
+                        intent.putExtra("clicked_free_pos", pos);
                         intent.putExtra("clicked_content_index", post_item_list.get(pos).getContent_index());
 
                         System.out.println("보내기전 freeItem index: " + post_item_list.get(pos).getContent_index());

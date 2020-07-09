@@ -94,7 +94,9 @@ public class AlumniBoardAdapter extends RecyclerView.Adapter<AlumniBoardAdapter.
                         System.out.println("보내기 전 pos: " + pos);
 
                         Intent intent = new Intent(v.getContext(), InPostActivity.class);
-                        intent.putExtra("clicked_alumni_index", pos);
+                        intent.putExtra("clicked_alumni_pos", pos);
+                        intent.putExtra("clicked_content_index", post_item_list.get(pos).getContent_index());
+
                         context.startActivity(intent);
 
                         if (mListener != null) {
