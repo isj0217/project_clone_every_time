@@ -1,5 +1,6 @@
 package com.example.everytime_mock.src.boards.models.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -74,7 +75,7 @@ public class FreeBoardAdapter extends RecyclerView.Adapter<FreeBoardAdapter.Cust
         protected TextView tv_item_post_comment_num;
 
 
-        public CustomViewHolder(@NonNull View itemView) {
+        public CustomViewHolder(@NonNull final View itemView) {
             super(itemView);
             this.tv_item_post_title = itemView.findViewById(R.id.tv_item_post_title);
             this.tv_item_post_content = itemView.findViewById(R.id.tv_item_post_content);
@@ -96,12 +97,14 @@ public class FreeBoardAdapter extends RecyclerView.Adapter<FreeBoardAdapter.Cust
                         System.out.println("보내기 전 pos: " + pos);
 
                         Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                        intent.putExtra("index_of_this_post", post_item_list.get(pos).getContent_index());
                         intent.putExtra("clicked_free_pos", pos);
                         intent.putExtra("clicked_content_index", post_item_list.get(pos).getContent_index());
 
                         System.out.println("보내기전 freeItem index: " + post_item_list.get(pos).getContent_index());
 
                         context.startActivity(intent);
+                        ((Activity)context).finish();
 
                         if (mListener != null) {
                             mListener.onItemClick(v, pos);

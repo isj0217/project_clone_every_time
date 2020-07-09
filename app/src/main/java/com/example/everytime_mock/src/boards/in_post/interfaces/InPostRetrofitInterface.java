@@ -1,13 +1,20 @@
 package com.example.everytime_mock.src.boards.in_post.interfaces;
 
+import com.example.everytime_mock.src.boards.in_post.models.CommentAddResponse;
 import com.example.everytime_mock.src.boards.in_post.models.CommentResponse;
 import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 
+import org.w3c.dom.Comment;
+
+import java.util.HashMap;
+
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -50,5 +57,11 @@ public interface InPostRetrofitInterface {
     @GET("/notice/content/{contentIdx}/comments")
     Call<CommentResponse> getFreshmenComment(@Header("x-access-token") String accessToken,
                                            @Path("contentIdx") int contentIdx);
+
+    // 댓글 추가
+    @POST("/notice/content/{contentIdx}/comment")
+    Call<CommentAddResponse> postNewComment(@Header("x-access-token") String accessToken,
+                                            @Path("contentIdx") int contentIdx,
+                                            @Body HashMap<String, Object> params);
 
 }

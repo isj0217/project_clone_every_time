@@ -1,7 +1,10 @@
 package com.example.everytime_mock.src.boards.in_post;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,15 +14,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
+import com.example.everytime_mock.src.boards.general_boards.alumni_board.AlumniBoardActivity;
+import com.example.everytime_mock.src.boards.general_boards.free_board.FreeBoardActivity;
+import com.example.everytime_mock.src.boards.general_boards.freshmen_board.FreshmenBoardActivity;
+import com.example.everytime_mock.src.boards.general_boards.secret_board.SecretBoardActivity;
+import com.example.everytime_mock.src.boards.in_post.models.CommentAddResponse;
 import com.example.everytime_mock.src.boards.in_post.models.CommentItem;
 import com.example.everytime_mock.src.boards.in_post.models.CommentResponse;
 import com.example.everytime_mock.src.boards.in_post.models.CommentAdapter;
 import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
+import com.example.everytime_mock.src.main.MainActivity;
+import com.example.everytime_mock.src.main.frag_home.FragHome;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 import com.example.everytime_mock.src.boards.in_post.interfaces.InPostActivityView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class InPostActivity extends BaseActivity implements InPostActivityView {
@@ -28,6 +39,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     private CommentAdapter comment_adapter;
 
+    private CheckBox chk_in_post_anonymous;
 
 
     private RecyclerView rv_in_post_comment;
@@ -48,11 +60,17 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     private int m_from_board_num;
 
+    private int m_index_of_this_post;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_post);
+
+        m_index_of_this_post = getIntent().getIntExtra("index_of_this_post", 0);
+
+
 
         m_comment_item_list = new ArrayList<>();
 
@@ -68,6 +86,10 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         inPostService = new InPostService(this);
 
         ViewBinding();
+
+
+
+
 
 
 
@@ -203,6 +225,8 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
 
     public void ViewBinding() {
+
+        chk_in_post_anonymous = findViewById(R.id.chk_in_post_anonymous);
 
         et_in_post_comment = findViewById(R.id.et_in_post_comment);
         iv_in_post_register_comment = findViewById(R.id.iv_in_post_register_comment);
@@ -564,19 +588,75 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         }
     }
 
-    public void customOnClick(View view){
-        switch (view.getId()){
-            case R.id.iv_in_post_register_comment:
-                String input_comment = et_in_post_comment.getText().toString();
-                showCustomToast(input_comment);
+    @Override
+    public void commentAddSuccess(CommentAddResponse commentAddResponse) {
+        switch (commentAddResponse.getCode()) {
+            case 100:
                 break;
         }
     }
 
+    public void customOnClick(View view){
+        switch (view.getId()){
+            case R.id.iv_in_post_register_comment:
+                showProgressDialog();
+                String input_comment = et_in_post_comment.getText().toString();
+                showCustomToast(input_comment);
+                int user_status;
+                if (chk_in_post_anonymous.isChecked()){
+                    user_status = 0;
+                }else{
+                    user_status = 1;
+                }
+                tryPostComment(input_comment, user_status);
+                comment_adapter.notifyDataSetChanged();
+
+                break;
+        }
+    }
+
+    public void tryPostComment(String comment, int userStatus) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("commentInf", comment);
+        params.put("userStatus", chk_in_post_anonymous.isChecked() ? 0 : 1);
+
+        InPostService inPostService = new InPostService(this);
+        inPostService.postNewComment(m_index_of_this_post, params);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent;
+        switch (m_from_board_num){
+            case 1:
+                intent = new Intent(InPostActivity.this, FreeBoardActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case 2:
+                intent = new Intent(InPostActivity.this, SecretBoardActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case 3:
+                intent = new Intent(InPostActivity.this, AlumniBoardActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case 4:
+                intent = new Intent(InPostActivity.this, FreshmenBoardActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            default:
+                intent = new Intent(InPostActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                break;
 
 
-
-
+        }
+    }
 
     @Override
     public void validateSuccess(String text) {

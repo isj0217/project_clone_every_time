@@ -1,5 +1,6 @@
 package com.example.everytime_mock.src.boards.models.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -90,10 +91,12 @@ public class SecretBoardAdapter extends RecyclerView.Adapter<SecretBoardAdapter.
                         System.out.println("보내기 전 pos: " + pos);
 
                         Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                        intent.putExtra("index_of_this_post", post_item_list.get(pos).getContent_index());
                         intent.putExtra("clicked_secret_pos", pos);
                         intent.putExtra("clicked_content_index", post_item_list.get(pos).getContent_index());
 
                         context.startActivity(intent);
+                        ((Activity)context).finish();
 
                         if (mListener != null) {
                             mListener.onItemClick(v, pos);

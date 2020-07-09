@@ -7,11 +7,14 @@ import com.example.everytime_mock.src.boards.general_boards.free_board.interface
 import com.example.everytime_mock.src.boards.general_boards.freshmen_board.interfaces.FreshmenBoardRetrofitInterface;
 import com.example.everytime_mock.src.boards.in_post.interfaces.InPostRetrofitInterface;
 import com.example.everytime_mock.src.boards.general_boards.secret_board.interfaces.SecretBoardRetrofitInterface;
+import com.example.everytime_mock.src.boards.in_post.models.CommentAddResponse;
 import com.example.everytime_mock.src.boards.in_post.models.CommentResponse;
 import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 import com.example.everytime_mock.src.boards.in_post.interfaces.InPostActivityView;
+
+import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -330,6 +333,27 @@ class InPostService {
 
             @Override
             public void onFailure(Call<CommentResponse> call, Throwable t) {
+                mInPostActivityView.validateFailure(null);
+            }
+        });
+    }
+
+    void postNewComment(int content_index, HashMap<String, Object> params) {
+        final InPostRetrofitInterface inPostRetrofitInterface = getRetrofit().create(InPostRetrofitInterface.class);
+        inPostRetrofitInterface.postNewComment(X_ACCESS_TOKEN, content_index, params).enqueue(new Callback<CommentAddResponse>() {
+
+            @Override
+            public void onResponse(Call<CommentAddResponse> call, Response<CommentAddResponse> response) {
+                final CommentAddResponse commentAddResponse = response.body();
+                if (commentAddResponse == null) {
+                    mInPostActivityView.validateFailure(null);
+                    return;
+                }
+                mInPostActivityView.commentAddSuccess(commentAddResponse);
+            }
+
+            @Override
+            public void onFailure(Call<CommentAddResponse> call, Throwable t) {
                 mInPostActivityView.validateFailure(null);
             }
         });

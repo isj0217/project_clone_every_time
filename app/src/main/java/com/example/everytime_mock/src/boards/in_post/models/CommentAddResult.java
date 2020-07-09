@@ -1,37 +1,25 @@
 package com.example.everytime_mock.src.boards.in_post.models;
 
-public class CommentResult {
-    int commentIdx;
+public class CommentAddResult {
+    int contentIdx;
     String commentInf;
-    String commentWriter;
-    int commentCountLike;
-    String commentWriteDay;
+    int userStatus;
 
-    public CommentResult(int commentIdx, String commentInf, String commentWriter, int commentCountLike, String commentWriteDay) {
-        this.commentIdx = commentIdx;
+    public CommentAddResult(int contentIdx, String commentInf, int userStatus) {
+        this.contentIdx = contentIdx;
         this.commentInf = commentInf;
-        this.commentWriter = commentWriter;
-        this.commentCountLike = commentCountLike;
-        this.commentWriteDay = commentWriteDay;
+        this.userStatus = userStatus;
     }
 
-    public int getCommentIdx() {
-        return commentIdx;
+    public int getContentIdx() {
+        return contentIdx;
     }
 
     public String getCommentInf() {
         return commentInf;
     }
 
-    public String getCommentWriter() {
-        return commentWriter;
-    }
-
-    public int getCommentCountLike() {
-        return commentCountLike;
-    }
-
-    public String getCommentWriteDay() {
-        return commentWriteDay;
+    public int getUserStatus() {
+        return userStatus;
     }
 }
