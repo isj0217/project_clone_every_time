@@ -1,5 +1,6 @@
 package com.example.everytime_mock.src.boards.general_boards.alumni_board;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
+import com.example.everytime_mock.src.boards.general_boards.free_board.FreeBoardActivity;
 import com.example.everytime_mock.src.boards.models.adapters.AlumniBoardAdapter;
 import com.example.everytime_mock.src.boards.writing.WritingActivity;
 import com.example.everytime_mock.src.boards.interfaces.BoardActivityView;
@@ -99,8 +101,18 @@ public class AlumniBoardActivity extends BaseActivity implements BoardActivityVi
                 break;
             case R.id.iv_alumni_board_more:
                 showPopUp(view);
+                break;case R.id.iv_alumni_board_sync:
+                restartActivity(AlumniBoardActivity.this);
                 break;
         }
+
+    }
+
+    private void restartActivity(Activity activity) {
+        Intent intent = new Intent();
+        intent.setClass(activity, activity.getClass());
+        activity.startActivity(intent);
+        activity.finish();
     }
 
     public void showPopUp(View v) {

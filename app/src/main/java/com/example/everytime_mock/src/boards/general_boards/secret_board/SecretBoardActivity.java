@@ -1,5 +1,6 @@
 package com.example.everytime_mock.src.boards.general_boards.secret_board;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
+import com.example.everytime_mock.src.boards.general_boards.free_board.FreeBoardActivity;
 import com.example.everytime_mock.src.boards.models.adapters.SecretBoardAdapter;
 import com.example.everytime_mock.src.boards.writing.WritingActivity;
 import com.example.everytime_mock.src.boards.interfaces.BoardActivityView;
@@ -99,9 +101,19 @@ public class SecretBoardActivity extends BaseActivity implements BoardActivityVi
             case R.id.iv_secret_board_more:
                 showPopUp(view);
                 break;
-        }
-
+            case R.id.iv_secret_board_sync:
+                restartActivity(SecretBoardActivity.this);
+                break;
     }
+    }
+
+    private void restartActivity(Activity activity) {
+        Intent intent = new Intent();
+        intent.setClass(activity, activity.getClass());
+        activity.startActivity(intent);
+        activity.finish();
+    }
+
 
     public void showPopUp(View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);

@@ -1,5 +1,6 @@
 package com.example.everytime_mock.src.boards.general_boards.free_board;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -99,8 +100,18 @@ public class FreeBoardActivity extends BaseActivity implements BoardActivityView
             case R.id.iv_free_board_more:
                 showPopUp(view);
                 break;
+            case R.id.iv_free_board_sync:
+                restartActivity(FreeBoardActivity.this);
+                break;
         }
 
+    }
+
+    private void restartActivity(Activity activity) {
+        Intent intent = new Intent();
+        intent.setClass(activity, activity.getClass());
+        activity.startActivity(intent);
+        activity.finish();
     }
 
     public void showPopUp(View v) {
