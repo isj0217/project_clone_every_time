@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.boards.interfaces;
 
-import com.example.everytime_mock.src.boards.models.WritingResponse;
+import com.example.everytime_mock.src.boards.models.writing.WritingResponse;
 import com.example.everytime_mock.src.signIn.models.DefaultResponse;
 import com.example.everytime_mock.src.signIn.models.SignInResponse;
 

@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.boards.general_boards.secret_board.interfaces;
 
-import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.models.DefaultResponse;
 
 import okhttp3.RequestBody;
@@ -18,7 +18,7 @@ public interface SecretBoardRetrofitInterface {
     Call<DefaultResponse> getTest();
 
     @GET("/notice/2/contents")
-    Call<BoardResponse> getSecretBoard(@Header("x-access-token") String accessToken);
+    Call<CommonBoardResponse> getSecretBoard(@Header("x-access-token") String accessToken);
 
     @GET("/test/{number}")
     Call<DefaultResponse> getTestPathAndQuery(

@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards.models;
+package com.example.everytime_mock.src.boards.models.recent_lecture_review_board;
 
 public class RecentLectureReviewBoardResult {
 

@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.boards.general_boards.free_board.interfaces;
 
-import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.models.DefaultResponse;
 
 import okhttp3.RequestBody;
@@ -18,7 +18,7 @@ public interface FreeBoardRetrofitInterface {
     Call<DefaultResponse> getTest();
 
     @GET("/notice/1/contents")
-    Call<BoardResponse> getFreeBoard(@Header("x-access-token")String accessToken);
+    Call<CommonBoardResponse> getFreeBoard(@Header("x-access-token")String accessToken);
 
 
     @GET("/test/{number}")

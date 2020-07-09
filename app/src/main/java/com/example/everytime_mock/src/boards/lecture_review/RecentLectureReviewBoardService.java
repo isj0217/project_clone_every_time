@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.example.everytime_mock.src.boards.interfaces.RecentLectureReviewBoardActivityView;
 import com.example.everytime_mock.src.boards.interfaces.RecentLectureReviewBoardRetrofitInterface;
-import com.example.everytime_mock.src.boards.models.RecentLectureReviewBoardResponse;
+import com.example.everytime_mock.src.boards.models.recent_lecture_review_board.RecentLectureReviewBoardResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

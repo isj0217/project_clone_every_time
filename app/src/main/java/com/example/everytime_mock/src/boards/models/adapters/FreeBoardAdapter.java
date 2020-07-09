@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards.models;
+package com.example.everytime_mock.src.boards.models.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.boards.in_post.InPostActivity;
+import com.example.everytime_mock.src.boards.models.items.PostItem;
 
 import java.util.ArrayList;
 

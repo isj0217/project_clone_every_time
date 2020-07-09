@@ -24,7 +24,7 @@ import com.example.everytime_mock.src.boards.hot_board.HotBoardActivity;
 import com.example.everytime_mock.src.boards.lecture_review.LectureReviewInSubjectActivity;
 import com.example.everytime_mock.src.boards.lecture_review.RecentLectureReviewBoardActivity;
 import com.example.everytime_mock.src.boards.in_post.InPostActivity;
-import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.frag_home.models.AdvertisementResponse;
 import com.example.everytime_mock.src.main.frag_home.models.HotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
@@ -885,23 +885,23 @@ public class FragHome extends Fragment implements FragHomeView {
     }
 
     @Override
-    public void getFreeBoardSuccess(BoardResponse boardResponse) {
-        tv_frag_home_favorite_free_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
+    public void getFreeBoardSuccess(CommonBoardResponse commonBoardResponse) {
+        tv_frag_home_favorite_free_board_first_post.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
     }
 
     @Override
-    public void getSecretBoardSuccess(BoardResponse boardResponse) {
-        tv_frag_home_favorite_secret_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
+    public void getSecretBoardSuccess(CommonBoardResponse commonBoardResponse) {
+        tv_frag_home_favorite_secret_board_first_post.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
     }
 
     @Override
-    public void getAlumniBoardSuccess(BoardResponse boardResponse) {
-        tv_frag_home_favorite_alumni_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
+    public void getAlumniBoardSuccess(CommonBoardResponse commonBoardResponse) {
+        tv_frag_home_favorite_alumni_board_first_post.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
     }
 
     @Override
-    public void getFreshmenBoardSuccess(BoardResponse boardResponse) {
-        tv_frag_home_favorite_freshmen_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
+    public void getFreshmenBoardSuccess(CommonBoardResponse commonBoardResponse) {
+        tv_frag_home_favorite_freshmen_board_first_post.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
     }
 
     public void linkIconsToWebSites() {

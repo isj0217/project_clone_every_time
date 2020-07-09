@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
@@ -13,13 +14,16 @@ import com.example.everytime_mock.src.boards.general_boards.alumni_board.AlumniB
 import com.example.everytime_mock.src.boards.general_boards.free_board.FreeBoardActivity;
 import com.example.everytime_mock.src.boards.general_boards.freshmen_board.FreshmenBoardActivity;
 import com.example.everytime_mock.src.boards.interfaces.WritingActivityView;
-import com.example.everytime_mock.src.boards.models.WritingResponse;
+import com.example.everytime_mock.src.boards.models.writing.WritingResponse;
 import com.example.everytime_mock.src.boards.general_boards.secret_board.SecretBoardActivity;
 
 import java.util.HashMap;
 
 
 public class WritingActivity extends BaseActivity implements WritingActivityView {
+
+    private long mBackKeyPressedTime = 0;
+    private Toast mToast;
 
     private int num_of_board_from;
     private Button btn_writing_complete;
@@ -123,7 +127,44 @@ public class WritingActivity extends BaseActivity implements WritingActivityView
                         break;
                 }
         }
+    }
 
+    @Override
+    public void onBackPressed() {
+
+        if(System.currentTimeMillis() > mBackKeyPressedTime + 2000) {
+            mBackKeyPressedTime = System.currentTimeMillis();
+            mToast = Toast.makeText(this, "\'뒤로\' 버튼을 한번 더 누르시면 작성을 종료합니다.", Toast.LENGTH_SHORT);
+            mToast.show();
+        }
+        else if(System.currentTimeMillis() <= mBackKeyPressedTime + 2000) {
+
+            Intent intent;
+
+            switch (num_of_board_from){
+                case 1:
+                    intent = new Intent(WritingActivity.this, FreeBoardActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case 2:
+                    intent = new Intent(WritingActivity.this, SecretBoardActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case 3:
+                    intent = new Intent(WritingActivity.this, AlumniBoardActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case 4:
+                    intent = new Intent(WritingActivity.this, FreshmenBoardActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
+            }
+            mToast.cancel();
+        }
 
     }
 }

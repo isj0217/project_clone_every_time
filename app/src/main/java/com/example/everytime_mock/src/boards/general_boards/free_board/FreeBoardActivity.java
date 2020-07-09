@@ -3,29 +3,26 @@ package com.example.everytime_mock.src.boards.general_boards.free_board;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.PopupMenu;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.boards.in_post.InPostActivity;
 import com.example.everytime_mock.src.boards.writing.WritingActivity;
 import com.example.everytime_mock.src.boards.interfaces.BoardActivityView;
-import com.example.everytime_mock.src.boards.models.BoardAdapter;
-import com.example.everytime_mock.src.boards.models.BoardResponse;
-import com.example.everytime_mock.src.boards.models.PostItem;
+import com.example.everytime_mock.src.boards.models.adapters.FreeBoardAdapter;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
+import com.example.everytime_mock.src.boards.models.items.PostItem;
 
 import java.util.ArrayList;
 
 public class FreeBoardActivity extends BaseActivity implements BoardActivityView, PopupMenu.OnMenuItemClickListener {
 
     private ArrayList<PostItem> m_post_item_list;
-    private BoardAdapter free_board_adapter;
+    private FreeBoardAdapter free_board_adapter;
     private RecyclerView rv_free_board;
     private LinearLayoutManager linear_layout_manager;
 
@@ -37,14 +34,14 @@ public class FreeBoardActivity extends BaseActivity implements BoardActivityView
 
         m_post_item_list = new ArrayList<>();
 
-        free_board_adapter = new BoardAdapter(m_post_item_list);
+        free_board_adapter = new FreeBoardAdapter(m_post_item_list);
         rv_free_board = findViewById(R.id.rv_free_board_post_list);
 
         linear_layout_manager = new LinearLayoutManager(getApplicationContext());
         rv_free_board.setLayoutManager(linear_layout_manager);
 
         m_post_item_list = new ArrayList<>();
-        free_board_adapter = new BoardAdapter(m_post_item_list);
+        free_board_adapter = new FreeBoardAdapter(m_post_item_list);
         rv_free_board.setAdapter(free_board_adapter);
 
         tryGetFreeBoard();
@@ -70,24 +67,24 @@ public class FreeBoardActivity extends BaseActivity implements BoardActivityView
     }
 
     @Override
-    public void boardSuccess(BoardResponse boardResponse) {
+    public void boardSuccess(CommonBoardResponse commonBoardResponse) {
         hideProgressDialog();
 
-        switch (boardResponse.getCode()) {
+        switch (commonBoardResponse.getCode()) {
             case 100:
                 /**
                  * PostItem 형식의 ArrayList에 모두 넣어두고 어댑터를 이용해서 하나하나 레이아웃에 갖다 붙이자!!
                  * */
-                int num_of_posts_in_alumni_board = boardResponse.getBoardResults().size();
+                int num_of_posts_in_alumni_board = commonBoardResponse.getCommonBoardResults().size();
                 for (int i = 0; i < num_of_posts_in_alumni_board; i++){
                     PostItem postItem = new PostItem();
 
-                    postItem.setTitle(boardResponse.getBoardResults().get(i).getContentTitle());
-                    postItem.setContent(boardResponse.getBoardResults().get(i).getContentInf());
-                    postItem.setTime(boardResponse.getBoardResults().get(i).getWriteDay());
-                    postItem.setWriter(boardResponse.getBoardResults().get(i).getContentWriter());
-                    postItem.setLike_num(boardResponse.getBoardResults().get(i).getCountLike());
-                    postItem.setComment_num(boardResponse.getBoardResults().get(i).getCountComment());
+                    postItem.setTitle(commonBoardResponse.getCommonBoardResults().get(i).getContentTitle());
+                    postItem.setContent(commonBoardResponse.getCommonBoardResults().get(i).getContentInf());
+                    postItem.setTime(commonBoardResponse.getCommonBoardResults().get(i).getWriteDay());
+                    postItem.setWriter(commonBoardResponse.getCommonBoardResults().get(i).getContentWriter());
+                    postItem.setLike_num(commonBoardResponse.getCommonBoardResults().get(i).getCountLike());
+                    postItem.setComment_num(commonBoardResponse.getCommonBoardResults().get(i).getCountComment());
 
                     m_post_item_list.add(postItem);
                 }
@@ -125,6 +122,7 @@ public class FreeBoardActivity extends BaseActivity implements BoardActivityView
                 Intent intent = new Intent(FreeBoardActivity.this, WritingActivity.class);
                 intent.putExtra("boardName", 1);
                 startActivity(intent);
+                finish();
                 return true;
             case R.id.remove_from_favorite:
                 return true;

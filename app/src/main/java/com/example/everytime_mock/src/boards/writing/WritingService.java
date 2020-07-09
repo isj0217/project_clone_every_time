@@ -2,7 +2,7 @@ package com.example.everytime_mock.src.boards.writing;
 
 import com.example.everytime_mock.src.boards.interfaces.WritingActivityView;
 import com.example.everytime_mock.src.boards.interfaces.WritingRetrofitInterface;
-import com.example.everytime_mock.src.boards.models.WritingResponse;
+import com.example.everytime_mock.src.boards.models.writing.WritingResponse;
 
 import java.util.HashMap;
 

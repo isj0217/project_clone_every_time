@@ -2,7 +2,7 @@ package com.example.everytime_mock.src.boards.general_boards.alumni_board;
 
 import com.example.everytime_mock.src.boards.general_boards.alumni_board.interfaces.AlumniBoardRetrofitInterface;
 import com.example.everytime_mock.src.boards.interfaces.BoardActivityView;
-import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,19 +20,19 @@ class AlumniBoardService {
 
     void getAlumniBoard() {
         final AlumniBoardRetrofitInterface alumniBoardRetrofitInterface = getRetrofit().create(AlumniBoardRetrofitInterface.class);
-        alumniBoardRetrofitInterface.getAlumniBoard(X_ACCESS_TOKEN).enqueue(new Callback<BoardResponse>() {
+        alumniBoardRetrofitInterface.getAlumniBoard(X_ACCESS_TOKEN).enqueue(new Callback<CommonBoardResponse>() {
             @Override
-            public void onResponse(Call<BoardResponse> call, Response<BoardResponse> response) {
-                final BoardResponse boardResponse = response.body();
-                if (boardResponse == null) {
+            public void onResponse(Call<CommonBoardResponse> call, Response<CommonBoardResponse> response) {
+                final CommonBoardResponse commonBoardResponse = response.body();
+                if (commonBoardResponse == null) {
                     mBboardActivityView.validateFailure(null);
                     return;
                 }
-                mBboardActivityView.boardSuccess(boardResponse);
+                mBboardActivityView.boardSuccess(commonBoardResponse);
             }
 
             @Override
-            public void onFailure(Call<BoardResponse> call, Throwable t) {
+            public void onFailure(Call<CommonBoardResponse> call, Throwable t) {
                 mBboardActivityView.validateFailure(null);
             }
         });

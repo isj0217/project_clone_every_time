@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.boards.general_boards.alumni_board.interfaces;
 
-import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.models.DefaultResponse;
 
 import okhttp3.RequestBody;
@@ -18,7 +18,7 @@ public interface AlumniBoardRetrofitInterface {
     Call<DefaultResponse> getTest();
 
     @GET("/notice/3/contents")
-    Call<BoardResponse> getAlumniBoard(@Header("x-access-token") String accessToken);
+    Call<CommonBoardResponse> getAlumniBoard(@Header("x-access-token") String accessToken);
 
     @GET("/test/{number}")
     Call<DefaultResponse> getTestPathAndQuery(

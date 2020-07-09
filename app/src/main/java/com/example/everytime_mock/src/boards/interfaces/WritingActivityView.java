@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.boards.interfaces;
 
-import com.example.everytime_mock.src.boards.models.WritingResponse;
+import com.example.everytime_mock.src.boards.models.writing.WritingResponse;
 
 public interface WritingActivityView {
 

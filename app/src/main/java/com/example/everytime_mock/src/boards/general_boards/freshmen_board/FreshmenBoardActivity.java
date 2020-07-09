@@ -11,18 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
+import com.example.everytime_mock.src.boards.models.adapters.FreshmenBoardAdapter;
 import com.example.everytime_mock.src.boards.writing.WritingActivity;
 import com.example.everytime_mock.src.boards.interfaces.BoardActivityView;
-import com.example.everytime_mock.src.boards.models.BoardAdapter;
-import com.example.everytime_mock.src.boards.models.BoardResponse;
-import com.example.everytime_mock.src.boards.models.PostItem;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
+import com.example.everytime_mock.src.boards.models.items.PostItem;
 
 import java.util.ArrayList;
 
 public class FreshmenBoardActivity extends BaseActivity implements BoardActivityView, PopupMenu.OnMenuItemClickListener {
 
     private ArrayList<PostItem> m_post_item_list;
-    private BoardAdapter freshmen_board_adapter;
+    private FreshmenBoardAdapter freshmen_board_adapter;
     private RecyclerView rv_freshmen_board;
     private LinearLayoutManager linear_layout_manager;
 
@@ -37,12 +37,10 @@ public class FreshmenBoardActivity extends BaseActivity implements BoardActivity
         rv_freshmen_board.setLayoutManager(linear_layout_manager);
 
         m_post_item_list = new ArrayList<>();
-        freshmen_board_adapter = new BoardAdapter(m_post_item_list);
+        freshmen_board_adapter = new FreshmenBoardAdapter(m_post_item_list);
         rv_freshmen_board.setAdapter(freshmen_board_adapter);
 
         tryGetFreshmenBoard();
-
-
     }
 
     private void tryGetFreshmenBoard() {
@@ -63,24 +61,24 @@ public class FreshmenBoardActivity extends BaseActivity implements BoardActivity
     }
 
     @Override
-    public void boardSuccess(BoardResponse boardResponse) {
+    public void boardSuccess(CommonBoardResponse commonBoardResponse) {
         hideProgressDialog();
 
-        switch (boardResponse.getCode()) {
+        switch (commonBoardResponse.getCode()) {
             case 100:
                 /**
                  * PostItem 형식의 ArrayList에 모두 넣어두고 어댑터를 이용해서 하나하나 레이아웃에 갖다 붙이자!!
                  * */
-                int num_of_posts_in_alumni_board = boardResponse.getBoardResults().size();
+                int num_of_posts_in_alumni_board = commonBoardResponse.getCommonBoardResults().size();
                 for (int i = 0; i < num_of_posts_in_alumni_board; i++){
                     PostItem postItem = new PostItem();
 
-                    postItem.setTitle(boardResponse.getBoardResults().get(i).getContentTitle());
-                    postItem.setContent(boardResponse.getBoardResults().get(i).getContentInf());
-                    postItem.setTime(boardResponse.getBoardResults().get(i).getWriteDay());
-                    postItem.setWriter(boardResponse.getBoardResults().get(i).getContentWriter());
-                    postItem.setLike_num(boardResponse.getBoardResults().get(i).getCountLike());
-                    postItem.setComment_num(boardResponse.getBoardResults().get(i).getCountComment());
+                    postItem.setTitle(commonBoardResponse.getCommonBoardResults().get(i).getContentTitle());
+                    postItem.setContent(commonBoardResponse.getCommonBoardResults().get(i).getContentInf());
+                    postItem.setTime(commonBoardResponse.getCommonBoardResults().get(i).getWriteDay());
+                    postItem.setWriter(commonBoardResponse.getCommonBoardResults().get(i).getContentWriter());
+                    postItem.setLike_num(commonBoardResponse.getCommonBoardResults().get(i).getCountLike());
+                    postItem.setComment_num(commonBoardResponse.getCommonBoardResults().get(i).getCountComment());
 
                     m_post_item_list.add(postItem);
                 }
@@ -119,6 +117,7 @@ public class FreshmenBoardActivity extends BaseActivity implements BoardActivity
                 Intent intent = new Intent(FreshmenBoardActivity.this, WritingActivity.class);
                 intent.putExtra("boardName", 4);
                 startActivity(intent);
+                finish();
                 return true;
             case R.id.remove_from_favorite:
                 return true;

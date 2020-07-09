@@ -13,9 +13,9 @@ import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
 import com.example.everytime_mock.src.boards.writing.WritingActivity;
 import com.example.everytime_mock.src.boards.interfaces.RecentLectureReviewBoardActivityView;
-import com.example.everytime_mock.src.boards.models.RecentLectureReviewBoardAdapter;
-import com.example.everytime_mock.src.boards.models.RecentLectureReviewBoardResponse;
-import com.example.everytime_mock.src.boards.models.ReviewItem;
+import com.example.everytime_mock.src.boards.models.adapters.RecentLectureReviewBoardAdapter;
+import com.example.everytime_mock.src.boards.models.recent_lecture_review_board.RecentLectureReviewBoardResponse;
+import com.example.everytime_mock.src.boards.models.items.ReviewItem;
 
 import java.util.ArrayList;
 

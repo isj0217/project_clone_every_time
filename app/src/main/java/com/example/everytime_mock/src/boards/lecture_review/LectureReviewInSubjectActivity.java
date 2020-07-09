@@ -7,8 +7,8 @@ import android.widget.TextView;
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
 import com.example.everytime_mock.src.boards.interfaces.LectureReviewInSubjectActivityView;
-import com.example.everytime_mock.src.boards.models.ReviewDetailResponse;
-import com.example.everytime_mock.src.boards.models.ReviewResponse;
+import com.example.everytime_mock.src.boards.models.review_detail.ReviewDetailResponse;
+import com.example.everytime_mock.src.boards.models.review.ReviewResponse;
 
 public class LectureReviewInSubjectActivity extends BaseActivity implements LectureReviewInSubjectActivityView {
 

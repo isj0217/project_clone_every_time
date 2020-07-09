@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.boards.hot_board.interfaces;
 
-import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.models.DefaultResponse;
 
 import okhttp3.RequestBody;
@@ -18,7 +18,7 @@ public interface HotBoardRetrofitInterface {
     Call<DefaultResponse> getTest();
 
     @GET("/notice/contents?")
-    Call<BoardResponse> getHotBoard(
+    Call<CommonBoardResponse> getHotBoard(
             @Header("x-access-token") String accessToken,
             @Query("choice") String choice);
 

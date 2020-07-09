@@ -5,12 +5,10 @@ import android.widget.TextView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 import com.example.everytime_mock.src.main.interfaces.InPostActivityView;
-
-import java.sql.SQLOutput;
 
 
 public class InPostActivity extends BaseActivity implements InPostActivityView {
@@ -42,9 +40,23 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         }
 
 
-        m_clicked_free_index = getIntent().getIntExtra("clicked_free_idx", -1);
+        m_clicked_free_index = getIntent().getIntExtra("clicked_free_index", -1);
         if (m_clicked_free_index != -1){
             inPostService.getExactFreePost();
+        }
+        m_clicked_secret_index = getIntent().getIntExtra("clicked_secret_index", -1);
+        if (m_clicked_secret_index != -1){
+            inPostService.getExactSecretPost();
+        }
+
+        m_clicked_alumni_index = getIntent().getIntExtra("clicked_alumni_index", -1);
+        if (m_clicked_alumni_index != -1){
+            inPostService.getExactAlumniPost();
+        }
+
+        m_clicked_freshmen_index = getIntent().getIntExtra("clicked_freshmen_index", -1);
+        if (m_clicked_freshmen_index != -1){
+            inPostService.getExactFreshmenPost();
         }
 
 
@@ -137,45 +149,45 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     }
 
     @Override
-    public void hotPostSuccess(BoardResponse boardResponse) {
+    public void hotPostSuccess(CommonBoardResponse commonBoardResponse) {
         switch (clicked) {
             case "hot_post_1":
-                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
-                tv_in_post_time.setText(boardResponse.getBoardResults().get(0).getWriteDay());
-                tv_in_post_title.setText(boardResponse.getBoardResults().get(0).getContentTitle());
-                tv_in_post_content.setText(boardResponse.getBoardResults().get(0).getContentInf());
-                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountLike()));
-                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountComment()));
+                tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(0).getWriteDay());
+                tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
+                tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(0).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(0).getCountComment()));
                 tv_in_post_scrap_num.setText("0");
                 // scrap_num이 API에서 넘어오지 않아 임시로 0으로 설정함
                 break;
             case "hot_post_2":
-                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(1).getContentWriter());         // 글쓴이 서버에서 안넘어옴
-                tv_in_post_time.setText(boardResponse.getBoardResults().get(1).getWriteDay());
-                tv_in_post_title.setText(boardResponse.getBoardResults().get(1).getContentTitle());
-                tv_in_post_content.setText(boardResponse.getBoardResults().get(1).getContentInf());
-                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(1).getCountLike()));
-                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(1).getCountComment()));
+                tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(1).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(1).getWriteDay());
+                tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(1).getContentTitle());
+                tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(1).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(1).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(1).getCountComment()));
                 tv_in_post_scrap_num.setText("0");
                 // scrap_num이 API에서 넘어오지 않아 임시로 0으로 설정함
                 break;
             case "hot_post_3":
-                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(2).getContentWriter());         // 글쓴이 서버에서 안넘어옴
-                tv_in_post_time.setText(boardResponse.getBoardResults().get(2).getWriteDay());
-                tv_in_post_title.setText(boardResponse.getBoardResults().get(2).getContentTitle());
-                tv_in_post_content.setText(boardResponse.getBoardResults().get(2).getContentInf());
-                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(2).getCountLike()));
-                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(2).getCountComment()));
+                tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(2).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(2).getWriteDay());
+                tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(2).getContentTitle());
+                tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(2).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(2).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(2).getCountComment()));
                 tv_in_post_scrap_num.setText("0");
                 // scrap_num이 API에서 넘어오지 않아 임시로 0으로 설정함
                 break;
             case "hot_post_4":
-                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(3).getContentWriter());         // 글쓴이 서버에서 안넘어옴
-                tv_in_post_time.setText(boardResponse.getBoardResults().get(3).getWriteDay());
-                tv_in_post_title.setText(boardResponse.getBoardResults().get(3).getContentTitle());
-                tv_in_post_content.setText(boardResponse.getBoardResults().get(3).getContentInf());
-                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(3).getCountLike()));
-                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(3).getCountComment()));
+                tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(3).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(3).getWriteDay());
+                tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(3).getContentTitle());
+                tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(3).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(3).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(3).getCountComment()));
                 tv_in_post_scrap_num.setText("0");
                 // scrap_num이 API에서 넘어오지 않아 임시로 0으로 설정함
                 break;
@@ -233,16 +245,16 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     }
 
     @Override
-    public void freeBoardSuccess(BoardResponse boardResponse) {
+    public void freeBoardSuccess(CommonBoardResponse commonBoardResponse) {
         switch (clicked) {
             case "frag_home_favorite_free_board":
 
-                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
-                tv_in_post_time.setText(boardResponse.getBoardResults().get(0).getWriteDay());
-                tv_in_post_title.setText(boardResponse.getBoardResults().get(0).getContentTitle());
-                tv_in_post_content.setText(boardResponse.getBoardResults().get(0).getContentInf());
-                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountLike()));
-                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountComment()));
+                tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(0).getWriteDay());
+                tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
+                tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(0).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(0).getCountComment()));
                 tv_in_post_scrap_num.setText("0");
                 break;
             case "frag_home_favorite_secret_board":
@@ -255,17 +267,17 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     }
 
     @Override
-    public void secretBoardSuccess(BoardResponse boardResponse) {
+    public void secretBoardSuccess(CommonBoardResponse commonBoardResponse) {
         switch (clicked) {
             case "frag_home_favorite_free_board":
                 break;
             case "frag_home_favorite_secret_board":
-                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
-                tv_in_post_time.setText(boardResponse.getBoardResults().get(0).getWriteDay());
-                tv_in_post_title.setText(boardResponse.getBoardResults().get(0).getContentTitle());
-                tv_in_post_content.setText(boardResponse.getBoardResults().get(0).getContentInf());
-                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountLike()));
-                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountComment()));
+                tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(0).getWriteDay());
+                tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
+                tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(0).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(0).getCountComment()));
                 tv_in_post_scrap_num.setText("0");
                 break;
             case "frag_home_favorite_alumni_board":
@@ -276,19 +288,19 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     }
 
     @Override
-    public void alumniBoardSuccess(BoardResponse boardResponse) {
+    public void alumniBoardSuccess(CommonBoardResponse commonBoardResponse) {
         switch (clicked) {
             case "frag_home_favorite_free_board":
                 break;
             case "frag_home_favorite_secret_board":
                 break;
             case "frag_home_favorite_alumni_board":
-                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
-                tv_in_post_time.setText(boardResponse.getBoardResults().get(0).getWriteDay());
-                tv_in_post_title.setText(boardResponse.getBoardResults().get(0).getContentTitle());
-                tv_in_post_content.setText(boardResponse.getBoardResults().get(0).getContentInf());
-                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountLike()));
-                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountComment()));
+                tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(0).getWriteDay());
+                tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
+                tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(0).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(0).getCountComment()));
                 tv_in_post_scrap_num.setText("0");
                 break;
             case "frag_home_favorite_freshmen_board":
@@ -298,7 +310,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     }
 
     @Override
-    public void freshmenBoardSuccess(BoardResponse boardResponse) {
+    public void freshmenBoardSuccess(CommonBoardResponse commonBoardResponse) {
         switch (clicked) {
             case "frag_home_favorite_free_board":
                 break;
@@ -307,25 +319,58 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
             case "frag_home_favorite_alumni_board":
                 break;
             case "frag_home_favorite_freshmen_board":
-                tv_in_post_nickname.setText(boardResponse.getBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
-                tv_in_post_time.setText(boardResponse.getBoardResults().get(0).getWriteDay());
-                tv_in_post_title.setText(boardResponse.getBoardResults().get(0).getContentTitle());
-                tv_in_post_content.setText(boardResponse.getBoardResults().get(0).getContentInf());
-                tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountLike()));
-                tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(0).getCountComment()));
+                tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+                tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(0).getWriteDay());
+                tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
+                tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentInf());
+                tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(0).getCountLike()));
+                tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(0).getCountComment()));
                 tv_in_post_scrap_num.setText("0");
                 break;
         }
     }
 
     @Override
-    public void exactFreePostSuccess(BoardResponse boardResponse) {
-        tv_in_post_nickname.setText(boardResponse.getBoardResults().get(m_clicked_free_index).getContentWriter());         // 글쓴이 서버에서 안넘어옴
-        tv_in_post_time.setText(boardResponse.getBoardResults().get(m_clicked_free_index).getWriteDay());
-        tv_in_post_title.setText(boardResponse.getBoardResults().get(m_clicked_free_index).getContentTitle());
-        tv_in_post_content.setText(boardResponse.getBoardResults().get(m_clicked_free_index).getContentInf());
-        tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(m_clicked_free_index).getCountLike()));
-        tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(m_clicked_free_index).getCountComment()));
+    public void exactFreePostSuccess(CommonBoardResponse commonBoardResponse) {
+        tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_free_index).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+        tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_free_index).getWriteDay());
+        tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_free_index).getContentTitle());
+        tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_free_index).getContentInf());
+        tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_free_index).getCountLike()));
+        tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_free_index).getCountComment()));
+        tv_in_post_scrap_num.setText("0");
+    }
+
+    @Override
+    public void exactSecretPostSuccess(CommonBoardResponse commonBoardResponse) {
+        tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_secret_index).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+        tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_secret_index).getWriteDay());
+        tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_secret_index).getContentTitle());
+        tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_secret_index).getContentInf());
+        tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_secret_index).getCountLike()));
+        tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_secret_index).getCountComment()));
+        tv_in_post_scrap_num.setText("0");
+    }
+
+    @Override
+    public void exactAlumniPostSuccess(CommonBoardResponse commonBoardResponse) {
+        tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_alumni_index).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+        tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_alumni_index).getWriteDay());
+        tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_alumni_index).getContentTitle());
+        tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_alumni_index).getContentInf());
+        tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_alumni_index).getCountLike()));
+        tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_alumni_index).getCountComment()));
+        tv_in_post_scrap_num.setText("0");
+    }
+
+    @Override
+    public void exactFreshmenPostSuccess(CommonBoardResponse commonBoardResponse) {
+        tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_index).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+        tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_index).getWriteDay());
+        tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_index).getContentTitle());
+        tv_in_post_content.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_index).getContentInf());
+        tv_in_post_like_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_index).getCountLike()));
+        tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_index).getCountComment()));
         tv_in_post_scrap_num.setText("0");
     }
 }

@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.main.frag_home.interfaces;
 
-import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.frag_home.models.AdvertisementResponse;
 import com.example.everytime_mock.src.main.frag_home.models.HotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
@@ -37,19 +37,19 @@ public interface FragHomeRetrofitInterface {
 
     // 자유게시판 첫 번째 게시물 조회
     @GET("/notice/1/contents")
-    Call<BoardResponse>getFirstFreeBoardPost(@Header("x-access-token")String accessToken);
+    Call<CommonBoardResponse>getFirstFreeBoardPost(@Header("x-access-token")String accessToken);
 
     // 비밀게시판 첫 번째 게시물 조회
     @GET("/notice/2/contents")
-    Call<BoardResponse>getFirstSecretBoardPost(@Header("x-access-token")String accessToken);
+    Call<CommonBoardResponse>getFirstSecretBoardPost(@Header("x-access-token")String accessToken);
 
     // 졸업생게시판 첫 번째 게시물 조회
     @GET("/notice/3/contents")
-    Call<BoardResponse>getFirstAlumniBoardPost(@Header("x-access-token")String accessToken);
+    Call<CommonBoardResponse>getFirstAlumniBoardPost(@Header("x-access-token")String accessToken);
 
     // 신입생게시판 첫 번째 게시물 조회
     @GET("/notice/4/contents")
-    Call<BoardResponse>getFirstFreshmenBoardPost(@Header("x-access-token")String accessToken);
+    Call<CommonBoardResponse>getFirstFreshmenBoardPost(@Header("x-access-token")String accessToken);
 
 
     @GET("/test/{number}")

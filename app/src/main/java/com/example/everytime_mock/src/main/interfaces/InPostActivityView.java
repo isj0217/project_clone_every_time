@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.main.interfaces;
 
-import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 
@@ -12,17 +12,23 @@ public interface InPostActivityView {
 
     void realtimeHotPostSuccess(RealTimeHotPostResponse realTimeHotPostResponse);
 
-    void hotPostSuccess(BoardResponse hotBoardResponse);
+    void hotPostSuccess(CommonBoardResponse hotCommonBoardResponse);
 
     void recentLectureReviewSuccess(RecentLectureReviewResponse recentLectureReviewResponse);
 
-    void freeBoardSuccess(BoardResponse boardResponse);
+    void freeBoardSuccess(CommonBoardResponse commonBoardResponse);
 
-    void secretBoardSuccess(BoardResponse boardResponse);
+    void secretBoardSuccess(CommonBoardResponse commonBoardResponse);
 
-    void alumniBoardSuccess(BoardResponse boardResponse);
+    void alumniBoardSuccess(CommonBoardResponse commonBoardResponse);
 
-    void freshmenBoardSuccess(BoardResponse boardResponse);
+    void freshmenBoardSuccess(CommonBoardResponse commonBoardResponse);
 
-    void exactFreePostSuccess(BoardResponse boardResponse);
+    void exactFreePostSuccess(CommonBoardResponse commonBoardResponse);
+
+    void exactSecretPostSuccess(CommonBoardResponse commonBoardResponse);
+
+    void exactAlumniPostSuccess(CommonBoardResponse commonBoardResponse);
+
+    void exactFreshmenPostSuccess(CommonBoardResponse commonBoardResponse);
 }

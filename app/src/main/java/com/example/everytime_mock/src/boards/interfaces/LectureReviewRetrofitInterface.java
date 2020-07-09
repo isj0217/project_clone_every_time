@@ -1,8 +1,8 @@
 package com.example.everytime_mock.src.boards.interfaces;
 
-import com.example.everytime_mock.src.boards.models.BoardResponse;
-import com.example.everytime_mock.src.boards.models.ReviewDetailResponse;
-import com.example.everytime_mock.src.boards.models.ReviewResponse;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
+import com.example.everytime_mock.src.boards.models.review_detail.ReviewDetailResponse;
+import com.example.everytime_mock.src.boards.models.review.ReviewResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 
@@ -24,7 +24,7 @@ public interface LectureReviewRetrofitInterface {
 
     // HOT 게시물 게시판 조회
     @GET("/notice/contents?")
-    Call<BoardResponse> getHotBoard(
+    Call<CommonBoardResponse> getHotBoard(
             @Header("x-access-token") String accessToken,
             @Query("choice") String choice);
 

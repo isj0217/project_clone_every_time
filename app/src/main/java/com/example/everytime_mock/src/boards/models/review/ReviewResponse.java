@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards.models;
+package com.example.everytime_mock.src.boards.models.review;
 
 import com.google.gson.annotations.SerializedName;
 

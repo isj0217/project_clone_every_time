@@ -1,6 +1,6 @@
 package com.example.everytime_mock.src.boards.interfaces;
 
-import com.example.everytime_mock.src.boards.models.RecentLectureReviewBoardResponse;
+import com.example.everytime_mock.src.boards.models.recent_lecture_review_board.RecentLectureReviewBoardResponse;
 import com.example.everytime_mock.src.main.models.DefaultResponse;
 
 import okhttp3.RequestBody;

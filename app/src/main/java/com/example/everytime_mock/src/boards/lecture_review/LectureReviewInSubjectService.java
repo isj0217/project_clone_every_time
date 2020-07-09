@@ -2,8 +2,8 @@ package com.example.everytime_mock.src.boards.lecture_review;
 
 import com.example.everytime_mock.src.boards.interfaces.LectureReviewInSubjectActivityView;
 import com.example.everytime_mock.src.boards.interfaces.LectureReviewRetrofitInterface;
-import com.example.everytime_mock.src.boards.models.ReviewDetailResponse;
-import com.example.everytime_mock.src.boards.models.ReviewResponse;
+import com.example.everytime_mock.src.boards.models.review_detail.ReviewDetailResponse;
+import com.example.everytime_mock.src.boards.models.review.ReviewResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

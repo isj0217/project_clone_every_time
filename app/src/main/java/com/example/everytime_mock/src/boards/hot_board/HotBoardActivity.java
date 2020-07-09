@@ -14,16 +14,16 @@ import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
 import com.example.everytime_mock.src.boards.writing.WritingActivity;
 import com.example.everytime_mock.src.boards.interfaces.BoardActivityView;
-import com.example.everytime_mock.src.boards.models.BoardAdapter;
-import com.example.everytime_mock.src.boards.models.BoardResponse;
-import com.example.everytime_mock.src.boards.models.PostItem;
+import com.example.everytime_mock.src.boards.models.adapters.FreeBoardAdapter;
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
+import com.example.everytime_mock.src.boards.models.items.PostItem;
 
 import java.util.ArrayList;
 
 public class HotBoardActivity extends BaseActivity implements BoardActivityView, PopupMenu.OnMenuItemClickListener {
 
     private ArrayList<PostItem> m_post_item_list;
-    private BoardAdapter hot_board_adapter;
+    private FreeBoardAdapter hot_board_adapter;
     private RecyclerView rv_hot_board;
     private LinearLayoutManager linear_layout_manager;
 
@@ -37,14 +37,14 @@ public class HotBoardActivity extends BaseActivity implements BoardActivityView,
 
         m_post_item_list = new ArrayList<>();
 
-        hot_board_adapter = new BoardAdapter(m_post_item_list);
+        hot_board_adapter = new FreeBoardAdapter(m_post_item_list);
         rv_hot_board = findViewById(R.id.rv_hot_board_post_list);
 
         linear_layout_manager = new LinearLayoutManager(getApplicationContext());
         rv_hot_board.setLayoutManager(linear_layout_manager);
 
         m_post_item_list = new ArrayList<>();
-        hot_board_adapter = new BoardAdapter(m_post_item_list);
+        hot_board_adapter = new FreeBoardAdapter(m_post_item_list);
         rv_hot_board.setAdapter(hot_board_adapter);
 
         tryGetHotBoard();
@@ -70,12 +70,12 @@ public class HotBoardActivity extends BaseActivity implements BoardActivityView,
     }
 
     @Override
-    public void boardSuccess(BoardResponse boardResponse) {
+    public void boardSuccess(CommonBoardResponse commonBoardResponse) {
         hideProgressDialog();
 
-        Log.d(TAG, "boardSuccess: code: " + boardResponse.getCode());
+        Log.d(TAG, "boardSuccess: code: " + commonBoardResponse.getCode());
 
-        switch (boardResponse.getCode()) {
+        switch (commonBoardResponse.getCode()) {
 
             case 113:
                 /**
@@ -84,17 +84,17 @@ public class HotBoardActivity extends BaseActivity implements BoardActivityView,
 
 //                System.out.println(boardResponse.getBoardResults().get(0).getContentTitle());
 
-                int num_of_posts_in_hot_board = boardResponse.getBoardResults().size();
+                int num_of_posts_in_hot_board = commonBoardResponse.getCommonBoardResults().size();
 
                 for (int i = 0; i < num_of_posts_in_hot_board; i++){
                     PostItem postItem = new PostItem();
 
-                    postItem.setTitle(boardResponse.getBoardResults().get(i).getContentTitle());
-                    postItem.setContent(boardResponse.getBoardResults().get(i).getContentInf());
-                    postItem.setTime(boardResponse.getBoardResults().get(i).getWriteDay());
-                    postItem.setWriter(boardResponse.getBoardResults().get(i).getContentWriter());
-                    postItem.setLike_num(boardResponse.getBoardResults().get(i).getCountLike());
-                    postItem.setComment_num(boardResponse.getBoardResults().get(i).getCountComment());
+                    postItem.setTitle(commonBoardResponse.getCommonBoardResults().get(i).getContentTitle());
+                    postItem.setContent(commonBoardResponse.getCommonBoardResults().get(i).getContentInf());
+                    postItem.setTime(commonBoardResponse.getCommonBoardResults().get(i).getWriteDay());
+                    postItem.setWriter(commonBoardResponse.getCommonBoardResults().get(i).getContentWriter());
+                    postItem.setLike_num(commonBoardResponse.getCommonBoardResults().get(i).getCountLike());
+                    postItem.setComment_num(commonBoardResponse.getCommonBoardResults().get(i).getCountComment());
 
                     m_post_item_list.add(postItem);
                 }
