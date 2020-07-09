@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main.frag_board;
+package com.example.everytime_mock.src.main.frag_board;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

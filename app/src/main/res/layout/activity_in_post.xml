@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".src.Boards.InPostActivity">
+    tools:context=".src.boards.in_post.InPostActivity">
 
     <LinearLayout
         android:id="@+id/linear_layout_in_post_top_bar"

@@ -1,10 +1,8 @@
-package com.example.everytime_mock.src.Main.interfaces;
+package com.example.everytime_mock.src.main.interfaces;
 
-import com.example.everytime_mock.src.Boards.models.BoardResponse;
-import com.example.everytime_mock.src.Boards.models.ReviewResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.HotPostResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.RealTimeHotPostResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.RecentLectureReviewResponse;
+import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
+import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 
 public interface InPostActivityView {
 
@@ -25,4 +23,6 @@ public interface InPostActivityView {
     void alumniBoardSuccess(BoardResponse boardResponse);
 
     void freshmenBoardSuccess(BoardResponse boardResponse);
+
+    void exactFreePostSuccess(BoardResponse boardResponse);
 }

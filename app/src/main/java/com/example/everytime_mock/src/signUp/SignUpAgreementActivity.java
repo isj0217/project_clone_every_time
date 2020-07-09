@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.SignUp;
+package com.example.everytime_mock.src.signUp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.SignUp.interfaces.SignUpAgreementActivityView;
+import com.example.everytime_mock.src.signUp.interfaces.SignUpAgreementActivityView;
 
 public class SignUpAgreementActivity extends BaseActivity implements SignUpAgreementActivityView {
 

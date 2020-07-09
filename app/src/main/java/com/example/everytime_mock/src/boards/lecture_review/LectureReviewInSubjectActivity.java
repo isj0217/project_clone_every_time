@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards;
+package com.example.everytime_mock.src.boards.lecture_review;
 
 import android.os.Bundle;
 import android.widget.ImageView;

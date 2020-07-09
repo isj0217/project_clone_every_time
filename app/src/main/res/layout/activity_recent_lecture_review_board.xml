@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".src.Boards.RecentLectureReviewBoardActivity">
+    tools:context=".src.boards.lecture_review.RecentLectureReviewBoardActivity">
 
     <LinearLayout
         android:id="@+id/linear_layout_recent_lecture_review_board_top_bar"

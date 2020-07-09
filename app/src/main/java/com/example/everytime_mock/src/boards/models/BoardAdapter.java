@@ -1,16 +1,18 @@
-package com.example.everytime_mock.src.Boards.models;
+package com.example.everytime_mock.src.boards.models;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
-import com.example.everytime_mock.src.Main.frag_home.models.FavoriteBoardItem;
+import com.example.everytime_mock.src.boards.in_post.InPostActivity;
 
 import java.util.ArrayList;
 
@@ -18,8 +20,18 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.CustomViewHo
 
     private ArrayList<PostItem> post_item_list;
 
+    private OnItemClickListener mListener = null ;
+
     public BoardAdapter(ArrayList<PostItem> post_item_list) {
         this.post_item_list = post_item_list;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View v, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
     }
 
     @NonNull
@@ -72,6 +84,33 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.CustomViewHo
             this.tv_item_post_nickname = itemView.findViewById(R.id.tv_item_post_nickname);
             this.tv_item_post_like_num = itemView.findViewById(R.id.tv_item_post_like_num);
             this.tv_item_post_comment_num = itemView.findViewById(R.id.tv_item_post_comment_num);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Context context = v.getContext();
+
+                    int pos = getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION){
+
+
+                        System.out.println("보내기 전 pos: " + pos);
+
+
+                        Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                        intent.putExtra("clicked_free_idx", pos);
+                        context.startActivity(intent);
+
+
+
+
+                        if (mListener != null) {
+                            mListener.onItemClick(v, pos);
+                        }
+                    }
+                }
+            });
         }
     }
 }

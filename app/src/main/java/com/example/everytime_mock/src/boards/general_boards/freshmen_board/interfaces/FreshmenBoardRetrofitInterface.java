@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards.interfaces;
+package com.example.everytime_mock.src.boards.general_boards.freshmen_board.interfaces;
 
 import com.example.everytime_mock.src.boards.models.BoardResponse;
 import com.example.everytime_mock.src.main.models.DefaultResponse;

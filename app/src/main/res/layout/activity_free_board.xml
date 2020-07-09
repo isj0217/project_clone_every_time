@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".src.Boards.FreeBoardActivity">
+    tools:context=".src.boards.general_boards.free_board.FreeBoardActivity">
 
     <LinearLayout
         android:id="@+id/linear_layout_free_board_top_bar"

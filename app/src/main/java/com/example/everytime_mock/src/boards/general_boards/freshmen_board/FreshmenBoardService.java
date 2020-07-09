@@ -1,7 +1,7 @@
-package com.example.everytime_mock.src.boards.board_freshmen;
+package com.example.everytime_mock.src.boards.general_boards.freshmen_board;
 
 import com.example.everytime_mock.src.boards.interfaces.BoardActivityView;
-import com.example.everytime_mock.src.boards.interfaces.FreshmenBoardRetrofitInterface;
+import com.example.everytime_mock.src.boards.general_boards.freshmen_board.interfaces.FreshmenBoardRetrofitInterface;
 import com.example.everytime_mock.src.boards.models.BoardResponse;
 
 import retrofit2.Call;

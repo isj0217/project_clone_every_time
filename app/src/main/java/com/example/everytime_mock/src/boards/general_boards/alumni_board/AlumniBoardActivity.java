@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards.board_alumni;
+package com.example.everytime_mock.src.boards.general_boards.alumni_board;
 
 import android.content.Intent;
 import android.os.Bundle;

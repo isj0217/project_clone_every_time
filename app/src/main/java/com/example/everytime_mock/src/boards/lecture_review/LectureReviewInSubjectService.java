@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards;
+package com.example.everytime_mock.src.boards.lecture_review;
 
 import com.example.everytime_mock.src.boards.interfaces.LectureReviewInSubjectActivityView;
 import com.example.everytime_mock.src.boards.interfaces.LectureReviewRetrofitInterface;

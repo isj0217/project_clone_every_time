@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".src.Boards.HotBoardActivity">
+    tools:context=".src.boards.hot_board.HotBoardActivity">
 
     <LinearLayout
         android:id="@+id/linear_layout_hot_board_top_bar"

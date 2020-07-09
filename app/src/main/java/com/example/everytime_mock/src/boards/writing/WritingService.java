@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards;
+package com.example.everytime_mock.src.boards.writing;
 
 import com.example.everytime_mock.src.boards.interfaces.WritingActivityView;
 import com.example.everytime_mock.src.boards.interfaces.WritingRetrofitInterface;
@@ -17,10 +17,6 @@ class WritingService {
     private final WritingActivityView mWritingActivityView;
     private HashMap<String, Object> mParams;
     private int board_number;
-
-    WritingService(final WritingActivityView writingActivityView) {
-        this.mWritingActivityView = writingActivityView;
-    }
 
     public WritingService(WritingActivityView mWritingActivityView, int board_number ,HashMap<String, Object> mParams) {
         this.board_number = board_number;

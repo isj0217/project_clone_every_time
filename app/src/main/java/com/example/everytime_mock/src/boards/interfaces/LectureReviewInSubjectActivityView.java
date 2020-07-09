@@ -1,8 +1,7 @@
-package com.example.everytime_mock.src.Boards.interfaces;
+package com.example.everytime_mock.src.boards.interfaces;
 
-import com.example.everytime_mock.src.Boards.models.BoardResponse;
-import com.example.everytime_mock.src.Boards.models.ReviewDetailResponse;
-import com.example.everytime_mock.src.Boards.models.ReviewResponse;
+import com.example.everytime_mock.src.boards.models.ReviewDetailResponse;
+import com.example.everytime_mock.src.boards.models.ReviewResponse;
 
 public interface LectureReviewInSubjectActivityView {
 

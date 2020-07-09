@@ -1,13 +1,13 @@
-package com.example.everytime_mock.src.Main.frag_home.models;
+package com.example.everytime_mock.src.main.frag_board.models;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class HotPostResponse {
+public class FavoriteBoardResponse {
 
     @SerializedName("result")
-    private List<HotPostResult> hotPostResults;
+    private List<FavoriteBoardResult> favoriteBoardResults;
 
     @SerializedName("code")
     private int code;
@@ -18,15 +18,15 @@ public class HotPostResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
-    public HotPostResponse(List<HotPostResult> hotPostResults, int code, String message, boolean isSuccess) {
-        this.hotPostResults = hotPostResults;
+    public FavoriteBoardResponse(List<FavoriteBoardResult> favoriteBoardResults, int code, String message, boolean isSuccess) {
+        this.favoriteBoardResults = favoriteBoardResults;
         this.code = code;
         this.message = message;
         this.isSuccess = isSuccess;
     }
 
-    public List<HotPostResult> getHotPostResults() {
-        return hotPostResults;
+    public List<FavoriteBoardResult> getFavoriteBoardResults() {
+        return favoriteBoardResults;
     }
 
     public int getCode() {

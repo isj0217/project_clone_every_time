@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Boards.models;
+package com.example.everytime_mock.src.boards.models;
 
 public class ReviewItem {
 

@@ -1,10 +1,10 @@
-package com.example.everytime_mock.src.Main.frag_home.my_page;
+package com.example.everytime_mock.src.main.frag_home.my_page;
 
 import android.util.Log;
 
-import com.example.everytime_mock.src.Main.frag_home.my_page.interfaces.MyPageActivityView;
-import com.example.everytime_mock.src.Main.frag_home.my_page.interfaces.MyPageRetrofitInterface;
-import com.example.everytime_mock.src.Main.frag_home.my_page.models.MyPageResponse;
+import com.example.everytime_mock.src.main.frag_home.my_page.interfaces.MyPageActivityView;
+import com.example.everytime_mock.src.main.frag_home.my_page.interfaces.MyPageRetrofitInterface;
+import com.example.everytime_mock.src.main.frag_home.my_page.models.MyPageResponse;
 
 import java.util.HashMap;
 
@@ -14,7 +14,6 @@ import retrofit2.Response;
 
 import static com.example.everytime_mock.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
-import static com.example.everytime_mock.src.ApplicationClass.sSharedPreferences;
 
 class MyPageService {
     private final MyPageActivityView mMyPageActivityView;

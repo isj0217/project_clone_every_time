@@ -1,11 +1,10 @@
-package com.example.everytime_mock.src.Main.frag_home;
+package com.example.everytime_mock.src.main.frag_board;
 
-import android.util.Log;
+import com.example.everytime_mock.src.main.frag_board.interfaces.FragBoardRetrofitInterface;
+import com.example.everytime_mock.src.main.frag_board.interfaces.FragBoardView;
+import com.example.everytime_mock.src.main.frag_board.models.FavoriteBoardResponse;
 
-import com.example.everytime_mock.src.Boards.interfaces.BoardActivityView;
-import com.example.everytime_mock.src.Boards.interfaces.FreeBoardRetrofitInterface;
-import com.example.everytime_mock.src.Boards.models.BoardResponse;
-import com.example.everytime_mock.src.Main.frag_home.interfaces.FragHomeView;
+import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,29 +13,35 @@ import retrofit2.Response;
 import static com.example.everytime_mock.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.everytime_mock.src.ApplicationClass.getRetrofit;
 
-class FreeBoardService {
-    private final FragHomeView mFragHomeView;
+class FragBoardService {
+    private final FragBoardView mFragBoardView;
+    private HashMap<String, Object> mParams;
 
-    FreeBoardService(final FragHomeView fragHomeView) {
-        this.mFragHomeView = fragHomeView;
+    FragBoardService(final FragBoardView fragBoardView) {
+        this.mFragBoardView = fragBoardView;
     }
 
-    void getFirstFreeBoardPost() {
-        final FreeBoardRetrofitInterface freeBoardRetrofitInterface = getRetrofit().create(FreeBoardRetrofitInterface.class);
-        freeBoardRetrofitInterface.getFreeBoard(X_ACCESS_TOKEN).enqueue(new Callback<BoardResponse>() {
+    FragBoardService(final FragBoardView fragBoardView, HashMap<String, Object> mParams) {
+        this.mFragBoardView = fragBoardView;
+        this.mParams = mParams;
+    }
+
+    void postFavoriteBoard(int index_of_board) {
+        final FragBoardRetrofitInterface fragBoardRetrofitInterface = getRetrofit().create(FragBoardRetrofitInterface.class);
+        fragBoardRetrofitInterface.postFavoriteBoard(X_ACCESS_TOKEN, index_of_board).enqueue(new Callback<FavoriteBoardResponse>() {
             @Override
-            public void onResponse(Call<BoardResponse> call, Response<BoardResponse> response) {
-                final BoardResponse boardResponse = response.body();
-                if (boardResponse == null) {
-                    mFragHomeView.validateFailure(null);
+            public void onResponse(Call<FavoriteBoardResponse> call, Response<FavoriteBoardResponse> response) {
+                final FavoriteBoardResponse favoriteBoardResponse = response.body();
+                if (favoriteBoardResponse == null) {
+                    mFragBoardView.validateFailure(null);
                     return;
                 }
-                mFragHomeView.getFreeBoardSuccess(boardResponse);
+                mFragBoardView.favoriteBoardSuccess(favoriteBoardResponse);
             }
 
             @Override
-            public void onFailure(Call<BoardResponse> call, Throwable t) {
-                mFragHomeView.validateFailure(null);
+            public void onFailure(Call<FavoriteBoardResponse> call, Throwable t) {
+                mFragBoardView.validateFailure(null);
             }
         });
     }

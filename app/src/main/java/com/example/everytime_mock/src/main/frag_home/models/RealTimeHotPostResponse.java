@@ -1,6 +1,5 @@
-package com.example.everytime_mock.src.Main.frag_home.models;
+package com.example.everytime_mock.src.main.frag_home.models;
 
-import com.example.everytime_mock.src.Main.frag_home.my_page.models.MyPageResult;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards;
+package com.example.everytime_mock.src.boards.writing;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,12 @@ import android.widget.EditText;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
+import com.example.everytime_mock.src.boards.general_boards.alumni_board.AlumniBoardActivity;
+import com.example.everytime_mock.src.boards.general_boards.free_board.FreeBoardActivity;
+import com.example.everytime_mock.src.boards.general_boards.freshmen_board.FreshmenBoardActivity;
 import com.example.everytime_mock.src.boards.interfaces.WritingActivityView;
 import com.example.everytime_mock.src.boards.models.WritingResponse;
+import com.example.everytime_mock.src.boards.general_boards.secret_board.SecretBoardActivity;
 
 import java.util.HashMap;
 

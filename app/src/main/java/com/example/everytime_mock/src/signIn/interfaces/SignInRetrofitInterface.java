@@ -1,8 +1,7 @@
-package com.example.everytime_mock.src.SignIn.interfaces;
+package com.example.everytime_mock.src.signIn.interfaces;
 
-import com.example.everytime_mock.src.SignIn.models.DefaultResponse;
-import com.example.everytime_mock.src.SignIn.models.SignInBody;
-import com.example.everytime_mock.src.SignIn.models.SignInResponse;
+import com.example.everytime_mock.src.signIn.models.DefaultResponse;
+import com.example.everytime_mock.src.signIn.models.SignInResponse;
 
 import java.util.HashMap;
 

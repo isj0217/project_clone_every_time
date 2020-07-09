@@ -1,18 +1,12 @@
-package com.example.everytime_mock.src.Boards.interfaces;
+package com.example.everytime_mock.src.boards.interfaces;
 
-import com.example.everytime_mock.src.Boards.models.BoardResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.HotPostResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.RealTimeHotPostResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.RecentLectureReviewResponse;
-import com.example.everytime_mock.src.Main.models.DefaultResponse;
+import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
+import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 
-import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface InPostRetrofitInterface {

@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main.frag_campus_pick;
+package com.example.everytime_mock.src.main.frag_campus_pick;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

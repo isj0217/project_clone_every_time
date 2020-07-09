@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Boards.models;
+package com.example.everytime_mock.src.boards.models;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
-import com.example.everytime_mock.src.Main.frag_home.models.RecentLectureReviewResult;
 
 import java.util.ArrayList;
 

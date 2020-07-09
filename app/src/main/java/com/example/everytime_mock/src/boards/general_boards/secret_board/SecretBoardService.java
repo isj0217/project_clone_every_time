@@ -1,7 +1,7 @@
-package com.example.everytime_mock.src.boards.board_secret;
+package com.example.everytime_mock.src.boards.general_boards.secret_board;
 
 import com.example.everytime_mock.src.boards.interfaces.BoardActivityView;
-import com.example.everytime_mock.src.boards.interfaces.SecretBoardRetrofitInterface;
+import com.example.everytime_mock.src.boards.general_boards.secret_board.interfaces.SecretBoardRetrofitInterface;
 import com.example.everytime_mock.src.boards.models.BoardResponse;
 
 import retrofit2.Call;

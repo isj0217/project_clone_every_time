@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards;
+package com.example.everytime_mock.src.boards.in_post;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -10,6 +10,8 @@ import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostRespo
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 import com.example.everytime_mock.src.main.interfaces.InPostActivityView;
 
+import java.sql.SQLOutput;
+
 
 public class InPostActivity extends BaseActivity implements InPostActivityView {
 
@@ -17,6 +19,12 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     private InPostService inPostService;
     private String clicked;
+
+    private int m_clicked_free_index;
+    private int m_clicked_secret_index;
+    private int m_clicked_alumni_index;
+    private int m_clicked_freshmen_index;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +35,22 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
         textViewBinding();
 
-        clicked = getIntent().getStringExtra("clicked");
+        if (getIntent().getStringExtra("clicked") != null) {
+            clicked = getIntent().getStringExtra("clicked");
+        }else{
+            clicked = "";
+        }
+
+
+        m_clicked_free_index = getIntent().getIntExtra("clicked_free_idx", -1);
+        if (m_clicked_free_index != -1){
+            inPostService.getExactFreePost();
+        }
+
+
+
+
+
 
         switch (clicked) {
             case "realtime_hot_post_1":
@@ -61,6 +84,10 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
             default:
                 break;
         }
+
+
+
+
 
     }
 
@@ -289,5 +316,16 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
                 tv_in_post_scrap_num.setText("0");
                 break;
         }
+    }
+
+    @Override
+    public void exactFreePostSuccess(BoardResponse boardResponse) {
+        tv_in_post_nickname.setText(boardResponse.getBoardResults().get(m_clicked_free_index).getContentWriter());         // 글쓴이 서버에서 안넘어옴
+        tv_in_post_time.setText(boardResponse.getBoardResults().get(m_clicked_free_index).getWriteDay());
+        tv_in_post_title.setText(boardResponse.getBoardResults().get(m_clicked_free_index).getContentTitle());
+        tv_in_post_content.setText(boardResponse.getBoardResults().get(m_clicked_free_index).getContentInf());
+        tv_in_post_like_num.setText(Integer.toString(boardResponse.getBoardResults().get(m_clicked_free_index).getCountLike()));
+        tv_in_post_comment_num.setText(Integer.toString(boardResponse.getBoardResults().get(m_clicked_free_index).getCountComment()));
+        tv_in_post_scrap_num.setText("0");
     }
 }

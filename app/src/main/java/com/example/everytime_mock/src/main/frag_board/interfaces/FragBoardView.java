@@ -1,30 +1,12 @@
-package com.example.everytime_mock.src.Main.frag_home.interfaces;
+package com.example.everytime_mock.src.main.frag_board.interfaces;
 
-import com.example.everytime_mock.src.Boards.models.BoardResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.AdvertisementResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.HotPostResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.RealTimeHotPostResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.RecentLectureReviewResponse;
+import com.example.everytime_mock.src.main.frag_board.models.FavoriteBoardResponse;
 
-public interface FragHomeView {
+public interface FragBoardView {
 
     void validateSuccess(String text);
 
     void validateFailure(String message);
 
-    void advertisementSuccess(AdvertisementResponse advertisementResponse);
-
-    void realTimeHotPostSuccess(RealTimeHotPostResponse realTimeHotPostResponse);
-
-    void hotPostSuccess(HotPostResponse hotPostResponse);
-
-    void recentLectureReviewSuccess(RecentLectureReviewResponse recentLectureReviewResponse);
-
-    void getFreeBoardSuccess(BoardResponse boardResponse);
-
-    void getSecretBoardSuccess(BoardResponse boardResponse);
-
-    void getAlumniBoardSuccess(BoardResponse boardResponse);
-
-    void getFreshmenBoardSuccess(BoardResponse boardResponse);
+    void favoriteBoardSuccess(FavoriteBoardResponse favoriteBoardResponse);
 }

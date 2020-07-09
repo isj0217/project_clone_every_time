@@ -1,20 +1,26 @@
-package com.example.everytime_mock.src.Main.frag_home.models;
+package com.example.everytime_mock.src.main.frag_board.models;
 
-public class AdvertisementResult {
+public class FavoriteBoardResult {
 
-    int adIdx;
-    String adThumbnaillURL;
+    int noticeIdx;
+    String noticeName;
+    int checkStatus;
 
-    public AdvertisementResult(int adIdx, String adThumbnaillURL) {
-        this.adIdx = adIdx;
-        this.adThumbnaillURL = adThumbnaillURL;
+    public FavoriteBoardResult(int noticeIdx, String noticeName, int checkStatus) {
+        this.noticeIdx = noticeIdx;
+        this.noticeName = noticeName;
+        this.checkStatus = checkStatus;
     }
 
-    public int getAdIdx() {
-        return adIdx;
+    public int getNoticeIdx() {
+        return noticeIdx;
     }
 
-    public String getAdThumbnaillURL() {
-        return adThumbnaillURL;
+    public String getNoticeName() {
+        return noticeName;
+    }
+
+    public int getCheckStatus() {
+        return checkStatus;
     }
 }

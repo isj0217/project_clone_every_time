@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main.frag_board;
+package com.example.everytime_mock.src.main.frag_board;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +13,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.everytime_mock.R;
-import com.example.everytime_mock.src.Boards.AlumniBoardActivity;
-import com.example.everytime_mock.src.Boards.FreeBoardActivity;
-import com.example.everytime_mock.src.Boards.FreshmenBoardActivity;
-import com.example.everytime_mock.src.Boards.RecentLectureReviewBoardActivity;
-import com.example.everytime_mock.src.Boards.SecretBoardActivity;
+import com.example.everytime_mock.src.boards.general_boards.alumni_board.AlumniBoardActivity;
+import com.example.everytime_mock.src.boards.general_boards.free_board.FreeBoardActivity;
+import com.example.everytime_mock.src.boards.general_boards.freshmen_board.FreshmenBoardActivity;
+import com.example.everytime_mock.src.boards.lecture_review.RecentLectureReviewBoardActivity;
+import com.example.everytime_mock.src.boards.general_boards.secret_board.SecretBoardActivity;
 
 public class FragBoardAll extends Fragment {
 

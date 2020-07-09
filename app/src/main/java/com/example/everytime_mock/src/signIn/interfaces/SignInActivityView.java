@@ -1,6 +1,6 @@
-package com.example.everytime_mock.src.SignIn.interfaces;
+package com.example.everytime_mock.src.signIn.interfaces;
 
-import com.example.everytime_mock.src.SignIn.models.SignInResponse;
+import com.example.everytime_mock.src.signIn.models.SignInResponse;
 
 public interface SignInActivityView {
 

@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.SignIn;
+package com.example.everytime_mock.src.signIn;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,9 +10,9 @@ import android.widget.EditText;
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
 import com.example.everytime_mock.src.main.MainActivity;
-import com.example.everytime_mock.src.SignIn.interfaces.SignInActivityView;
-import com.example.everytime_mock.src.SignIn.models.SignInResponse;
-import com.example.everytime_mock.src.SignUp.SignUpAgreementActivity;
+import com.example.everytime_mock.src.signIn.interfaces.SignInActivityView;
+import com.example.everytime_mock.src.signIn.models.SignInResponse;
+import com.example.everytime_mock.src.signUp.SignUpAgreementActivity;
 
 import static com.example.everytime_mock.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.example.everytime_mock.src.ApplicationClass.sSharedPreferences;

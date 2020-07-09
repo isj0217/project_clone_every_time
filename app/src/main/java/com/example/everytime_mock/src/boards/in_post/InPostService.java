@@ -1,10 +1,10 @@
-package com.example.everytime_mock.src.boards;
+package com.example.everytime_mock.src.boards.in_post;
 
-import com.example.everytime_mock.src.boards.interfaces.AlumniBoardRetrofitInterface;
-import com.example.everytime_mock.src.boards.interfaces.FreeBoardRetrofitInterface;
-import com.example.everytime_mock.src.boards.interfaces.FreshmenBoardRetrofitInterface;
+import com.example.everytime_mock.src.boards.general_boards.alumni_board.interfaces.AlumniBoardRetrofitInterface;
+import com.example.everytime_mock.src.boards.general_boards.free_board.interfaces.FreeBoardRetrofitInterface;
+import com.example.everytime_mock.src.boards.general_boards.freshmen_board.interfaces.FreshmenBoardRetrofitInterface;
 import com.example.everytime_mock.src.boards.interfaces.InPostRetrofitInterface;
-import com.example.everytime_mock.src.boards.interfaces.SecretBoardRetrofitInterface;
+import com.example.everytime_mock.src.boards.general_boards.secret_board.interfaces.SecretBoardRetrofitInterface;
 import com.example.everytime_mock.src.boards.models.BoardResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
@@ -163,4 +163,26 @@ class InPostService {
             }
         });
     }
+
+    void getExactFreePost() {
+        final FreeBoardRetrofitInterface freeBoardRetrofitInterface = getRetrofit().create(FreeBoardRetrofitInterface.class);
+        freeBoardRetrofitInterface.getFreeBoard(X_ACCESS_TOKEN).enqueue(new Callback<BoardResponse>() {
+            @Override
+            public void onResponse(Call<BoardResponse> call, Response<BoardResponse> response) {
+                final BoardResponse boardResponse = response.body();
+                if (boardResponse == null) {
+                    mInPostActivityView.validateFailure(null);
+                    return;
+                }
+                mInPostActivityView.exactFreePostSuccess(boardResponse);
+            }
+
+            @Override
+            public void onFailure(Call<BoardResponse> call, Throwable t) {
+                mInPostActivityView.validateFailure(null);
+            }
+        });
+    }
+
 }
+

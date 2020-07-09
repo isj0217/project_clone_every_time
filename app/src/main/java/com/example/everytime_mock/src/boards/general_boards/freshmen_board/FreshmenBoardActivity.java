@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards.board_freshmen;
+package com.example.everytime_mock.src.boards.general_boards.freshmen_board;
 
 import android.content.Intent;
 import android.os.Bundle;

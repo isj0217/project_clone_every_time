@@ -1,9 +1,9 @@
-package com.example.everytime_mock.src.boards.board_free;
+package com.example.everytime_mock.src.boards.general_boards.free_board;
 
 import android.util.Log;
 
 import com.example.everytime_mock.src.boards.interfaces.BoardActivityView;
-import com.example.everytime_mock.src.boards.interfaces.FreeBoardRetrofitInterface;
+import com.example.everytime_mock.src.boards.general_boards.free_board.interfaces.FreeBoardRetrofitInterface;
 import com.example.everytime_mock.src.boards.models.BoardResponse;
 
 import retrofit2.Call;

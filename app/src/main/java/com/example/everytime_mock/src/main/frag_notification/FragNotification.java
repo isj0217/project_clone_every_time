@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main.frag_notification;
+package com.example.everytime_mock.src.main.frag_notification;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

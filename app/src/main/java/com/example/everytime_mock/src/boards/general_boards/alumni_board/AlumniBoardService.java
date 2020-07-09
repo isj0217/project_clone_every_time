@@ -1,6 +1,6 @@
-package com.example.everytime_mock.src.boards.board_alumni;
+package com.example.everytime_mock.src.boards.general_boards.alumni_board;
 
-import com.example.everytime_mock.src.boards.interfaces.AlumniBoardRetrofitInterface;
+import com.example.everytime_mock.src.boards.general_boards.alumni_board.interfaces.AlumniBoardRetrofitInterface;
 import com.example.everytime_mock.src.boards.interfaces.BoardActivityView;
 import com.example.everytime_mock.src.boards.models.BoardResponse;
 

@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards.board_secret;
+package com.example.everytime_mock.src.boards.general_boards.secret_board;
 
 import android.content.Intent;
 import android.os.Bundle;

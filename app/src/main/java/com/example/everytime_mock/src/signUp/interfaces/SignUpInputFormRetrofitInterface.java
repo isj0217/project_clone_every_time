@@ -1,6 +1,6 @@
-package com.example.everytime_mock.src.SignUp.interfaces;
+package com.example.everytime_mock.src.signUp.interfaces;
 
-import com.example.everytime_mock.src.SignUp.models.SignUpResponse;
+import com.example.everytime_mock.src.signUp.models.SignUpResponse;
 
 import java.util.HashMap;
 

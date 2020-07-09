@@ -1,10 +1,10 @@
-package com.example.everytime_mock.src.Main.frag_home.interfaces;
+package com.example.everytime_mock.src.main.frag_home.interfaces;
 
-import com.example.everytime_mock.src.Boards.models.BoardResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.AdvertisementResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.HotPostResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.RealTimeHotPostResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.RecentLectureReviewResponse;
+import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.main.frag_home.models.AdvertisementResponse;
+import com.example.everytime_mock.src.main.frag_home.models.HotPostResponse;
+import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
+import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;

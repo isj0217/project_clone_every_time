@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.SignUp;
+package com.example.everytime_mock.src.signUp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -6,17 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.SignIn.SignInActivity;
-import com.example.everytime_mock.src.SignUp.interfaces.SignUpInputFormActivityView;
-import com.example.everytime_mock.src.SignUp.models.SignUpResponse;
+import com.example.everytime_mock.src.signIn.SignInActivity;
+import com.example.everytime_mock.src.signUp.interfaces.SignUpInputFormActivityView;
+import com.example.everytime_mock.src.signUp.models.SignUpResponse;
 
 import java.util.HashMap;
 

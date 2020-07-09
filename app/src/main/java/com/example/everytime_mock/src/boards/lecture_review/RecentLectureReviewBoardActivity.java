@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.boards;
+package com.example.everytime_mock.src.boards.lecture_review;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
+import com.example.everytime_mock.src.boards.writing.WritingActivity;
 import com.example.everytime_mock.src.boards.interfaces.RecentLectureReviewBoardActivityView;
 import com.example.everytime_mock.src.boards.models.RecentLectureReviewBoardAdapter;
 import com.example.everytime_mock.src.boards.models.RecentLectureReviewBoardResponse;

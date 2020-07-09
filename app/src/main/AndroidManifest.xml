@@ -17,7 +17,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
-        <activity android:name=".src.SignIn.SignInActivity"
+        <activity android:name=".src.signIn.SignInActivity"
             tools:ignore="Instantiatable">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,19 +25,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".src.SignUp.SignUpAgreementActivity" />
-        <activity android:name=".src.SignUp.SignUpInputFormActivity" />
-        <activity android:name=".src.Main.MainActivity" />
-        <activity android:name=".src.Boards.WritingActivity" />
-        <activity android:name=".src.Boards.InPostActivity" />
-        <activity android:name=".src.Main.frag_home.my_page.MyPageActivity" />
-        <activity android:name=".src.Boards.FreeBoardActivity" />
-        <activity android:name=".src.Boards.SecretBoardActivity" />
-        <activity android:name=".src.Boards.AlumniBoardActivity" />
-        <activity android:name=".src.Boards.FreshmenBoardActivity" />
-        <activity android:name=".src.Boards.HotBoardActivity" />
-        <activity android:name=".src.Boards.RecentLectureReviewBoardActivity" />
-        <activity android:name=".src.Boards.LectureReviewInSubjectActivity" />
+        <activity android:name=".src.signUp.SignUpAgreementActivity" />
+        <activity android:name=".src.signUp.SignUpInputFormActivity" />
+        <activity android:name=".src.main.MainActivity" />
+        <activity android:name=".src.boards.writing.WritingActivity" />
+        <activity android:name=".src.boards.in_post.InPostActivity" />
+        <activity android:name=".src.main.frag_home.my_page.MyPageActivity" />
+        <activity android:name=".src.boards.general_boards.free_board.FreeBoardActivity" />
+        <activity android:name=".src.boards.general_boards.secret_board.SecretBoardActivity" />
+        <activity android:name=".src.boards.general_boards.alumni_board.AlumniBoardActivity" />
+        <activity android:name=".src.boards.general_boards.freshmen_board.FreshmenBoardActivity" />
+        <activity android:name=".src.boards.hot_board.HotBoardActivity" />
+        <activity android:name=".src.boards.lecture_review.RecentLectureReviewBoardActivity" />
+        <activity android:name=".src.boards.lecture_review.LectureReviewInSubjectActivity" />
     </application>
 
 </manifest>

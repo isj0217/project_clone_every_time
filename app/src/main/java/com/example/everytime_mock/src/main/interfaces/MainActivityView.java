@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main.interfaces;
+package com.example.everytime_mock.src.main.interfaces;
 
 public interface MainActivityView {
 

@@ -1,8 +1,8 @@
-package com.example.everytime_mock.src.Main;
+package com.example.everytime_mock.src.main;
 
-import com.example.everytime_mock.src.Main.interfaces.MainActivityView;
-import com.example.everytime_mock.src.Main.interfaces.MainRetrofitInterface;
-import com.example.everytime_mock.src.Main.models.DefaultResponse;
+import com.example.everytime_mock.src.main.interfaces.MainActivityView;
+import com.example.everytime_mock.src.main.interfaces.MainRetrofitInterface;
+import com.example.everytime_mock.src.main.models.DefaultResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

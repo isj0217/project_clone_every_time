@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main;
+package com.example.everytime_mock.src.main;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,12 +9,12 @@ import androidx.annotation.Nullable;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.Main.interfaces.MainActivityView;
-import com.example.everytime_mock.src.Main.frag_home.FragHome;
-import com.example.everytime_mock.src.Main.frag_board.FragBoard;
-import com.example.everytime_mock.src.Main.frag_time_table.FragTimeTable;
-import com.example.everytime_mock.src.Main.frag_notification.FragNotification;
-import com.example.everytime_mock.src.Main.frag_campus_pick.FragCampusPick;
+import com.example.everytime_mock.src.main.interfaces.MainActivityView;
+import com.example.everytime_mock.src.main.frag_home.FragHome;
+import com.example.everytime_mock.src.main.frag_board.FragBoard;
+import com.example.everytime_mock.src.main.frag_time_table.FragTimeTable;
+import com.example.everytime_mock.src.main.frag_notification.FragNotification;
+import com.example.everytime_mock.src.main.frag_campus_pick.FragCampusPick;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends BaseActivity implements MainActivityView {

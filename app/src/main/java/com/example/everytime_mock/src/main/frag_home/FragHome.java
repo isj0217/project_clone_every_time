@@ -1,4 +1,4 @@
-package com.example.everytime_mock.src.Main.frag_home;
+package com.example.everytime_mock.src.main.frag_home;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,20 +20,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
-import com.example.everytime_mock.src.Boards.HotBoardActivity;
-import com.example.everytime_mock.src.Boards.LectureReviewInSubjectActivity;
-import com.example.everytime_mock.src.Boards.RecentLectureReviewBoardActivity;
-import com.example.everytime_mock.src.Boards.InPostActivity;
-import com.example.everytime_mock.src.Boards.models.BoardResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.AdvertisementResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.HotPostResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.RealTimeHotPostResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.RecentLectureReviewResponse;
-import com.example.everytime_mock.src.Main.frag_home.models.RecentLectureReviewResult;
-import com.example.everytime_mock.src.Main.frag_home.my_page.MyPageActivity;
-import com.example.everytime_mock.src.Main.frag_home.interfaces.FragHomeView;
-import com.example.everytime_mock.src.Main.frag_home.models.FavoriteBoardAdapter;
-import com.example.everytime_mock.src.Main.frag_home.models.FavoriteBoardItem;
+import com.example.everytime_mock.src.boards.hot_board.HotBoardActivity;
+import com.example.everytime_mock.src.boards.lecture_review.LectureReviewInSubjectActivity;
+import com.example.everytime_mock.src.boards.lecture_review.RecentLectureReviewBoardActivity;
+import com.example.everytime_mock.src.boards.in_post.InPostActivity;
+import com.example.everytime_mock.src.boards.models.BoardResponse;
+import com.example.everytime_mock.src.main.frag_home.models.AdvertisementResponse;
+import com.example.everytime_mock.src.main.frag_home.models.HotPostResponse;
+import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
+import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
+import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResult;
+import com.example.everytime_mock.src.main.frag_home.my_page.MyPageActivity;
+import com.example.everytime_mock.src.main.frag_home.interfaces.FragHomeView;
+import com.example.everytime_mock.src.main.frag_home.models.FavoriteBoardAdapter;
+import com.example.everytime_mock.src.main.frag_home.models.FavoriteBoardItem;
 
 import java.io.IOException;
 import java.net.URL;
@@ -96,22 +96,22 @@ public class FragHome extends Fragment implements FragHomeView {
             linear_layout_frag_home_favorite_alumni_board, linear_layout_frag_home_favorite_freshmen_board;
 
     public void tryGetFirstFreeBoardPost() {
-        FreeBoardService freeBoardService = new FreeBoardService(this);
-        freeBoardService.getFirstFreeBoardPost();
+        FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getFirstFreeBoardPost();
     }
 
     public void tryGetFirstSecretBoardPost() {
-        SecretBoardService secretBoardService = new SecretBoardService(this);
-        secretBoardService.getFirstSecretBoardPost();
+        FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getFirstSecretBoardPost();
     }
     public void tryGetFirstAlumniBoardPost() {
-        AlumniBoardService alumniBoardService = new AlumniBoardService(this);
-        alumniBoardService.getFirstAlumniBoardPost();
+        FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getFirstAlumniBoardPost();
 
     }
     public void tryGetFirstFreshmenBoardPost() {
-        FreshmenBoardService freshmenBoardService = new FreshmenBoardService(this);
-        freshmenBoardService.getFirstFreshmenBoardPost();
+        FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getFirstFreshmenBoardPost();
     }
 
     public void viewBindFavoriteBoardLinearLayouts() {
@@ -232,23 +232,23 @@ public class FragHome extends Fragment implements FragHomeView {
     }
 
     private void tryGetAdvertisement() {
-        final AdvertisementService advertisementService = new AdvertisementService(this);
-        advertisementService.getAdvertisement();
+        final FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getAdvertisement();
     }
 
     private void tryGetHotPost() {
-        final HotPostService hotPostService = new HotPostService(this);
-        hotPostService.getHotPost();
+        final FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getHotPost();
     }
 
     private void tryGetRealTimeHotPost() {
-        final RealTimeHotPostService realTimeHotPostService = new RealTimeHotPostService(this);
-        realTimeHotPostService.getRealTimeHotPost();
+        final FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getRealTimeHotPost();
     }
 
     private void tryGetRecentLectureReview() {
-        final RecentLectureReviewService recentLectureReview = new RecentLectureReviewService(this);
-        recentLectureReview.getRecentLectureReview();
+        final FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getRecentLectureReview();
     }
 
 
@@ -886,26 +886,21 @@ public class FragHome extends Fragment implements FragHomeView {
 
     @Override
     public void getFreeBoardSuccess(BoardResponse boardResponse) {
-        System.out.println("free success");
-
         tv_frag_home_favorite_free_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
     }
 
     @Override
     public void getSecretBoardSuccess(BoardResponse boardResponse) {
-        System.out.println("secret success");
         tv_frag_home_favorite_secret_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
     }
 
     @Override
     public void getAlumniBoardSuccess(BoardResponse boardResponse) {
-        System.out.println("alumni success");
         tv_frag_home_favorite_alumni_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
     }
 
     @Override
     public void getFreshmenBoardSuccess(BoardResponse boardResponse) {
-        System.out.println("freshmen success");
         tv_frag_home_favorite_freshmen_board_first_post.setText(boardResponse.getBoardResults().get(0).getContentTitle());
     }
 
