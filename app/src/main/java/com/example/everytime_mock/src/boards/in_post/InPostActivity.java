@@ -1,6 +1,9 @@
 package com.example.everytime_mock.src.boards.in_post;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +38,9 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     private InPostService inPostService;
     private String clicked;
 
+    private EditText et_in_post_comment;
+    private ImageView iv_in_post_register_comment;
+
     private int m_clicked_free_pos;
     private int m_clicked_secret_pos;
     private int m_clicked_alumni_pos;
@@ -47,7 +53,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_post);
-
 
         m_comment_item_list = new ArrayList<>();
 
@@ -62,7 +67,12 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
         inPostService = new InPostService(this);
 
-        textViewBinding();
+        ViewBinding();
+
+
+
+
+
 
         if (getIntent().getStringExtra("clicked") != null) {
             clicked = getIntent().getStringExtra("clicked");
@@ -192,7 +202,11 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
 
 
-    public void textViewBinding() {
+    public void ViewBinding() {
+
+        et_in_post_comment = findViewById(R.id.et_in_post_comment);
+        iv_in_post_register_comment = findViewById(R.id.iv_in_post_register_comment);
+
         tv_in_post_nickname = findViewById(R.id.tv_in_post_nickname);
         tv_in_post_time = findViewById(R.id.tv_in_post_time);
         tv_in_post_title = findViewById(R.id.tv_in_post_title);
@@ -547,6 +561,15 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
                 m_comment_item_list.add(commentItem);
             }
             comment_adapter.notifyDataSetChanged();
+        }
+    }
+
+    public void customOnClick(View view){
+        switch (view.getId()){
+            case R.id.iv_in_post_register_comment:
+                String input_comment = et_in_post_comment.getText().toString();
+                showCustomToast(input_comment);
+                break;
         }
     }
 

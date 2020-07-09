@@ -31,13 +31,13 @@
         <ImageView
             android:layout_width="22dp"
             android:layout_height="22dp"
-            android:layout_marginEnd="14dp"
+            android:layout_marginEnd="22dp"
             android:src="@drawable/notification_on" />
 
         <ImageView
             android:layout_width="22dp"
             android:layout_height="22dp"
-            android:layout_marginEnd="14dp"
+            android:layout_marginEnd="20dp"
             android:src="@drawable/red_sync" />
 
         <ImageView
@@ -294,6 +294,7 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/et_in_post_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -306,6 +307,8 @@
             android:textSize="13sp" />
 
         <ImageView
+            android:id="@+id/iv_in_post_register_comment"
+            android:onClick="customOnClick"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginStart="20dp"

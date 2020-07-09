@@ -104,7 +104,7 @@ public class SecretBoardActivity extends BaseActivity implements BoardActivityVi
             case R.id.iv_secret_board_sync:
                 restartActivity(SecretBoardActivity.this);
                 break;
-    }
+        }
     }
 
     private void restartActivity(Activity activity) {
