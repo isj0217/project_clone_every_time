@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,13 +15,13 @@ import com.example.everytime_mock.src.boards.in_post.InPostActivity;
 
 import java.util.ArrayList;
 
-public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.CustomViewHolder> {
+public class AlumniBoardAdapter extends RecyclerView.Adapter<AlumniBoardAdapter.CustomViewHolder> {
 
     private ArrayList<PostItem> post_item_list;
 
     private OnItemClickListener mListener = null ;
 
-    public BoardAdapter(ArrayList<PostItem> post_item_list) {
+    public AlumniBoardAdapter(ArrayList<PostItem> post_item_list) {
         this.post_item_list = post_item_list;
     }
 
@@ -30,13 +29,9 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.CustomViewHo
         void onItemClick(View v, int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener){
-        this.mListener = listener;
-    }
-
     @NonNull
     @Override
-    public BoardAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AlumniBoardAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_summarized_post, parent, false);
         CustomViewHolder holder = new CustomViewHolder(view);
@@ -45,7 +40,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.CustomViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BoardAdapter.CustomViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AlumniBoardAdapter.CustomViewHolder holder, int position) {
         holder.tv_item_post_title.setText(post_item_list.get(position).getTitle());
         holder.tv_item_post_content.setText(post_item_list.get(position).getContent());
         holder.tv_item_post_time.setText(post_item_list.get(position).getTime());
@@ -97,13 +92,9 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.CustomViewHo
 
                         System.out.println("보내기 전 pos: " + pos);
 
-
                         Intent intent = new Intent(v.getContext(), InPostActivity.class);
-                        intent.putExtra("clicked_free_idx", pos);
+                        intent.putExtra("clicked_alumni_index", pos);
                         context.startActivity(intent);
-
-
-
 
                         if (mListener != null) {
                             mListener.onItemClick(v, pos);
