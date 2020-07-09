@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -95,71 +97,36 @@ public class FragHome extends Fragment implements FragHomeView {
     private LinearLayout linear_layout_frag_home_favorite_free_board, linear_layout_frag_home_favorite_secret_board,
             linear_layout_frag_home_favorite_alumni_board, linear_layout_frag_home_favorite_freshmen_board;
 
-    public void tryGetFirstFreeBoardPost() {
-        FragHomeService fragHomeService = new FragHomeService(this);
-        fragHomeService.getFirstFreeBoardPost();
-    }
+    ImageView iv_frag_home_search;
+    Button btn_frag_home_setting;
 
-    public void tryGetFirstSecretBoardPost() {
-        FragHomeService fragHomeService = new FragHomeService(this);
-        fragHomeService.getFirstSecretBoardPost();
-    }
-    public void tryGetFirstAlumniBoardPost() {
-        FragHomeService fragHomeService = new FragHomeService(this);
-        fragHomeService.getFirstAlumniBoardPost();
 
-    }
-    public void tryGetFirstFreshmenBoardPost() {
-        FragHomeService fragHomeService = new FragHomeService(this);
-        fragHomeService.getFirstFreshmenBoardPost();
-    }
-
-    public void viewBindFavoriteBoardLinearLayouts() {
-        linear_layout_frag_home_favorite_free_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_free_board);
-        linear_layout_frag_home_favorite_free_board.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), InPostActivity.class);
-                intent.putExtra("clicked", "frag_home_favorite_free_board");
-                startActivity(intent);
-            }
-        });
-
-        linear_layout_frag_home_favorite_secret_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_secret_board);
-        linear_layout_frag_home_favorite_secret_board.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), InPostActivity.class);
-                intent.putExtra("clicked", "frag_home_favorite_secret_board");
-                startActivity(intent);
-            }
-        });
-
-        linear_layout_frag_home_favorite_alumni_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_alumni_board);
-        linear_layout_frag_home_favorite_alumni_board.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), InPostActivity.class);
-                intent.putExtra("clicked", "frag_home_favorite_alumni_board");
-                startActivity(intent);
-            }
-        });
-
-        linear_layout_frag_home_favorite_freshmen_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_freshmen_board);
-        linear_layout_frag_home_favorite_freshmen_board.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), InPostActivity.class);
-                intent.putExtra("clicked", "frag_home_favorite_freshmen_board");
-                startActivity(intent);
-            }
-        });
-    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewGroup = (ViewGroup) inflater.inflate(R.layout.frag_home, container, false);
+
+        viewBindForNotReadyContents();
+        setToastForNotReadyContents();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         viewBindRealTimeHotPost();
         viewBindHotPost();
@@ -222,6 +189,88 @@ public class FragHome extends Fragment implements FragHomeView {
         tryGetRecentLectureReview();
 
         return viewGroup;
+    }
+
+    public void setToastForNotReadyContents() {
+        iv_frag_home_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "준비중입니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_frag_home_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "준비중입니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void viewBindForNotReadyContents() {
+        iv_frag_home_search = viewGroup.findViewById(R.id.iv_frag_home_search);
+        btn_frag_home_setting = viewGroup.findViewById(R.id.btn_frag_home_setting);
+    }
+
+    public void tryGetFirstFreeBoardPost() {
+        FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getFirstFreeBoardPost();
+    }
+
+    public void tryGetFirstSecretBoardPost() {
+        FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getFirstSecretBoardPost();
+    }
+    public void tryGetFirstAlumniBoardPost() {
+        FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getFirstAlumniBoardPost();
+
+    }
+    public void tryGetFirstFreshmenBoardPost() {
+        FragHomeService fragHomeService = new FragHomeService(this);
+        fragHomeService.getFirstFreshmenBoardPost();
+    }
+
+    public void viewBindFavoriteBoardLinearLayouts() {
+        linear_layout_frag_home_favorite_free_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_free_board);
+        linear_layout_frag_home_favorite_free_board.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "frag_home_favorite_free_board");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_favorite_secret_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_secret_board);
+        linear_layout_frag_home_favorite_secret_board.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "frag_home_favorite_secret_board");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_favorite_alumni_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_alumni_board);
+        linear_layout_frag_home_favorite_alumni_board.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "frag_home_favorite_alumni_board");
+                startActivity(intent);
+            }
+        });
+
+        linear_layout_frag_home_favorite_freshmen_board = viewGroup.findViewById(R.id.linear_layout_frag_home_favorite_freshmen_board);
+        linear_layout_frag_home_favorite_freshmen_board.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), InPostActivity.class);
+                intent.putExtra("clicked", "frag_home_favorite_freshmen_board");
+                startActivity(intent);
+            }
+        });
     }
 
     public void viewBindFavoriteBoardTextViews() {

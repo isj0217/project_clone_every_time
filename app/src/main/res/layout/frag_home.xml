@@ -97,7 +97,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="기말고사"
+                                android:text="하계 계절수업"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="17sp"
                                 android:textStyle="bold" />
@@ -105,7 +105,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="6월 29일 (월) ~ 7월 4일 (토)"
+                                android:text="7월 6일 (월) ~ 7월 24일 (금)"
                                 android:textColor="@color/colorLigntGreen"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
@@ -201,7 +201,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="6월 30일 (화)"
+                                android:text="7월 10일 (금)"
                                 android:textColor="@color/colorBlue"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
@@ -212,7 +212,7 @@
                                 android:orientation="horizontal">
 
                                 <Button
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="50dp"
                                     android:layout_height="22dp"
                                     android:layout_marginTop="10dp"
                                     android:background="@drawable/btn_lightgrey"
@@ -220,6 +220,7 @@
                                     android:textColor="@color/colorBlack" />
 
                                 <Button
+                                    android:layout_marginStart="5dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="22dp"
                                     android:layout_marginTop="10dp"
@@ -263,7 +264,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="6월 30일 (화)"
+                                android:text="7월 10일 (금)"
                                 android:textColor="@color/colorRed"
                                 android:textSize="13sp"
                                 android:textStyle="bold" />
@@ -1613,6 +1614,7 @@
 
             <!--            홈 화면 설정 버튼-->
             <Button
+                android:id="@+id/btn_frag_home_setting"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
