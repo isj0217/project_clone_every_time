@@ -51,19 +51,18 @@
 
     <!--        스크롤뷰 안에 들어가는 유일한 하나의 레이아웃-->
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp">
+        android:orientation="vertical">
 
         <!--            댓글 윗부분-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
 
             <!--            프로필사진~스크랩 버튼-->
             <LinearLayout
@@ -236,10 +235,16 @@
 
 
                 </LinearLayout>
-
-
             </LinearLayout>
         </LinearLayout>
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLighterGrey" />
 
         <!--            댓글 부분-->
         <androidx.recyclerview.widget.RecyclerView

@@ -34,7 +34,7 @@ public class SecretBoardAdapter extends RecyclerView.Adapter<SecretBoardAdapter.
     @Override
     public SecretBoardAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_summarized_post, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_summarized_post_for_secret, parent, false);
         CustomViewHolder holder = new CustomViewHolder(view);
 
         return holder;
@@ -42,12 +42,11 @@ public class SecretBoardAdapter extends RecyclerView.Adapter<SecretBoardAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull SecretBoardAdapter.CustomViewHolder holder, int position) {
-        holder.tv_item_post_title.setText(post_item_list.get(position).getTitle());
-        holder.tv_item_post_content.setText(post_item_list.get(position).getContent());
-        holder.tv_item_post_time.setText(post_item_list.get(position).getTime());
-        holder.tv_item_post_nickname.setText(post_item_list.get(position).getWriter());
-        holder.tv_item_post_like_num.setText(Integer.toString(post_item_list.get(position).getLike_num()));
-        holder.tv_item_post_comment_num.setText(Integer.toString(post_item_list.get(position).getComment_num()));
+        holder.tv_item_post_secret_nickname.setText("익명");
+        holder.tv_item_post_secret_time.setText(post_item_list.get(position).getTime());
+        holder.tv_item_post_secret_content.setText(post_item_list.get(position).getContent());
+        holder.tv_item_post_secret_like_num.setText(Integer.toString(post_item_list.get(position).getLike_num()));
+        holder.tv_item_post_secret_comment_num.setText(Integer.toString(post_item_list.get(position).getComment_num()));
 
         holder.itemView.setTag(position);
 
@@ -64,22 +63,19 @@ public class SecretBoardAdapter extends RecyclerView.Adapter<SecretBoardAdapter.
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
-        protected TextView tv_item_post_title;
-        protected TextView tv_item_post_content;
-        protected TextView tv_item_post_time;
-        protected TextView tv_item_post_nickname;
-        protected TextView tv_item_post_like_num;
-        protected TextView tv_item_post_comment_num;
-
+        protected TextView tv_item_post_secret_nickname;
+        protected TextView tv_item_post_secret_time;
+        protected TextView tv_item_post_secret_content;
+        protected TextView tv_item_post_secret_like_num;
+        protected TextView tv_item_post_secret_comment_num;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.tv_item_post_title = itemView.findViewById(R.id.tv_item_post_title);
-            this.tv_item_post_content = itemView.findViewById(R.id.tv_item_post_content);
-            this.tv_item_post_time = itemView.findViewById(R.id.tv_item_post_time);
-            this.tv_item_post_nickname = itemView.findViewById(R.id.tv_item_post_nickname);
-            this.tv_item_post_like_num = itemView.findViewById(R.id.tv_item_post_like_num);
-            this.tv_item_post_comment_num = itemView.findViewById(R.id.tv_item_post_comment_num);
+            this.tv_item_post_secret_nickname = itemView.findViewById(R.id.tv_item_post_secret_nickname);
+            this.tv_item_post_secret_time = itemView.findViewById(R.id.tv_item_post_secret_time);
+            this.tv_item_post_secret_content = itemView.findViewById(R.id.tv_item_post_secret_content);
+            this.tv_item_post_secret_like_num = itemView.findViewById(R.id.tv_item_post_secret_like_num);
+            this.tv_item_post_secret_comment_num = itemView.findViewById(R.id.tv_item_post_secret_comment_num);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
