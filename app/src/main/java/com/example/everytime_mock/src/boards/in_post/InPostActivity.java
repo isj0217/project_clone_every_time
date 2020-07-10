@@ -2,6 +2,7 @@ package com.example.everytime_mock.src.boards.in_post;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import com.example.everytime_mock.src.boards.in_post.models.CommentResponse;
 import com.example.everytime_mock.src.boards.in_post.models.CommentAdapter;
 import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.MainActivity;
+import com.example.everytime_mock.src.main.frag_home.FragHome;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 import com.example.everytime_mock.src.boards.in_post.interfaces.InPostActivityView;
@@ -504,14 +506,15 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         tv_in_post_scrap_num.setText("0");
     }
 
+    private static final String TAG = "InPostActivity";
     @Override
     public void freeCommentSuccess(CommentResponse commentResponse) {
         hideProgressDialog();
 
-        System.out.println(commentResponse.getCode());
-        System.out.println(commentResponse.getMessage());
+
+        Log.d(TAG, "freeCommentSuccess: " + commentResponse.getMessage());
         int size = commentResponse.getCommentResults().size();
-        System.out.println("size: " + size);
+
 
         if ((commentResponse.getCode() == 100) && (size > 0)) {
             for (int i = 0; i < commentResponse.getCommentResults().size(); i++) {
@@ -617,19 +620,62 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     public void customOnClick(View view) {
         switch (view.getId()) {
             case R.id.iv_in_post_register_comment:
-                showProgressDialog();
+                if (m_from_frag_home) {
+                    showProgressDialog();
 
-                String input_comment = et_in_post_comment.getText().toString();
+                    String input_comment = et_in_post_comment.getText().toString();
 
-                int user_status;
-                if (chk_in_post_anonymous.isChecked()) {
-                    user_status = 0;
-                } else {
-                    user_status = 1;
+                    int user_status;
+                    if (chk_in_post_anonymous.isChecked()) {
+                        user_status = 0;
+                    } else {
+                        user_status = 1;
+                    }
+                    tryPostComment(input_comment, user_status);
+                    et_in_post_comment.setText("");
+
+
+                }else{
+                    showProgressDialog();
+
+                    String input_comment = et_in_post_comment.getText().toString();
+
+                    int user_status;
+                    if (chk_in_post_anonymous.isChecked()) {
+                        user_status = 0;
+                    } else {
+                        user_status = 1;
+                    }
+                    tryPostComment(input_comment, user_status);
+                    et_in_post_comment.setText("");
+
+                    Intent intent;
+
+                    switch (m_from_board_num) {
+                        case 1:
+                            intent = new Intent(InPostActivity.this, FreeBoardActivity.class);
+                            startActivity(intent);
+                            finish();
+                            break;
+                        case 2:
+                            intent = new Intent(InPostActivity.this, SecretBoardActivity.class);
+                            startActivity(intent);
+                            finish();
+                            break;
+                        case 3:
+                            intent = new Intent(InPostActivity.this, AlumniBoardActivity.class);
+                            startActivity(intent);
+                            finish();
+                            break;
+                        case 4:
+                            intent = new Intent(InPostActivity.this, FreshmenBoardActivity.class);
+                            startActivity(intent);
+                            finish();
+                            break;
+                        default:
+                            break;
+                    }
                 }
-                tryPostComment(input_comment, user_status);
-
-                break;
         }
     }
 
@@ -683,6 +729,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void validateFailure(String message) {
-
+        hideProgressDialog();
     }
 }
