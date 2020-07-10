@@ -64,4 +64,5 @@ public interface InPostRetrofitInterface {
                                             @Path("contentIdx") int contentIdx,
                                             @Body HashMap<String, Object> params);
 
+
 }

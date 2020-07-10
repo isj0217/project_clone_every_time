@@ -146,6 +146,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
          * 게시판에서 직접 글을 클릭할 때 불러오는 부분!!!!(댓글과 무관함!!!)
          * */
         if (!m_from_frag_home) {
+            m_index_of_this_post = getIntent().getIntExtra("index_of_this_post", 0);
             m_clicked_free_pos = getIntent().getIntExtra("clicked_free_pos", -1);
             if (m_clicked_free_pos != -1) {
                 m_from_board_num = 1;
@@ -515,7 +516,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         Log.d(TAG, "freeCommentSuccess: " + commentResponse.getMessage());
         int size = commentResponse.getCommentResults().size();
 
-
         if ((commentResponse.getCode() == 100) && (size > 0)) {
             for (int i = 0; i < commentResponse.getCommentResults().size(); i++) {
                 CommentItem commentItem = new CommentItem();
@@ -607,14 +607,21 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     @Override
     public void commentAddSuccess(CommentAddResponse commentAddResponse) {
         hideProgressDialog();
-        showCustomToast("댓글이 등록되었습니다");
-        et_in_post_comment.setText("");
 
-        comment_adapter.notifyDataSetChanged();
+        System.out.println("response Code: " +commentAddResponse.getCode());
 
-        System.out.println(commentAddResponse.getCode());
-        System.out.println(commentAddResponse.getMessage());
+        switch(commentAddResponse.getCode()) {
 
+            case 100:
+            showCustomToast("댓글이 등록되었습니다");
+            et_in_post_comment.setText("");
+
+            comment_adapter.notifyDataSetChanged();
+
+            System.out.println(commentAddResponse.getCode());
+            System.out.println(commentAddResponse.getMessage());
+            break;
+        }
     }
 
     public void customOnClick(View view) {
@@ -647,6 +654,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
                         user_status = 1;
                     }
                     tryPostComment(input_comment, user_status);
+
                     et_in_post_comment.setText("");
 
                     Intent intent;
@@ -686,6 +694,8 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
         InPostService inPostService = new InPostService(this);
         inPostService.postNewComment(m_index_of_this_post, params);
+
+        System.out.println("지금 여기서 m_index_of_this_post : " + m_index_of_this_post);
     }
 
     @Override
