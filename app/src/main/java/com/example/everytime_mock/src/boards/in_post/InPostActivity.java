@@ -1,6 +1,5 @@
 package com.example.everytime_mock.src.boards.in_post;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +23,6 @@ import com.example.everytime_mock.src.boards.in_post.models.CommentResponse;
 import com.example.everytime_mock.src.boards.in_post.models.CommentAdapter;
 import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResponse;
 import com.example.everytime_mock.src.main.MainActivity;
-import com.example.everytime_mock.src.main.frag_home.FragHome;
 import com.example.everytime_mock.src.main.frag_home.models.RealTimeHotPostResponse;
 import com.example.everytime_mock.src.main.frag_home.models.RecentLectureReviewResponse;
 import com.example.everytime_mock.src.boards.in_post.interfaces.InPostActivityView;
@@ -62,15 +60,13 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     private int m_index_of_this_post;
 
+    private boolean m_from_frag_home;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_post);
-
-        m_index_of_this_post = getIntent().getIntExtra("index_of_this_post", 0);
-
-
 
         m_comment_item_list = new ArrayList<>();
 
@@ -87,141 +83,147 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
         ViewBinding();
 
-
-
-
-
-
-
-
-
-
         if (getIntent().getStringExtra("clicked") != null) {
             clicked = getIntent().getStringExtra("clicked");
+            m_from_frag_home = true;
         } else {
             clicked = "";
+            m_from_frag_home = false;
         }
 
         /**
-         * 홈화면에서 바로 건너올때 채워주기 위한 부분!!!!!
+         * 홈화면에서 바로 건너올때 글을 채워주기 위한 부분!!!!! (댓글과 무관!!!!!!!)
          * */
-        switch (clicked) {
-            case "realtime_hot_post_1":
-            case "realtime_hot_post_2":
-                inPostService.getRealTimeHotBoard();
-                break;
-            case "hot_post_1":
-            case "hot_post_2":
-            case "hot_post_3":
-            case "hot_post_4":
-                inPostService.getHotBoard();
-                break;
-            case "review_1":
-            case "review_2":
-            case "review_3":
-            case "review_4":
-                inPostService.getRecentLectureReview();
-                break;
-            case "frag_home_favorite_free_board":
-                inPostService.getFreeBoard();
-                break;
-            case "frag_home_favorite_secret_board":
-                inPostService.getSecretBoard();
-                break;
-            case "frag_home_favorite_alumni_board":
-                inPostService.getAlumniBoard();
-                break;
-            case "frag_home_favorite_freshmen_board":
-                inPostService.getFreshmenBoard();
-                break;
-            default:
-                break;
+        if (m_from_frag_home) {
+            switch (clicked) {
+                case "realtime_hot_post_1":
+                case "realtime_hot_post_2":
+                    inPostService.getRealTimeHotBoard();
+                    break;
+                case "hot_post_1":
+                case "hot_post_2":
+                case "hot_post_3":
+                case "hot_post_4":
+                    inPostService.getHotBoard();
+                    break;
+                case "review_1":
+                case "review_2":
+                case "review_3":
+                case "review_4":
+                    inPostService.getRecentLectureReview();
+                    break;
+                case "frag_home_favorite_free_board":
+                    inPostService.getFreeBoard();
+                    break;
+                case "frag_home_favorite_secret_board":
+                    inPostService.getSecretBoard();
+                    break;
+                case "frag_home_favorite_alumni_board":
+                    inPostService.getAlumniBoard();
+                    break;
+                case "frag_home_favorite_freshmen_board":
+                    inPostService.getFreshmenBoard();
+                    break;
+                default:
+                    break;
+            }
         }
 
+        /**
+         * 홈화면에서 바로 건너올때 댓글을 채워주기 위한 부분!!!!!
+         * */
+        if (m_from_frag_home) {
+            m_index_of_this_post = getIntent().getIntExtra("index_of_this_post", 0);
+            System.out.println("넘어온 index_of_this_post는 " + m_index_of_this_post + "입니다.");
+
+            inPostService.getFreeComment(m_index_of_this_post);
+        }
 
 
         /**
          * 게시판에서 직접 글을 클릭할 때 불러오는 부분!!!!(댓글과 무관함!!!)
          * */
-        m_clicked_free_pos = getIntent().getIntExtra("clicked_free_pos", -1);
-        if (m_clicked_free_pos != -1) {
-            m_from_board_num = 1;
-            inPostService.getExactFreePost();
+        if (!m_from_frag_home) {
+            m_clicked_free_pos = getIntent().getIntExtra("clicked_free_pos", -1);
+            if (m_clicked_free_pos != -1) {
+                m_from_board_num = 1;
+                inPostService.getExactFreePost();
+            }
+            m_clicked_secret_pos = getIntent().getIntExtra("clicked_secret_pos", -1);
+            if (m_clicked_secret_pos != -1) {
+                m_from_board_num = 2;
+                inPostService.getExactSecretPost();
+            }
+            m_clicked_alumni_pos = getIntent().getIntExtra("clicked_alumni_pos", -1);
+            if (m_clicked_alumni_pos != -1) {
+                m_from_board_num = 3;
+                inPostService.getExactAlumniPost();
+            }
+            m_clicked_freshmen_pos = getIntent().getIntExtra("clicked_freshmen_pos", -1);
+            if (m_clicked_freshmen_pos != -1) {
+                m_from_board_num = 4;
+                inPostService.getExactFreshmenPost();
+            }
         }
-        m_clicked_secret_pos = getIntent().getIntExtra("clicked_secret_pos", -1);
-        if (m_clicked_secret_pos != -1) {
-            m_from_board_num = 2;
-            inPostService.getExactSecretPost();
-        }
-        m_clicked_alumni_pos = getIntent().getIntExtra("clicked_alumni_pos", -1);
-        if (m_clicked_alumni_pos != -1) {
-            m_from_board_num = 3;
-            inPostService.getExactAlumniPost();
-        }
-        m_clicked_freshmen_pos = getIntent().getIntExtra("clicked_freshmen_pos", -1);
-        if (m_clicked_freshmen_pos != -1) {
-            m_from_board_num = 4;
-            inPostService.getExactFreshmenPost();
-        }
-
 
 
         /**
-         * 댓글을 채워주기 위한 부분!!!!!!
+         * 게시판에서 직접 클릭할 때 댓글을 채워주기 위한 부분!!!!!!
          * */
+        if (!m_from_frag_home) {
+            int clicked_content_index = getIntent().getIntExtra("clicked_content_index", 0);
+            System.out.println("clicked_content_index: " + clicked_content_index);
 
-        int clicked_content_index = getIntent().getIntExtra("clicked_content_index", 0);
-        System.out.println("clicked_content_index: " + clicked_content_index);
+            switch (m_from_board_num) {
+                case 1:
+                    tryGetFreeComment(clicked_content_index);
+                    break;
+                case 2:
+                    tryGetSecretComment(clicked_content_index);
+                    break;
+                case 3:
+                    tryGetAlumniComment(clicked_content_index);
+                    break;
+                case 4:
+                    tryGetFreshmenComment(clicked_content_index);
+                    break;
+                default:
+                    break;
 
-        switch (m_from_board_num){
-            case 1:
-                tryGetFreeComment(clicked_content_index);
-                break;
-            case 2:
-                tryGetSecretComment(clicked_content_index);
-                break;
-            case 3:
-                tryGetAlumniComment(clicked_content_index);
-                break;
-            case 4:
-                tryGetFreshmenComment(clicked_content_index);
-                break;
+            }
 
         }
-
-
 
 
     }
 
-    private void tryGetFreeComment (int content_index) {
+    private void tryGetFreeComment(int content_index) {
         showProgressDialog();
 
         final InPostService inPostService = new InPostService(this);
         inPostService.getFreeComment(content_index);
     }
 
-    private void tryGetSecretComment (int content_index) {
+    private void tryGetSecretComment(int content_index) {
         showProgressDialog();
 
         final InPostService inPostService = new InPostService(this);
         inPostService.getSecretComment(content_index);
     }
 
-    private void tryGetAlumniComment (int content_index) {
+    private void tryGetAlumniComment(int content_index) {
         showProgressDialog();
 
         final InPostService inPostService = new InPostService(this);
         inPostService.getAlumniComment(content_index);
     }
 
-    private void tryGetFreshmenComment (int content_index) {
+    private void tryGetFreshmenComment(int content_index) {
         showProgressDialog();
 
         final InPostService inPostService = new InPostService(this);
         inPostService.getFreshmenComment(content_index);
     }
-
 
 
     public void ViewBinding() {
@@ -242,6 +244,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void realtimeHotPostSuccess(RealTimeHotPostResponse realTimeHotPostResponse) {
+        hideProgressDialog();
         switch (clicked) {
             case "realtime_hot_post_1":
                 tv_in_post_nickname.setText(realTimeHotPostResponse.getRealTimeHotPostResults().get(0).getContentWriter());
@@ -267,6 +270,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void hotPostSuccess(CommonBoardResponse commonBoardResponse) {
+        hideProgressDialog();
         switch (clicked) {
             case "hot_post_1":
                 tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
@@ -317,6 +321,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
      */
     @Override
     public void recentLectureReviewSuccess(RecentLectureReviewResponse recentLectureReviewBoardResponse) {
+        hideProgressDialog();
         switch (clicked) {
             case "review_1":
 //                tv_in_post_nickname.setText(recentLectureReviewBoardResponse.getRecentLectureReviewBoardResults().get(0).get().getRecentLectureReviewResults().get(0).getboardResponse.getBoardResults().get(0).getContentWriter());         // 글쓴이 서버에서 안넘어옴
@@ -363,6 +368,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void freeBoardSuccess(CommonBoardResponse commonBoardResponse) {
+        hideProgressDialog();
         switch (clicked) {
             case "frag_home_favorite_free_board":
 
@@ -385,6 +391,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void secretBoardSuccess(CommonBoardResponse commonBoardResponse) {
+        hideProgressDialog();
         switch (clicked) {
             case "frag_home_favorite_free_board":
                 break;
@@ -406,6 +413,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void alumniBoardSuccess(CommonBoardResponse commonBoardResponse) {
+        hideProgressDialog();
         switch (clicked) {
             case "frag_home_favorite_free_board":
                 break;
@@ -428,6 +436,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void freshmenBoardSuccess(CommonBoardResponse commonBoardResponse) {
+        hideProgressDialog();
         switch (clicked) {
             case "frag_home_favorite_free_board":
                 break;
@@ -449,6 +458,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void exactFreePostSuccess(CommonBoardResponse commonBoardResponse) {
+        hideProgressDialog();
         tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_free_pos).getContentWriter());         // 글쓴이 서버에서 안넘어옴
         tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_free_pos).getWriteDay());
         tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_free_pos).getContentTitle());
@@ -460,6 +470,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void exactSecretPostSuccess(CommonBoardResponse commonBoardResponse) {
+        hideProgressDialog();
         tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_secret_pos).getContentWriter());         // 글쓴이 서버에서 안넘어옴
         tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_secret_pos).getWriteDay());
         tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_secret_pos).getContentTitle());
@@ -471,6 +482,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void exactAlumniPostSuccess(CommonBoardResponse commonBoardResponse) {
+        hideProgressDialog();
         tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_alumni_pos).getContentWriter());         // 글쓴이 서버에서 안넘어옴
         tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_alumni_pos).getWriteDay());
         tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_alumni_pos).getContentTitle());
@@ -482,6 +494,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void exactFreshmenPostSuccess(CommonBoardResponse commonBoardResponse) {
+        hideProgressDialog();
         tv_in_post_nickname.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_pos).getContentWriter());         // 글쓴이 서버에서 안넘어옴
         tv_in_post_time.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_pos).getWriteDay());
         tv_in_post_title.setText(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_pos).getContentTitle());
@@ -500,8 +513,8 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         int size = commentResponse.getCommentResults().size();
         System.out.println("size: " + size);
 
-        if ((commentResponse.getCode() == 100) && (size > 0)){
-            for (int i = 0; i < commentResponse.getCommentResults().size(); i++){
+        if ((commentResponse.getCode() == 100) && (size > 0)) {
+            for (int i = 0; i < commentResponse.getCommentResults().size(); i++) {
                 CommentItem commentItem = new CommentItem();
 
                 commentItem.setCommentIdx(commentResponse.getCommentResults().get(i).getCommentIdx());
@@ -524,8 +537,8 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         System.out.println(commentResponse.getMessage());
         int size = commentResponse.getCommentResults().size();
 
-        if ((commentResponse.getCode() == 100) && (size > 0)){
-            for (int i = 0; i < commentResponse.getCommentResults().size(); i++){
+        if ((commentResponse.getCode() == 100) && (size > 0)) {
+            for (int i = 0; i < commentResponse.getCommentResults().size(); i++) {
                 CommentItem commentItem = new CommentItem();
 
                 commentItem.setCommentIdx(commentResponse.getCommentResults().get(i).getCommentIdx());
@@ -548,8 +561,8 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         System.out.println(commentResponse.getMessage());
         int size = commentResponse.getCommentResults().size();
 
-        if ((commentResponse.getCode() == 100) && (size > 0)){
-            for (int i = 0; i < commentResponse.getCommentResults().size(); i++){
+        if ((commentResponse.getCode() == 100) && (size > 0)) {
+            for (int i = 0; i < commentResponse.getCommentResults().size(); i++) {
                 CommentItem commentItem = new CommentItem();
 
                 commentItem.setCommentIdx(commentResponse.getCommentResults().get(i).getCommentIdx());
@@ -572,8 +585,8 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         System.out.println(commentResponse.getMessage());
         int size = commentResponse.getCommentResults().size();
 
-        if ((commentResponse.getCode() == 100) && (size > 0)){
-            for (int i = 0; i < commentResponse.getCommentResults().size(); i++){
+        if ((commentResponse.getCode() == 100) && (size > 0)) {
+            for (int i = 0; i < commentResponse.getCommentResults().size(); i++) {
                 CommentItem commentItem = new CommentItem();
 
                 commentItem.setCommentIdx(commentResponse.getCommentResults().get(i).getCommentIdx());
@@ -590,26 +603,31 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     @Override
     public void commentAddSuccess(CommentAddResponse commentAddResponse) {
-        switch (commentAddResponse.getCode()) {
-            case 100:
-                break;
-        }
+        hideProgressDialog();
+        showCustomToast("댓글이 등록되었습니다");
+        et_in_post_comment.setText("");
+
+        comment_adapter.notifyDataSetChanged();
+
+        System.out.println(commentAddResponse.getCode());
+        System.out.println(commentAddResponse.getMessage());
+
     }
 
-    public void customOnClick(View view){
-        switch (view.getId()){
+    public void customOnClick(View view) {
+        switch (view.getId()) {
             case R.id.iv_in_post_register_comment:
                 showProgressDialog();
+
                 String input_comment = et_in_post_comment.getText().toString();
-                showCustomToast(input_comment);
+
                 int user_status;
-                if (chk_in_post_anonymous.isChecked()){
+                if (chk_in_post_anonymous.isChecked()) {
                     user_status = 0;
-                }else{
+                } else {
                     user_status = 1;
                 }
                 tryPostComment(input_comment, user_status);
-                comment_adapter.notifyDataSetChanged();
 
                 break;
         }
@@ -618,7 +636,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     public void tryPostComment(String comment, int userStatus) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("commentInf", comment);
-        params.put("userStatus", chk_in_post_anonymous.isChecked() ? 0 : 1);
+        params.put("userStatus", userStatus);
 
         InPostService inPostService = new InPostService(this);
         inPostService.postNewComment(m_index_of_this_post, params);
@@ -627,7 +645,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
     @Override
     public void onBackPressed() {
         Intent intent;
-        switch (m_from_board_num){
+        switch (m_from_board_num) {
             case 1:
                 intent = new Intent(InPostActivity.this, FreeBoardActivity.class);
                 startActivity(intent);

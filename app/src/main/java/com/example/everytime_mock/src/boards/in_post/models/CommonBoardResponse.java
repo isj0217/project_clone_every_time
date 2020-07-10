@@ -1,5 +1,6 @@
-package com.example.everytime_mock.src.boards.models.common_board;
+package com.example.everytime_mock.src.boards.in_post.models;
 
+import com.example.everytime_mock.src.boards.models.common_board.CommonBoardResult;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

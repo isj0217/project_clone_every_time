@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,7 +101,12 @@ public class FragHome extends Fragment implements FragHomeView {
     ImageView iv_frag_home_search;
     Button btn_frag_home_setting;
 
+    private FragHomeService m_fragHomeService;
 
+    private int m_index_of_first_free_post = 0;
+    private int m_index_of_first_secret_post = 0;
+    private int m_index_of_first_alumni_post = 0;
+    private int m_index_of_first_freshmen_post = 0;
 
     @Nullable
     @Override
@@ -110,22 +116,7 @@ public class FragHome extends Fragment implements FragHomeView {
         viewBindForNotReadyContents();
         setToastForNotReadyContents();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        m_fragHomeService = new FragHomeService(this);
 
 
         viewBindRealTimeHotPost();
@@ -238,6 +229,7 @@ public class FragHome extends Fragment implements FragHomeView {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), InPostActivity.class);
                 intent.putExtra("clicked", "frag_home_favorite_free_board");
+                intent.putExtra("index_of_this_post", m_index_of_first_free_post);
                 startActivity(intent);
             }
         });
@@ -248,6 +240,7 @@ public class FragHome extends Fragment implements FragHomeView {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), InPostActivity.class);
                 intent.putExtra("clicked", "frag_home_favorite_secret_board");
+                intent.putExtra("index_of_this_post", m_index_of_first_secret_post);
                 startActivity(intent);
             }
         });
@@ -258,6 +251,7 @@ public class FragHome extends Fragment implements FragHomeView {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), InPostActivity.class);
                 intent.putExtra("clicked", "frag_home_favorite_alumni_board");
+                intent.putExtra("index_of_this_post", m_index_of_first_alumni_post);
                 startActivity(intent);
             }
         });
@@ -268,6 +262,7 @@ public class FragHome extends Fragment implements FragHomeView {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), InPostActivity.class);
                 intent.putExtra("clicked", "frag_home_favorite_freshmen_board");
+                intent.putExtra("index_of_this_post", m_index_of_first_freshmen_post);
                 startActivity(intent);
             }
         });
@@ -933,24 +928,34 @@ public class FragHome extends Fragment implements FragHomeView {
 
     }
 
+    private static final String TAG = "FragHome";
+    
     @Override
     public void getFreeBoardSuccess(CommonBoardResponse commonBoardResponse) {
         tv_frag_home_favorite_free_board_first_post.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
+        m_index_of_first_free_post = commonBoardResponse.getCommonBoardResults().get(0).getContentIdx();
+        Log.d(TAG, "getFreeBoardSuccess: m index of first free post: " + m_index_of_first_free_post);
     }
 
     @Override
     public void getSecretBoardSuccess(CommonBoardResponse commonBoardResponse) {
         tv_frag_home_favorite_secret_board_first_post.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
+        m_index_of_first_secret_post = commonBoardResponse.getCommonBoardResults().get(0).getContentIdx();
+        Log.d(TAG, "getSecretBoardSuccess: m index of first secret post: " + m_index_of_first_secret_post);
     }
 
     @Override
     public void getAlumniBoardSuccess(CommonBoardResponse commonBoardResponse) {
         tv_frag_home_favorite_alumni_board_first_post.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
+        m_index_of_first_alumni_post = commonBoardResponse.getCommonBoardResults().get(0).getContentIdx();
+        Log.d(TAG, "getAlumniBoardSuccess: m index of first alumni post: " + m_index_of_first_alumni_post);
     }
 
     @Override
     public void getFreshmenBoardSuccess(CommonBoardResponse commonBoardResponse) {
         tv_frag_home_favorite_freshmen_board_first_post.setText(commonBoardResponse.getCommonBoardResults().get(0).getContentTitle());
+        m_index_of_first_freshmen_post = commonBoardResponse.getCommonBoardResults().get(0).getContentIdx();
+        Log.d(TAG, "getFreshmenBoardSuccess: m index of first freshmen post: " + m_index_of_first_freshmen_post);
     }
 
     public void linkIconsToWebSites() {

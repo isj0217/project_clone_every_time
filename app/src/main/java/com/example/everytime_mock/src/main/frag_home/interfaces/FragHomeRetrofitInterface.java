@@ -51,6 +51,24 @@ public interface FragHomeRetrofitInterface {
     @GET("/notice/4/contents")
     Call<CommonBoardResponse>getFirstFreshmenBoardPost(@Header("x-access-token")String accessToken);
 
+    // 첫 번째 자유게시판 게시물의 contentIdx 조회
+    @GET("/notice/1/contents")
+    Call<CommonBoardResponse> getIndexOfFirstFreePost(@Header("x-access-token")String accessToken);
+
+    // 첫 번째 비밀게시판 게시물의 contentIdx 조회
+    @GET("/notice/2/contents")
+    Call<CommonBoardResponse> getIndexOfFirstSecretPost(@Header("x-access-token")String accessToken);
+
+    // 첫 번째 졸업생게시판 게시물의 contentIdx 조회
+    @GET("/notice/3/contents")
+    Call<CommonBoardResponse> getIndexOfFirstAlumniPost(@Header("x-access-token")String accessToken);
+
+    // 첫 번째 새내기게시판 게시물의 contentIdx 조회
+    @GET("/notice/4/contents")
+    Call<CommonBoardResponse> getIndexOfFirstFreshmenPost(@Header("x-access-token")String accessToken);
+
+
+
 
     @GET("/test/{number}")
     Call<RealTimeHotPostResponse> getTestPathAndQuery(

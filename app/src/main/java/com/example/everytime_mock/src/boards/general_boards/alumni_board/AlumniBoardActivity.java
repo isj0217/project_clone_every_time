@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.everytime_mock.R;
 import com.example.everytime_mock.src.BaseActivity;
-import com.example.everytime_mock.src.boards.general_boards.free_board.FreeBoardActivity;
 import com.example.everytime_mock.src.boards.models.adapters.AlumniBoardAdapter;
 import com.example.everytime_mock.src.boards.writing.WritingActivity;
 import com.example.everytime_mock.src.boards.interfaces.BoardActivityView;
@@ -42,12 +41,10 @@ public class AlumniBoardActivity extends BaseActivity implements BoardActivityVi
         alumni_board_adapter = new AlumniBoardAdapter(m_post_item_list);
         rv_alumni_board.setAdapter(alumni_board_adapter);
 
-        tryGetAluniBoard();
-
-
+        tryGetAlumniBoard();
     }
 
-    private void tryGetAluniBoard() {
+    private void tryGetAlumniBoard() {
         showProgressDialog();
 
         final AlumniBoardService alumniBoardService = new AlumniBoardService(this);

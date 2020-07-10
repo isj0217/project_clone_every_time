@@ -347,13 +347,18 @@ class InPostService {
                 final CommentAddResponse commentAddResponse = response.body();
                 if (commentAddResponse == null) {
                     mInPostActivityView.validateFailure(null);
+
+                    System.out.println("commentAdd onResponse 인데 실패!!!!");
                     return;
                 }
+                System.out.println("commentAdd onResponse 성공!!!!");
                 mInPostActivityView.commentAddSuccess(commentAddResponse);
             }
 
             @Override
             public void onFailure(Call<CommentAddResponse> call, Throwable t) {
+
+                System.out.println("통신 실패!!!!");
                 mInPostActivityView.validateFailure(null);
             }
         });
