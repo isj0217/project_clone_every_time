@@ -41,7 +41,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
     private CheckBox chk_in_post_anonymous;
 
-
     private RecyclerView rv_in_post_comment;
     private LinearLayoutManager linear_layout_manager;
 
@@ -96,7 +95,7 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         /**
          * 홈화면에서 바로 건너올때 글을 채워주기 위한 부분!!!!! (댓글과 무관!!!!!!!)
          * */
-        if (m_from_frag_home) {
+        if (m_from_frag_home && (!clicked.equals(""))) {
             switch (clicked) {
                 case "realtime_hot_post_1":
                 case "realtime_hot_post_2":
@@ -206,21 +205,18 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         final InPostService inPostService = new InPostService(this);
         inPostService.getFreeComment(content_index);
     }
-
     private void tryGetSecretComment(int content_index) {
         showProgressDialog();
 
         final InPostService inPostService = new InPostService(this);
         inPostService.getSecretComment(content_index);
     }
-
     private void tryGetAlumniComment(int content_index) {
         showProgressDialog();
 
         final InPostService inPostService = new InPostService(this);
         inPostService.getAlumniComment(content_index);
     }
-
     private void tryGetFreshmenComment(int content_index) {
         showProgressDialog();
 
@@ -270,7 +266,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         }
 
     }
-
     @Override
     public void hotPostSuccess(CommonBoardResponse commonBoardResponse) {
         hideProgressDialog();
@@ -391,7 +386,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
                 break;
         }
     }
-
     @Override
     public void secretBoardSuccess(CommonBoardResponse commonBoardResponse) {
         hideProgressDialog();
@@ -413,7 +407,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
                 break;
         }
     }
-
     @Override
     public void alumniBoardSuccess(CommonBoardResponse commonBoardResponse) {
         hideProgressDialog();
@@ -436,7 +429,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         }
 
     }
-
     @Override
     public void freshmenBoardSuccess(CommonBoardResponse commonBoardResponse) {
         hideProgressDialog();
@@ -458,7 +450,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
                 break;
         }
     }
-
     @Override
     public void exactFreePostSuccess(CommonBoardResponse commonBoardResponse) {
         hideProgressDialog();
@@ -470,7 +461,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_free_pos).getCountComment()));
         tv_in_post_scrap_num.setText("0");
     }
-
     @Override
     public void exactSecretPostSuccess(CommonBoardResponse commonBoardResponse) {
         hideProgressDialog();
@@ -482,7 +472,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_secret_pos).getCountComment()));
         tv_in_post_scrap_num.setText("0");
     }
-
     @Override
     public void exactAlumniPostSuccess(CommonBoardResponse commonBoardResponse) {
         hideProgressDialog();
@@ -494,7 +483,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_alumni_pos).getCountComment()));
         tv_in_post_scrap_num.setText("0");
     }
-
     @Override
     public void exactFreshmenPostSuccess(CommonBoardResponse commonBoardResponse) {
         hideProgressDialog();
@@ -506,14 +494,12 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
         tv_in_post_comment_num.setText(Integer.toString(commonBoardResponse.getCommonBoardResults().get(m_clicked_freshmen_pos).getCountComment()));
         tv_in_post_scrap_num.setText("0");
     }
-
-    private static final String TAG = "InPostActivity";
     @Override
     public void freeCommentSuccess(CommentResponse commentResponse) {
         hideProgressDialog();
 
-
-        Log.d(TAG, "freeCommentSuccess: " + commentResponse.getMessage());
+        System.out.println("freecommentSuccess의 코드: " + commentResponse.getCode());
+        System.out.println("freecommentSuccess의 메시지: " + commentResponse.getMessage());
         int size = commentResponse.getCommentResults().size();
 
         if ((commentResponse.getCode() == 100) && (size > 0)) {
@@ -531,7 +517,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
             comment_adapter.notifyDataSetChanged();
         }
     }
-
     @Override
     public void secretCommentSuccess(CommentResponse commentResponse) {
         hideProgressDialog();
@@ -555,7 +540,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
             comment_adapter.notifyDataSetChanged();
         }
     }
-
     @Override
     public void alumniCommentSuccess(CommentResponse commentResponse) {
         hideProgressDialog();
@@ -579,7 +563,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
             comment_adapter.notifyDataSetChanged();
         }
     }
-
     @Override
     public void freshmenCommentSuccess(CommentResponse commentResponse) {
         hideProgressDialog();
@@ -603,7 +586,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
             comment_adapter.notifyDataSetChanged();
         }
     }
-
     @Override
     public void commentAddSuccess(CommentAddResponse commentAddResponse) {
         hideProgressDialog();
@@ -731,7 +713,6 @@ public class InPostActivity extends BaseActivity implements InPostActivityView {
 
         }
     }
-
     @Override
     public void validateSuccess(String text) {
 
