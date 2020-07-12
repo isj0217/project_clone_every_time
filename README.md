@@ -1,0 +1,2 @@
+# project_clone_every_time
+6th_and_7th_week_making_clone_app(everytime)
